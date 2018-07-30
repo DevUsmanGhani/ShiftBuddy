@@ -1,7 +1,10 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
-const bodyParser = require('bodyParser');
+const bodyParser = require('body-parser');
 
 const managers = require('./routes/api/managers');
 
