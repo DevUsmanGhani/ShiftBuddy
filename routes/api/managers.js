@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
+
+const validateManagerInput = require('../../validations/manager')
+
 // Load Manager Model
 const Manager = require('../../models/Manager');
 
@@ -13,12 +16,13 @@ router.get('/test', (req, res) => res.json({ msg: "Manager Works!"}));
 // @desc    Crate a manager
 // @access  Private
 router.post('/', (req, res) => {
-  //const { errors, isValid } = validateManagerInput(req.body);
+  const { errors, isValid } = validateManagerInput(req.body);
 
   // Check Validation
- // if(!valid) {
- //   return res.status(400).json( errors );
- // }
+  if(!isValid) {
+    console.log(isValid)
+    return res.status(400).json( errors );
+  }
 
   Manager.findOne({ email: req.body.email})
   .then(manager => {
@@ -35,9 +39,10 @@ router.post('/', (req, res) => {
       newManager
       .save()
       .then(newManager => res.json(newManager))
-      .catch(err => res.json(err));
+      .catch(err => console.log(err));
     }
   });
 });
 
 module.exports = router;
+
