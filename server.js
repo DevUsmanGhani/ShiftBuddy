@@ -10,12 +10,14 @@ const managers = require('./routes/api/managers');
 
 const app = express();
 
+// Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.json());
+
 // Connect mongoose to MongoDB
 mongoose.connect(keys.mongoURI)
     .then(() => console.log("MongoDB Connected"))
     .catch(err => console.log(err));
-
-
 
 
 // Basic page to test app works
@@ -23,9 +25,12 @@ app.get('/', (req,res) => {
     res.send("ShiftBuddy")
 })
 
+//Use Routes
+app.use('/api/managers', managers);
+
 
 // Initialize port and run server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>{
     console.log("Now listening on port: " + PORT);
 })
