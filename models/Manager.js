@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Employee = require('./Employee');
 
 // Creating Manager Schema
 
@@ -19,7 +20,16 @@ const ManagerSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  }, 
+  employees: [
+    {
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: Employee
+    }
+  ]
+},
+{
+  strict: true
 });
 
-module.exports = Manager = mongoose.model('managers', ManagerSchema);
+module.exports = Manager = mongoose.model('Manager', ManagerSchema);

@@ -3,3 +3,4 @@ node_modules/
 
 #Enviornmental variables
 .env
+.DS_Store
