@@ -26,7 +26,7 @@ mongoose.connect(keys.mongoURI)
     .catch(err => console.log(err));
 
 app.get('/', (req, res) => {
-  res.send("hello world")
+  res.send("Shift Buddy")
 })
 
 //Use Routes
