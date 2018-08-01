@@ -37,6 +37,11 @@ app.use('/api/notes', notes);
 app.use('/api/cashOuts', cashOuts);
 app.use('/api/checks', checks);
 
+// For prodution only
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+}
+
 // Initialize port and run server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>{
