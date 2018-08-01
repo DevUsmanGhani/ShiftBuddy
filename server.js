@@ -9,7 +9,9 @@ const express = require('express'),
 const managers = require('./routes/api/managers'),
  			employees = require('./routes/api/employees'),
  			shifts = require('./routes/api/shift'),
- 			notes = require('./routes/api/note');
+ 			notes = require('./routes/api/note'),
+ 			cashOuts = require('./routes/api/cashOuts'),
+ 			checks = require('./routes/api/checks');
 
 
 const app = express();
@@ -34,7 +36,8 @@ app.use('/api/managers', managers);
 app.use('/api/employees', employees);
 app.use('/api/shifts', shifts);
 app.use('/api/notes', notes);
-
+app.use('/api/cashOuts', cashOuts);
+app.use('/api/checks', checks);
 
 // Initialize port and run server
 const PORT = process.env.PORT || 5000;
