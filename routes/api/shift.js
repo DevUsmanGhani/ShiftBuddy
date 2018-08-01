@@ -17,16 +17,16 @@ router.get('/:sid', (req,res) => {
 // @route 	PUT api/shifts/:sid
 // @desc 		Update data of a specific shift
 // @access 	Private
-router.put('/:sid', function(req,res) {
+router.put('/:sid', (req,res) => {
 	Shift.findByIdAndUpdate(req.params.sid, req.body, {new: true})
-		.then(shift => res.status(200).send(result))
+		.then(shift => res.status(200).send(shift))
 		.catch(err => res.status(404).send("The specified resource does not exist."))
 });
 
 // @route 	DELETE api/shifts/:sid
 // @desc 		Delete a specific shift
 // @access 	Private
-router.delete('/:sid', function(req,res) {
+router.delete('/:sid', (req,res) => {
   Shift.findByIdAndRemove(req.params.sid)
 		.then(shift => res.status(200).send("Shift was deleted."))
 		.catch(err => res.status(404).send("The specified resource does not exist."))

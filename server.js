@@ -1,14 +1,15 @@
 const dotenv = require('dotenv');
 dotenv.config();
 
-const express = require('express');
-const mongoose = require('mongoose');
-const keys = require('./config/keys');
-const bodyParser = require('body-parser');
+const express = require('express'),
+ 			mongoose = require('mongoose'),
+ 			keys = require('./config/keys'),
+ 			bodyParser = require('body-parser');
 
-const managers = require('./routes/api/managers');
-const employees = require('./routes/api/employees');
-const shifts = require('./routes/api/shift');
+const managers = require('./routes/api/managers'),
+ 			employees = require('./routes/api/employees'),
+ 			shifts = require('./routes/api/shift'),
+ 			notes = require('./routes/api/note');
 
 const app = express();
 
@@ -31,7 +32,7 @@ app.get('/', (req,res) => {
 app.use('/api/managers', managers);
 app.use('/api/employees', employees);
 app.use('/api/shifts', shifts);
-
+app.use('/api/notes', notes);
 
 // Initialize port and run server
 const PORT = process.env.PORT || 5000;
