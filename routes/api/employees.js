@@ -63,6 +63,7 @@ router.post('/:eid/shifts', (req, res) => {
         .catch(error => res.status(404).send("The specified resource does not exist."))
     })
     .catch(error => res.status(400).json(error))
+
 });
 
 module.exports = router;

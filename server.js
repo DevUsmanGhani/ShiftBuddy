@@ -10,6 +10,7 @@ const managers = require('./routes/api/managers');
 const employees = require('./routes/api/employees');
 const shifts = require('./routes/api/shift');
 
+
 const app = express();
 
 // Body parser middleware
@@ -31,6 +32,7 @@ app.get('/', (req,res) => {
 app.use('/api/managers', managers);
 app.use('/api/employees', employees);
 app.use('/api/shifts', shifts);
+
 
 
 // Initialize port and run server

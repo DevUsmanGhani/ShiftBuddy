@@ -41,7 +41,6 @@ router.post('/', (req, res) => {
   });
 });
 
-
 // @route   GET api/managers/:mid
 // @desc    Returns all data about a specificc employee
 // @access  Private
@@ -99,6 +98,7 @@ router.post('/:mid/employees', (req, res) => {
     })
     .catch(error => res.status(400).json(error))
 });
+
 
 module.exports = router;
 

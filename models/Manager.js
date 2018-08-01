@@ -32,6 +32,7 @@ const ManagerSchema = new Schema({
     {
       type: mongoose.Schema.Types.ObjectId, 
       ref: "Employee"
+
     }
   ]
 },
@@ -40,4 +41,5 @@ const ManagerSchema = new Schema({
 }
 );
 
-module.exports = Manager = mongoose.model('managers', ManagerSchema);
+
+module.exports = Manager = mongoose.model('Manager', ManagerSchema);
