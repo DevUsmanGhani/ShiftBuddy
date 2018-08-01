@@ -8,13 +8,12 @@ const validateManagerInput = require('../../validations/manager')
 const Manager = require('../../models/Manager');
 
 // @route   GET api/managers
-// @desc  Returns all managers
+// @desc    Returns all managers
 // @access  Private
-router.get('/', function(req,res) {
-  Manager.find({}, { employees: 0, __v: 0, settings: 0 }, function (err, managers) {
-    if (err) return res.status(500).send("The server encountered an internal error. Please retry the request.");
-    res.status(200).send(managers);
-  });
+router.get('/', (req, res) => {
+  Manager.find({}, { employees: 0, __v: 0, settings: 0 })
+    .then(managers => res.status(200).send(managers))
+    .catch(error => res.status(500).send("The server encountered an internal error. Please retry the request."))
 });
 
 // @route   POST api/managers
@@ -25,8 +24,7 @@ router.post('/', (req, res) => {
 
   // Check Validation
   if(!isValid) {
-    console.log(isValid)
-    return res.status(400).json( errors );
+    return res.status(400).json(errors);
   }
 
   Manager.findOne({ email: req.body.email})
@@ -44,68 +42,62 @@ router.post('/', (req, res) => {
 });
 
 // @route   GET api/managers/:mid
-// @desc  Returns all data about a specificc employee
+// @desc    Returns all data about a specificc employee
 // @access  Private
-router.get('/:mid', function(req,res) {
-    Manager.findOne({'_id': req.params.mid}, { employees: 0, __v: 0 }, function (err, manager) {
-        if (err || !manager ) return res.status(404).send("The specified resource does not exist.");
-        res.status(200).send(manager);
-    });
+router.get('/:mid', (req, res) => {
+  Manager.findOne({'_id': req.params.mid}, { employees: 0, __v: 0 })
+    .then(manager => res.status(200).send(manager))
+    .catch(error => res.status(404).send("The specified resource does not exist."))
 });
 
 // @route   PUT api/managers/:mid
-// @desc  Updates a specific manager
+// @desc    Updates a specific manager
 // @access  Private 
-router.put('/:mid', function(req,res) {
-    Manager.findByIdAndUpdate(req.params.mid, req.body, {new: true}, function (err, manager) {
-        if (err || !manager) return res.status(404).send("The specified resource does not exist.");
-        res.status(200).send(manager);
-    });
+router.put('/:mid', (req, res) => {
+  Manager.findByIdAndUpdate(req.params.mid, req.body, {new: true})
+    .then(manager => res.status(200).send(manager))
+    .catch(error => res.status(404).send("The specified resource does not exist."))
 });
 
 // @route   DELETE api/managers/:mid
-// @desc  Deletes a specific manager
+// @desc    Deletes a specific manager
 // @access  Private
-router.delete('/:mid', function(req,res) {
-    Manager.findByIdAndRemove(req.params.mid, function (err, manager) {
-        if (err || !manager) return res.status(404).send("The specified resource does not exist.");
-        res.status(200).send("Manager '"+ manager.name +"' was deleted.");
-
-    });
+router.delete('/:mid', (req, res) => {
+  Manager.findByIdAndRemove(req.params.mid)
+    .then(manager => res.status(200).send("Manager '"+ manager.name +"' was deleted."))
+    .catch(error => res.status(404).send("The specified resource does not exist."))
 });
 
-/*=================================== EMPLOYEE ROUTES ===================================*/
 // @route   GET api/managers/:mid/emplpoyees
-// @desc  Returns all employees of a specific manager
+// @desc    Returns all employees of a specific manager
 // @access  Private 
-router.get('/:mid/employees', function(req,res) {
-    Manager.findById(req.params.mid, function (err, manager) {
-        if (err || !manager ) return res.status(404).send("The specified resource does not exist.");
-        else {
-          Employee.find({ "_id": { $in: manager.employees } }, { shifts: 0, __v: 0 }, function(err, result) {
-        if (err || !result) return res.status(404).send("The specified resource does not exist.");
-        res.status(200).send(result);
-      });
-      }
-  });
+router.get('/:mid/employees', (req, res) => {
+  Manager.findById(req.params.mid)
+    .then(manager => {
+      Employee.find({ "_id": { $in: manager.employees } }, { shifts: 0, __v: 0 })
+        .then(employees => res.status(200).send(employees))
+        .catch(error => res.status(404).send("The specified resource does not exist."))
+      
+    })
+    .catch(error => res.status(404).send("The specified resource does not exist."))
 });
 
 // @route   POST api/managers/:mid/emplpoyees
-// @desc  Creats a employees of a specific manager
+// @desc    Creats a employee for a specific manager
 // @access  Public
-router.post('/:mid/employees', function(req,res) {
-  Employee.create(req.body, function(err, employee) {
-    Manager.findOne({_id: req.params.mid}, function(err, manager) {
-      if (err || !manager ) return res.status(404).send("The specified resource does not exist.");
-      else {
-        manager.employees.push(employee);
-        manager.save();
-        res.status(200).send(req.body);
-      }
-    });
-  });
+router.post('/:mid/employees', (req, res) => {
+  Employee.create(req.body)
+    .then(employee => {
+      Manager.findOne({_id: req.params.mid})
+        .then(manager => {
+          manager.employees.push(employee);
+          manager.save();
+          res.status(200).send(req.body);
+        })
+        .catch(error => res.status(404).send("The specified resource does not exist."))
+    })
+    .catch(error => res.status(400).json(error))
 });
-
 
 
 module.exports = router;

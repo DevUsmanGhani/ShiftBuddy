@@ -1,24 +1,24 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Shift = require('./Shift');
 
-// Creating Employee Schema
-
+// Create Employee Schema
 const employeeSchema = new mongoose.Schema({
-    name: { 
-    	type: String, 
-    	required: true 
-    },
-    phone: String,
-    birthday: String,
-    salary: { 
-    	type: Number, 
-    	required: true 
-    },
-    shifts: [
-    	{
-    		type: mongoose.Schema.Types.ObjectId, 
-    		ref: "Shift"
-    	}
+  name: { 
+  	type: String, 
+  	required: true 
+  },
+  phone: String,
+  birthday: String,
+  salary: { 
+  	type: Number, 
+  	required: true 
+  },
+  shifts: [
+  	{
+  		type: mongoose.Schema.Types.ObjectId, 
+  		ref: Shift
+  	}
 	]
 },
 {
