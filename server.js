@@ -25,9 +25,6 @@ mongoose.connect(keys.mongoURI)
     .then(() => console.log("MongoDB Connected"))
     .catch(err => console.log(err));
 
-app.get('/', (req, res) => {
-  res.send("Shift Buddy")
-})
 
 //Use Routes
 app.use('/api/managers', managers);
