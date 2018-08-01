@@ -26,10 +26,6 @@ mongoose.connect(keys.mongoURI)
     .catch(err => console.log(err));
 
 
-// Basic page to test app works
-app.get('/', (req,res) => {
-    res.send("ShiftBuddy")
-})
 
 //Use Routes
 app.use('/api/managers', managers);
