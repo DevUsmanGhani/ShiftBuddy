@@ -7,6 +7,8 @@ const keys = require('./config/keys');
 const bodyParser = require('body-parser');
 
 const managers = require('./routes/api/managers');
+const employees = require('./routes/api/employees');
+const shifts = require('./routes/api/shift');
 
 const app = express();
 
@@ -27,6 +29,8 @@ app.get('/', (req,res) => {
 
 //Use Routes
 app.use('/api/managers', managers);
+app.use('/api/employees', employees);
+app.use('/api/shifts', shifts);
 
 
 // Initialize port and run server
