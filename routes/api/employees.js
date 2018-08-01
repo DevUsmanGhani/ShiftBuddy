@@ -20,8 +20,7 @@ router.get('/:eid', (req,res) => {
 router.put('/:eid', (req, res) => {
   Employee.findByIdAndUpdate(req.params.eid, req.body, {new: true})
     .then(employee => {
-      let result = {"_id": employee._id, "name": employee.name, "phone": employee.phone, "birthday": employee.birthday, "salary": employee.salary};
-      res.status(200).send(result);
+      res.status(200).send(employee);
     })
     .catch(error => res.status(404).send("The specified resource does not exist."));
 });

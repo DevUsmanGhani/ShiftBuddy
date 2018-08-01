@@ -3,7 +3,7 @@ const mongoose = require('mongoose'),
 
 // Create Shift Model
 let noteSchema = new mongoose.Schema({
-  name: { 
+  title: { 
     type: String, 
     required: true 
   },
