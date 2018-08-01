@@ -1,7 +1,7 @@
 const mongoose = require('mongoose'),
 			Schema = mongoose.Schema,
 			Note = require("./Note"),
-			PaidOut = require("./PaidOut"),
+			CashOut = require("./CashOut"),
 			Check = require("./Check");
 
 // Create Shift Model
@@ -18,10 +18,10 @@ let shiftSchema = new mongoose.Schema({
   ],
   inventoryStart: {},
   inventoryStop: {},
-  paidOuts: [
+  cashOuts: [
   	{
   		type: mongoose.Schema.Types.ObjectId, 
-  		ref: PaidOut
+  		ref: CashOut
   	}
 	],
   checks: [
