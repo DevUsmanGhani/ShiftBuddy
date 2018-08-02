@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export class SiteNavbar extends Component {
   render() {
@@ -19,8 +20,8 @@ export class SiteNavbar extends Component {
           <NavItem eventKey={2} href="#">
             Contact
           </NavItem>
-          <NavItem eventKey={3} href="#">
-            Login
+          <NavItem eventKey={3} href="/managerlogin">
+            Login <FontAwesomeIcon icon="sign-in-alt" />
           </NavItem>
         </Nav>
       </Navbar.Collapse>
