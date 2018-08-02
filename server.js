@@ -6,10 +6,9 @@ dotenv.config();
 const express = require('express'),
  			mongoose = require('mongoose'),
       bodyParser = require('body-parser'),
-      passport = require('/passport'),
-      keys = require('./config/keys'),
-      passportConfig = require('./config/passport');
-
+      passport = require('passport'),
+      keys = require('./config/keys');
+      
 // Express routers
 const managers = require('./routes/api/managers'),
  			employees = require('./routes/api/employees'),
@@ -33,6 +32,7 @@ mongoose.connect(keys.mongoURI)
 app.use(passport.initialize());
 
 // Passport configuration
+passportConfig = require('./config/passport');
 passportConfig(passport);
 
 // Use API Routes

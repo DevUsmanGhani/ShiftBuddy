@@ -5,7 +5,7 @@ const Manager = mongoose.model('Manager');
 const keys = require('./keys');
 
 const opts = {
-  jwtFromRequest: ExctractJWT.fromAuthHeaderAsBearerToken(),
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: keys.secretOrKey
 };
 
