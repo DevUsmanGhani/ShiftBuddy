@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const passport = require('passport');
 
 // Load Manager Validations
 const validateManagerInput = require('../../validations/validateManagerInput')
@@ -30,17 +32,29 @@ router.post('/', (req, res) => {
 
   Manager.findOne({ email: req.body.email})
   .then(manager => {
-    if(manager){
+    if(manager) {
       errors.email = "This email already exists";
       return res.status(400).json(errors);
     }
-    else{
-      Manager.create(req.body)
-      .then(newManager => res.json(newManager))
-      .catch(err => console.log(err));
+    else {
+      const manager = new Manager(req.body);
+      
+      // Hashing the password
+      bcrypt.genSalt(12, (err, salt) => {
+        bcrypt.hash(manager.password, salt, (err, hash) => {
+          if (err) throw err;
+          manager.password = hash;
+          manager
+          .save()
+          .then(manager => res.json(manager))
+          .catch(err => console.log(err));
+        });
+      });
     }
   });
 });
+
+
 
 // @route   GET api/managers/:mid
 // @desc    Returns all data about a specificc employee
