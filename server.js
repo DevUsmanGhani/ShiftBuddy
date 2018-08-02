@@ -5,8 +5,10 @@ dotenv.config();
 // Dependencies
 const express = require('express'),
  			mongoose = require('mongoose'),
- 			keys = require('./config/keys'),
- 			bodyParser = require('body-parser');
+      bodyParser = require('body-parser'),
+      passport = require('/passport'),
+      keys = require('./config/keys'),
+      passportConfig = require('./config/passport');
 
 // Express routers
 const managers = require('./routes/api/managers'),
@@ -15,7 +17,6 @@ const managers = require('./routes/api/managers'),
  			notes = require('./routes/api/note'),
  			cashOuts = require('./routes/api/cashOuts'),
  			checks = require('./routes/api/checks');
-
 
 const app = express();
 
@@ -28,6 +29,11 @@ mongoose.connect(keys.mongoURI)
     .then(() => console.log("MongoDB Connected"))
     .catch(err => console.log(err));
 
+// Passport initialization
+app.use(passport.initialize());
+
+// Passport configuration
+passportConfig(passport);
 
 // Use API Routes
 app.use('/api/managers', managers);
