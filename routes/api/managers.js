@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 
-const validateManagerInput = require('../../validations/manager')
+// Load Manager Validations
+const validateManagerInput = require('../../validations/validateManagerInput')
 
 // Load Manager Model
 const Manager = require('../../models/Manager');
