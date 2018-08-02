@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
+const keys = require('../../config/keys')
 
 // Load Manager Validations
 const validateManagerInput = require('../../validations/validateManagerInput')
@@ -20,7 +21,7 @@ router.get('/', (req, res) => {
 });
 
 // @route   POST api/managers
-// @desc    Crate a manager
+// @desc    Create a manager with encrypted password
 // @access  Private
 router.post('/', (req, res) => {
   const { errors, isValid } = validateManagerInput(req.body);
@@ -54,12 +55,56 @@ router.post('/', (req, res) => {
   });
 });
 
+// @route   POST api/managers/login
+// @desc    Login Manager / Returning JWT Token
+// @access  Public
+router.post('/login', (req, res) => {
+  // todo validation for login
+  errors = {};
+
+  const email = req.body.email;
+  const password = req.body.password;
+
+  Manager.findOne({ email })
+  .then(manager => {
+    if (!manager) {
+      errors.email = "No account with this email was found.";
+      return res.status(400).json(errors);
+    }
+    // Compare hashed password
+    bcrypt.compare(password, manager.password)
+    .then(isMatch => {
+      if(isMatch) {
+        // If the password is correct...
+        // Create a payload for the JWT with just the manager id and name
+        const payload = { id: manager.id, name: manager.name};
+
+        // Sign Token
+        jwt.sign(
+          payload,
+          keys.secretOrKey,
+          { expiresIn: 7200 },
+          (err, token) => {
+            res.json({
+              success: true,
+              token: "Bearer " + token
+            });
+          }
+        );
+      }
+      else {
+        errors.password ="The password entered is incorrect";
+        res.status(400).json(errors);
+      }
+    })
+  })
+})
 
 
 // @route   GET api/managers/:mid
-// @desc    Returns all data about a specificc employee
+// @desc    Returns all data about a specific employee
 // @access  Private
-router.get('/:mid', (req, res) => {
+router.get('/:mid', passport.authenticate('jwt', { session: false }), (req, res) => {
   Manager.findOne({'_id': req.params.mid}, { employees: 0, __v: 0 })
     .then(manager => res.status(200).send(manager))
     .catch(error => res.status(404).send("The specified resource does not exist."))
