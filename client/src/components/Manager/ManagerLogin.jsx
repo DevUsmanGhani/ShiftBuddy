@@ -23,7 +23,7 @@ export class ManagerLogin extends Component {
   }
 
   attemptSignIn() {
-    console.log(this.state.email, this.state.password);
+    
   }
 
   render() {
