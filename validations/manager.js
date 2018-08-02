@@ -1,7 +1,7 @@
 const Validator = require('validator');
 const isEmpty = require('./is-empty');
 
-module.exports = function validateManagerInput(data) {
+module.exports = data => {
   let errors = {};
 
   //If the fields are not blank then they will be instantiated to req.body values
