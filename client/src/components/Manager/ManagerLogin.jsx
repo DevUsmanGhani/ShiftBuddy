@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ControlLabel, FormGroup, HelpBlock, FormControl, Button } from "react-bootstrap"; 
+import { FormGroup, FormControl, Button } from "react-bootstrap"; 
 
 export class ManagerLogin extends Component {
   constructor(props, context) {
@@ -19,6 +19,7 @@ export class ManagerLogin extends Component {
 
   onPasswordChange(password) {
     this.setState({ password: password.target.value });
+    console.log("hello");
   }
 
   attemptSignIn() {
