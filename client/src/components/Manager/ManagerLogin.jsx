@@ -17,8 +17,12 @@ export class ManagerLogin extends Component {
     this.setState({ email: email.target.value });
   }
 
-  onPassordChange(password) {
+  onPasswordChange(password) {
     this.setState({ password: password.target.value });
+  }
+
+  attemptSignIn() {
+    console.log(this.state.email, this.state.password);
   }
 
   render() {
