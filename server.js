@@ -1,11 +1,14 @@
+// Enviornmental variables
 const dotenv = require('dotenv');
 dotenv.config();
 
+// Dependencies
 const express = require('express'),
  			mongoose = require('mongoose'),
  			keys = require('./config/keys'),
  			bodyParser = require('body-parser');
 
+// Express routers
 const managers = require('./routes/api/managers'),
  			employees = require('./routes/api/employees'),
  			shifts = require('./routes/api/shift'),
@@ -26,7 +29,7 @@ mongoose.connect(keys.mongoURI)
     .catch(err => console.log(err));
 
 
-//Use Routes
+// Use API Routes
 app.use('/api/managers', managers);
 app.use('/api/employees', employees);
 app.use('/api/shifts', shifts);
