@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { Provider } from 'react-redux';
-import ManagerLogin from './components/Manager/ManagerLogin.jsx';
-import Landing from './components/Public/Landing';
-import SiteNavbar from './components/Common/SiteNavbar';
+import  store  from "./store";
+
+// Components
+import ManagerLogin from './components/manager/ManagerLogin.jsx';
+import Landing from './components/public/Landing';
+import SiteNavbar from './components/common/SiteNavbar';
 import './App.css';
 
 // Font 
@@ -18,8 +21,8 @@ class App extends Component {
     return (
       <Provider store={ store } >
         <Router>
-        <SiteNavbar />
           <div>
+            <SiteNavbar />
             <Route exact path='/'component={Landing} />
             <Route path='/ManagerLogin' component={ManagerLogin} />
           </div>
