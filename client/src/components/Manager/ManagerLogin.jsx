@@ -3,23 +3,18 @@ import { FormGroup, FormControl, Button } from "react-bootstrap";
 
 export class ManagerLogin extends Component {
   constructor(props, context) {
-    super(props, context)
-    this.onEmailChange = this.onEmailChange.bind(this);
-    this.onPasswordChange = this.onPasswordChange.bind(this);
-    this.attemptSignIn = this.attemptSignIn.bind(this);
+    super(props, context);
     this.state = {
       email: '',
       password: ''
     };
+    
+    this.onChange = this.onChange.bind(this);
+    this.attemptSignIn = this.attemptSignIn.bind(this);
   }
 
-  onEmailChange(email) {
-    this.setState({ email: email.target.value });
-  }
-
-  onPasswordChange(password) {
-    this.setState({ password: password.target.value });
-    console.log("hello");
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   attemptSignIn() {
@@ -32,9 +27,10 @@ export class ManagerLogin extends Component {
         <FormGroup controlId="email">
           <FormControl
             type="email"
+            name="email"
             value={this.state.email}
             placeholder="Enter Email"
-            onChange={this.onEmailChange}
+            onChange={this.onChange}
           />
           <FormControl.Feedback />
         </FormGroup>
@@ -42,9 +38,9 @@ export class ManagerLogin extends Component {
         <FormGroup controlId="password">
           <FormControl
             type="password"
+            name="password"
             value={this.state.pasword}
             placeholder="Enter pasword"
-            onChange={this.onPasswordChange}
           />
           <FormControl.Feedback />
         </FormGroup>
