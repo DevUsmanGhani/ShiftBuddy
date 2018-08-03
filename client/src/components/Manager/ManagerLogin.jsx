@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { loginManager } from '../../actions/manager/managerAuthActions';
 
 export class ManagerLogin extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor() {
+    super();
     this.state = {
       email: '',
       password: ''
@@ -24,6 +24,7 @@ export class ManagerLogin extends Component {
   }
 
   render() {
+    const { errors } = this.state;
     return (
       <form onSubmit={this.attemptSignIn}>
         <FormGroup controlId="email">
