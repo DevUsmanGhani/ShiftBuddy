@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { FormGroup, FormControl, Button } from "react-bootstrap"; 
+import { connect } from 'react-redux';
+import { loginManager } from '../../actions/manager/managerAuthActions';
 
 export class ManagerLogin extends Component {
   constructor(props, context) {
@@ -51,4 +53,10 @@ export class ManagerLogin extends Component {
   }
 }
 
-export default ManagerLogin;
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+})
+
+
+export default connect(mapStateToProps, { loginUser })(ManagerLogin);
