@@ -1,30 +1,72 @@
 import React, { Component } from 'react'
-import { FormGroup, FormControl, Button } from "react-bootstrap"; 
+import { FormGroup, FormControl, Button, Alert } from "react-bootstrap"; 
+import { connect } from 'react-redux';
+import { loginManager } from '../../actions/manager/managerAuthActions';
 
 export class ManagerLogin extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor() {
+    super();
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      loginAttempts: 0,
+      errors: {}
     };
-    
     this.onChange = this.onChange.bind(this);
-    this.attemptSignIn = this.attemptSignIn.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
+  }
+
+  componentDidMount() {
+    console.log("coomponent mounted")
+    if(this.props.managerAuth.isAuthenticated) {
+      this.props.history.push('/')
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(this.props)
+    if(nextProps.managerAuth.isAuthenticated) {
+      this.props.history.push('/');
+    }
+    if(nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors,
+        loginAttempts: this.state.loginAttempts + 1,
+      })
+    }
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+    console.log(this.props.managerAuth)
   }
 
-  attemptSignIn() {
-    
+  onSubmit(e) {
+    e.preventDefault();
+    const managerData = {
+      email: this.state.email,
+      password: this.state.password
+    }
+    this.props.loginManager(managerData);
+  }
+
+  renderErrors() {
+    if(this.state.errors) {
+      return (
+        <Alert>
+
+        </Alert>
+      )
+    }
   }
 
   render() {
+
     return (
-      <form onSubmit={this.attemptSignIn}>
-        <FormGroup controlId="email">
+      <form onSubmit={this.onSubmit}>
+        
+        <FormGroup controlId="email" >
           <FormControl
             type="email"
             name="email"
@@ -35,12 +77,13 @@ export class ManagerLogin extends Component {
           <FormControl.Feedback />
         </FormGroup>
 
-        <FormGroup controlId="password">
+        <FormGroup controlId="password" >
           <FormControl
             type="password"
             name="password"
-            value={this.state.pasword}
+            value={this.state.password}
             placeholder="Enter pasword"
+            onChange={this.onChange}
           />
           <FormControl.Feedback />
         </FormGroup>
@@ -51,4 +94,10 @@ export class ManagerLogin extends Component {
   }
 }
 
-export default ManagerLogin;
+const mapStateToProps = state => ({
+  managerAuth: state.managerAuth,
+  errors: state.errors
+})
+
+
+export default connect(mapStateToProps, { loginManager })(ManagerLogin);

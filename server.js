@@ -19,6 +19,14 @@ const managers = require('./routes/api/managers'),
 
 const app = express();
 
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  next();
+});
+
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
@@ -35,6 +43,8 @@ app.use(passport.initialize());
 passportConfig = require('./config/passport');
 passportConfig(passport);
 
+
+
 // Use API Routes
 app.use('/api/managers', managers);
 app.use('/api/employees', employees);
@@ -42,6 +52,8 @@ app.use('/api/shifts', shifts);
 app.use('/api/notes', notes);
 app.use('/api/cashOuts', cashOuts);
 app.use('/api/checks', checks);
+
+
 
 // For prodution only
 if (process.env.NODE_ENV === 'production') {
