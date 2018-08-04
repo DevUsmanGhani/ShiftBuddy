@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import managerAuthReducer from './manager/managerAuthReducer';
-import errorReducer from './errorReducer';
+import errorsReducer from './errorsReducer';
 
 export default combineReducers({
   managerAuth: managerAuthReducer,
-  error: errorReducer
+  errors: errorsReducer
 });
