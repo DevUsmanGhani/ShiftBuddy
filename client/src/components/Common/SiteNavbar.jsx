@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, NavItem } from 'react-bootstrap';
+import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
 import { connect } from "react-redux";
 import { logoutManager } from '../../actions/manager/managerAuthActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export class SiteNavbar extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      isLoggedIn: this.props.managerAuth.isAuthenticated
-    }
-  }
-
+  
   loginButton() {
     return (
       <NavItem  eventKey={3} href="/managerlogin">
@@ -21,19 +15,26 @@ export class SiteNavbar extends Component {
   }
 
   logoutButton() {
+    const { manager } = this.props.managerAuth;
     return (
-      <NavItem onClick={this.props.logoutManager} eventKey={4} href="/">
-        Logout <FontAwesomeIcon icon="sign-out-alt" /> 
-      </NavItem>
+      <NavDropdown eventKey={4} title={manager.name} id="logged-in-manager-dropdown">
+        <MenuItem onClick={this.props.logoutManager} eventKey={4.1} href="/">
+          Logout <FontAwesomeIcon icon="sign-out-alt" /> 
+        </MenuItem>
+      </NavDropdown>
+      
     )
   }
   render() {
+    const { isAuthenticated } = this.props.managerAuth;
+
     return (
       <Navbar inverse collapseOnSelect>
       <Navbar.Header>
         <Navbar.Brand>
           <a href="/">Shift Buddy</a>
         </Navbar.Brand>
+        
         <Navbar.Toggle />
       </Navbar.Header>
       <Navbar.Collapse>
@@ -44,7 +45,7 @@ export class SiteNavbar extends Component {
           <NavItem eventKey={2} href="#">
             Contact 
           </NavItem>
-          {this.state.isLoggedIn ? this.logoutButton() : this.loginButton()}      
+          {isAuthenticated ? this.logoutButton() : this.loginButton()}      
         </Nav>
       </Navbar.Collapse>
     </Navbar>
