@@ -51,7 +51,7 @@ class App extends Component {
               <Route exact path='/'component={Landing} />
               <Route path='/ManagerLogin' component={ManagerLogin} />
             </div>
-        </Router>
+          </Router>
         </PersistGate>
       </Provider>
     );
