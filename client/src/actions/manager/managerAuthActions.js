@@ -40,6 +40,7 @@ export const setCurrentManager = decodedToken => {
 
 // Logout - Delete manager token
 export const logoutManager = () => dispatch => {
+  localStorage.clear();
   dispatch({
     type: SET_CURRENT_MANAGER,
     payload: {},

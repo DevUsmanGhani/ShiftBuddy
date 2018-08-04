@@ -1,8 +1,32 @@
 import React, { Component } from 'react';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { connect } from "react-redux";
+import { logoutManager } from '../../actions/manager/managerAuthActions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export class SiteNavbar extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      isLoggedIn: this.props.managerAuth.isAuthenticated
+    }
+  }
+
+  loginButton() {
+    return (
+      <NavItem  eventKey={3} href="/managerlogin">
+        Login <FontAwesomeIcon icon="sign-in-alt" /> 
+      </NavItem>
+    )
+  }
+
+  logoutButton() {
+    return (
+      <NavItem onClick={this.props.logoutManager} eventKey={4} href="/">
+        Logout <FontAwesomeIcon icon="sign-out-alt" /> 
+      </NavItem>
+    )
+  }
   render() {
     return (
       <Navbar inverse collapseOnSelect>
@@ -15,14 +39,12 @@ export class SiteNavbar extends Component {
       <Navbar.Collapse>
         <Nav pullRight>
           <NavItem eventKey={1} href="#">
-            About
+            About Us
           </NavItem>
           <NavItem eventKey={2} href="#">
-            Contact
+            Contact 
           </NavItem>
-          <NavItem eventKey={3} href="/managerlogin">
-            Login <FontAwesomeIcon icon="sign-in-alt" />
-          </NavItem>
+          {this.state.isLoggedIn ? this.logoutButton() : this.loginButton()}      
         </Nav>
       </Navbar.Collapse>
     </Navbar>
@@ -30,4 +52,9 @@ export class SiteNavbar extends Component {
   }
 }
 
-export default SiteNavbar
+const mapStateToProps = state => ({
+  managerAuth: state.managerAuth,
+})
+
+
+export default connect(mapStateToProps, { logoutManager })(SiteNavbar);

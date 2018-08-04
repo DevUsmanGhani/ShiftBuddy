@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { Provider } from 'react-redux';
-import  store  from "./store";
+import  { store, persistor}  from "./store";
+import { PersistGate } from 'redux-persist/integration/react'
 
 // Auth
 import jwt_decode from 'jwt-decode';
@@ -16,8 +17,8 @@ import './App.css';
 
 // Font 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
-library.add(faSignInAlt)
+import { fas } from '@fortawesome/free-solid-svg-icons'
+library.add(fas)
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -43,13 +44,15 @@ class App extends Component {
   render() {
     return (
       <Provider store={ store } >
-        <Router>
-          <div>
-            <SiteNavbar />
-            <Route exact path='/'component={Landing} />
-            <Route path='/ManagerLogin' component={ManagerLogin} />
-          </div>
+        <PersistGate loading={ null } persistor={ persistor} >
+          <Router>
+            <div>
+              <SiteNavbar />
+              <Route exact path='/'component={Landing} />
+              <Route path='/ManagerLogin' component={ManagerLogin} />
+            </div>
         </Router>
+        </PersistGate>
       </Provider>
     );
   }
