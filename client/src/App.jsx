@@ -13,7 +13,6 @@ import { setCurrentManager, logoutManager } from './actions/manager/managerAuthA
 import ManagerLogin from './components/manager/ManagerLogin.jsx';
 import Landing from './components/public/Landing';
 import SiteNavbar from './components/common/SiteNavbar';
-import './App.css';
 
 // Font 
 import { library } from '@fortawesome/fontawesome-svg-core'
