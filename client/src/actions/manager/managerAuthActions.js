@@ -7,7 +7,7 @@ import { GET_ERRORS, SET_CURRENT_MANAGER } from './types';
 // Login - Get Manager Token
 export const loginManager = managerData => dispatch => {
   axios
-  .post('http://localhost:5000/api/managers/login', managerData)
+  .post('/api/managers/login', managerData)
   .then(res => {
     // Save to local storage
     console.log(res);
