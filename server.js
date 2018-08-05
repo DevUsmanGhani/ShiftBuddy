@@ -8,7 +8,7 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       passport = require('passport'),
       keys = require('./config/keys'),
-      path = require('/path');
+      path = require('path');
       
 // Express routers
 const managers = require('./routes/api/managers'),
