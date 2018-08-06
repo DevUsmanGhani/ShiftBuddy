@@ -19,19 +19,24 @@ footer {
 
 // Nav links
 .navbar{ 
-  background: $shift-buddy-silver !important;
+  background: $shift-buddy-silver ;
   .navbar-header{
-    color: $shift-buddy-blue !important;
+    color: $shift-buddy-tan;
     font-size: 1.5em;
     font-weight: bolder;
   }
   .navbar-nav {
     li {
       a {
-        color: $shift-buddy-tan !important;
+        color: $shift-buddy-blue;
       }
     }
   }
+}
+
+hr {
+  height: 1px;
+  background-color: $shift-buddy-blue;
 }
 
 

@@ -8,13 +8,13 @@ import { Jumbotron, Button  } from 'react-bootstrap';
 export class Landing extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <Jumbotron className="text-center bg-blue">
+      <Jumbotron className="text-center bg-silver">
         <h2>  
-          <div className="tan">Welcome to Shift Buddy!</div>
-          <small className="beige">Revolutionizing the way that your business handles shifts</small>
+          <div className="blue">Shift Buddy Pro</div>
+          <small className="tan">Revolutionizing the way that your business handles shifts</small>
         </h2>
         <hr/>
-        <Button className="text-center" bsSize="large" bsStyle="warning">Enter Portal</Button>
+        <Button className="text-center" bsSize="large" bsStyle="info">Enter Portal</Button>
       </Jumbotron>
     );
   }
