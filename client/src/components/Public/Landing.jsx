@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Jumbotron, Button } from 'react-bootstrap';
+import { Jumbotron, Button  } from 'react-bootstrap';
 
 
 /**
@@ -8,13 +8,13 @@ import { Jumbotron, Button } from 'react-bootstrap';
 export class Landing extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <Jumbotron>
-        <h1>
-          Welcome to Shift Buddy!
-        </h1>
-        <span>Revolutionizing the way that your business handles shifts</span>
-        <hr />
-        <Button bsSize="large" bsStyle="info">Register Today</Button>
+      <Jumbotron className="text-center bg-silver">
+        <h2>  
+          <div className="blue">Shift Buddy Pro</div>
+          <small className="tan">Revolutionizing the way that your business handles shifts</small>
+        </h2>
+        <hr/>
+        <Button className="text-center" bsSize="large" bsStyle="info" href="/managerlogin">Enter Portal</Button>
       </Jumbotron>
     );
   }

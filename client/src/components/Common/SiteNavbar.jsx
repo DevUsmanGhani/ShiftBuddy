@@ -29,10 +29,10 @@ export class SiteNavbar extends Component {
     const { isAuthenticated } = this.props.managerAuth;
 
     return (
-      <Navbar inverse collapseOnSelect>
+      <Navbar collapseOnSelect>
       <Navbar.Header>
         <Navbar.Brand>
-          <a href="/">Shift Buddy</a>
+          <a className="navbar-header" href="/">Shift Buddy</a>
         </Navbar.Brand>
         
         <Navbar.Toggle />

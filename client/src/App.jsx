@@ -17,6 +17,7 @@ import SiteNavbar from './components/common/SiteNavbar';
 // Font 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+import SiteFooter from './components/common/SiteFooter';
 library.add(fas)
 
 // Check for token
@@ -47,8 +48,11 @@ class App extends Component {
           <Router>
             <div>
               <SiteNavbar />
-              <Route exact path='/'component={Landing} />
-              <Route path='/ManagerLogin' component={ManagerLogin} />
+              <div className="container">
+                <Route exact path='/'component={Landing} />
+                <Route path='/ManagerLogin' component={ManagerLogin} />
+              </div>
+              <SiteFooter />
             </div>
           </Router>
         </PersistGate>
