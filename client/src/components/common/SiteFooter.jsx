@@ -2,7 +2,7 @@ import React from 'react'
 
 export default () => {
   return (
-    <footer class="text-center ">
+    <footer>
       Copyright &copy; {new Date().getFullYear()} ShiftBuddyPro
     </footer>
   )

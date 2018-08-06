@@ -48,7 +48,7 @@ class App extends Component {
           <Router>
             <div>
               <SiteNavbar />
-              <div class="container">
+              <div className="container">
                 <Route exact path='/'component={Landing} />
                 <Route path='/ManagerLogin' component={ManagerLogin} />
               </div>
