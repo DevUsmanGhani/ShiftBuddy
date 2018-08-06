@@ -14,7 +14,7 @@ export class Landing extends Component { // eslint-disable-line react/prefer-sta
           <small className="tan">Revolutionizing the way that your business handles shifts</small>
         </h2>
         <hr/>
-        <Button className="text-center" bsSize="large" bsStyle="info">Enter Portal</Button>
+        <Button className="text-center" bsSize="large" bsStyle="info" href="/managerlogin">Enter Portal</Button>
       </Jumbotron>
     );
   }
