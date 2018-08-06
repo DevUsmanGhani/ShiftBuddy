@@ -52,10 +52,10 @@ export class ManagerLogin extends Component {
   }
 
   renderErrors() {
-    if(this.state.errors) {
+    if(this.props.errors) {
       return (
-        <Alert>
-
+        <Alert bsSize="danger">
+          Invalid Email/Password
         </Alert>
       )
     }
@@ -69,6 +69,8 @@ export class ManagerLogin extends Component {
           <Col md={6} mdOffset={3}>
             <form onSubmit={this.onSubmit} className="text-center">
               <h2 className="form-header">Manager Login</h2>
+              <hr />
+              {this.renderErrors()}
               <FormGroup controlId="email" >
                 <FormControl
                   type="email"
