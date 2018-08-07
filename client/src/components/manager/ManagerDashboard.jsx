@@ -18,8 +18,8 @@ export class ManagerLogin extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  
+const mapStateToProps = state => ({
+  managerAuth: state.managerAuth,
 })
 
 const mapDispatchToProps = {
