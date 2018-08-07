@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { FormGroup, FormControl, Button, Alert, Grid, Row, Col } from "react-bootstrap"; 
 import { connect } from 'react-redux';
 import { loginManager } from '../../actions/manager/managerAuthActions';
+import { clearErrors } from '../../actions/errorsActions';
+import  isEmpty  from '../../utils/isEmpty';
 
 export class ManagerLogin extends Component {
   constructor() {
@@ -48,21 +50,20 @@ export class ManagerLogin extends Component {
       email: this.state.email,
       password: this.state.password
     }
+    this.props.clearErrors();
     this.props.loginManager(managerData);
   }
 
   renderErrors() {
-    if(this.props.errors) {
-      return (
-        <Alert bsSize="danger">
-          Invalid Email/Password
-        </Alert>
-      )
-    }
+    return (
+      <Alert bsSize="danger">
+        Invalid Email/Password
+      </Alert>
+    )
   }
 
   render() {
-
+    const { errors } = this.props;
     return (
       <Grid>
         <Row>
@@ -70,7 +71,7 @@ export class ManagerLogin extends Component {
             <form onSubmit={this.onSubmit} className="text-center">
               <h2 className="form-header">Manager Login</h2>
               <hr />
-              {this.renderErrors()}
+              {isEmpty(errors)  ?  "" : this.renderErrors()}
               <FormGroup controlId="email" >
                 <FormControl
                   type="email"
@@ -107,4 +108,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps, { loginManager })(ManagerLogin);
+export default connect(mapStateToProps, { clearErrors, loginManager })(ManagerLogin);
