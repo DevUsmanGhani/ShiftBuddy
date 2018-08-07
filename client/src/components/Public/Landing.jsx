@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Jumbotron, Button  } from 'react-bootstrap';
 
 
-/**
- * LandingPage
- */
-export class Landing extends Component { // eslint-disable-line react/prefer-stateless-function
+export class Landing extends Component { 
+  componentDidMount() {
+    if(this.props.managerAuth.isAuthenticated) {
+      this.props.history.push('/ManagerDashboard');
+    }
+  }
   render() {
     return (
       <Jumbotron className="text-center bg-silver">
@@ -20,4 +23,12 @@ export class Landing extends Component { // eslint-disable-line react/prefer-sta
   }
 }
 
-export default Landing;
+const mapStateToProps = (state) => ({
+  managerAuth: state.managerAuth,
+})
+
+const mapDispatchToProps = {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Landing)

@@ -8,7 +8,7 @@ export class ManagerLogin extends Component {
 
   }
   render() {
-    const { manager } = this.props.managerAuth.manager;
+    const { manager } = this.props.managerAuth;
     return (
       <div>
         <h1 className="text-center">Welcome {manager.name}</h1>
