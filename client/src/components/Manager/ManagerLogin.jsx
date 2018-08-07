@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { FormGroup, FormControl, Button, Alert } from "react-bootstrap"; 
+import { FormGroup, FormControl, Button, Alert, Grid, Row, Col } from "react-bootstrap"; 
 import { connect } from 'react-redux';
 import { loginManager } from '../../actions/manager/managerAuthActions';
+import { clearErrors } from '../../actions/errorsActions';
+import  isEmpty  from '../../utils/isEmpty';
 
 export class ManagerLogin extends Component {
   constructor() {
@@ -48,48 +50,54 @@ export class ManagerLogin extends Component {
       email: this.state.email,
       password: this.state.password
     }
+    this.props.clearErrors();
     this.props.loginManager(managerData);
   }
 
   renderErrors() {
-    if(this.state.errors) {
-      return (
-        <Alert>
-
-        </Alert>
-      )
-    }
+    return (
+      <Alert bsSize="danger">
+        Invalid Email/Password
+      </Alert>
+    )
   }
 
   render() {
-
+    const { errors } = this.props;
     return (
-      <form onSubmit={this.onSubmit}>
-        
-        <FormGroup controlId="email" >
-          <FormControl
-            type="email"
-            name="email"
-            value={this.state.email}
-            placeholder="Enter Email"
-            onChange={this.onChange}
-          />
-          <FormControl.Feedback />
-        </FormGroup>
-
-        <FormGroup controlId="password" >
-          <FormControl
-            type="password"
-            name="password"
-            value={this.state.password}
-            placeholder="Enter pasword"
-            onChange={this.onChange}
-          />
-          <FormControl.Feedback />
-        </FormGroup>
-
-        <Button type="submit">Sign in</Button>
-      </form>
+      <Grid>
+        <Row>
+          <Col md={6} mdOffset={3}>
+            <form onSubmit={this.onSubmit} className="text-center">
+              <h2 className="form-header">Manager Login</h2>
+              <hr />
+              {isEmpty(errors)  ?  "" : this.renderErrors()}
+              <FormGroup controlId="email" >
+                <FormControl
+                  type="email"
+                  name="email"
+                  value={this.state.email}
+                  placeholder="Enter Email"
+                  onChange={this.onChange}
+                />
+                <FormControl.Feedback />
+              </FormGroup>
+              <FormGroup controlId="password" >
+                <FormControl
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  placeholder="Enter pasword"
+                  onChange={this.onChange}
+                />
+                <FormControl.Feedback />
+              </FormGroup>
+              <Button type="submit" bsSize="large" bsStyle="warning">Sign in</Button>
+            </form>
+          </Col>
+        </Row>
+      </Grid>
+      
     );
   }
 }
@@ -100,4 +108,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps, { loginManager })(ManagerLogin);
+export default connect(mapStateToProps, { clearErrors, loginManager })(ManagerLogin);

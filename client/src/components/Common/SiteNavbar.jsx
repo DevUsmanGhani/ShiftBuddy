@@ -33,8 +33,7 @@ export class SiteNavbar extends Component {
       <Navbar.Header>
         <Navbar.Brand>
           <a className="navbar-header" href="/">Shift Buddy</a>
-        </Navbar.Brand>
-        
+        </Navbar.Brand>  
         <Navbar.Toggle />
       </Navbar.Header>
       <Navbar.Collapse>

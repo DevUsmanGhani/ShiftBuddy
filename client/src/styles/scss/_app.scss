@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: $shift-buddy-beige;
+  height: 100%;
+}
+
+footer {
+  height: 2em;;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-top: .25em;
+  background-color: $shift-buddy-silver;
+  text-align: center;
+}
+
+// Nav links
+.navbar{ 
+  background: $shift-buddy-silver ;
+  .navbar-header{
+    color: $shift-buddy-tan;
+    font-size: 1.5em;
+    font-weight: bolder;
+  }
+  .navbar-nav {
+    li {
+      a {
+        color: $shift-buddy-blue;
+      }
+    }
+  }
+}
+
+hr {
+  height: 1px;
+  background-color: $shift-buddy-blue;
+}
+
+
+
+
+
