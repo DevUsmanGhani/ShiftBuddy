@@ -12,7 +12,7 @@ export class ManagerLogin extends Component {
     return (
       <div>
         <h1 className="text-center">Welcome {manager.name}</h1>
-        <div>Click <a href="/employeesList">here</a> to view your employees or create a new one.</div>
+        <div>Click <a href="/employeeList">here</a> to view your employees or create a new one.</div>
       </div>
     )
   }
