@@ -2,7 +2,7 @@ import axios from 'axios';
 import setAuthToken from '../../utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 
-import { GET_ERRORS, SET_CURRENT_MANAGER } from './types';
+import { SET_CURRENT_MANAGER, GET_ERRORS, LOGOUT} from './types';
 
 // Login - Get Manager Token
 export const loginManager = (managerData, callback) => dispatch => {
@@ -41,7 +41,7 @@ export const setCurrentManager = decodedToken => {
 export const logoutManager = () => dispatch => {
   localStorage.clear();
   dispatch({
-    type: SET_CURRENT_MANAGER,
+    type: LOGOUT,
     payload: {},
   })
 }

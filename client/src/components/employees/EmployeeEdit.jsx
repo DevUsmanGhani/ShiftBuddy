@@ -7,7 +7,7 @@ class EmployeeEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      _id: this.props.employee._id,
+      _id: this.props.employee._id || '',
       name: this.props.employee.name || '',
       salary: this.props.employee.salary || 0,
       phone: this.props.employee.phone || '',
