@@ -6,7 +6,7 @@ import { Jumbotron, Button  } from 'react-bootstrap';
 export class Landing extends Component { 
   componentDidMount() {
     if(this.props.managerAuth.isAuthenticated) {
-      this.props.history.push('/ManagerDashboard');
+      this.props.history.push(`/managers/${this.props.managerAuth.manager.id}`);
     }
   }
   render() {
@@ -17,7 +17,7 @@ export class Landing extends Component {
           <small className="tan">Revolutionizing the way that your business handles shifts</small>
         </h2>
         <hr/>
-        <Button className="text-center" bsSize="large" bsStyle="info" href="/managerlogin">Enter Portal</Button>
+        <Button className="text-center" bsSize="large" bsStyle="info" href="/managers/login">Enter Portal</Button>
       </Jumbotron>
     );
   }
@@ -27,8 +27,5 @@ const mapStateToProps = (state) => ({
   managerAuth: state.managerAuth,
 })
 
-const mapDispatchToProps = {
-  
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Landing)
+export default connect(mapStateToProps)(Landing)
