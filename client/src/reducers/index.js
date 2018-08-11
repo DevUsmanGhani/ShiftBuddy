@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import managerAuthReducer from './manager/managerAuthReducer';
+import managerAuthReducer from './managerAuthReducer';
 import errorsReducer from './errorsReducer';
 import employeesReducer from './employeesReducer';
 

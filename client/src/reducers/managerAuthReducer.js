@@ -1,5 +1,5 @@
-import { SET_CURRENT_MANAGER } from '../../actions/manager/types';
-import isEmpty from "../../utils/isEmpty";
+import { SET_CURRENT_MANAGER } from '../actions/manager/types';
+import isEmpty from "../utils/isEmpty";
 
 const initialState = {
   isAuthenticated: false,
