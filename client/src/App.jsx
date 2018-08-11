@@ -13,7 +13,7 @@ import { setCurrentManager, logoutManager } from './actions/manager/managerAuthA
 import PrivateRoute from './components/common/PrivateRoute';
 import ManagerLogin from './components/manager/ManagerLogin';
 import ManagerDashboard from './components/manager/ManagerDashboard';
-import EmployeeList from './components/manager/EmployeeList'
+import Employees from './components/employees/Employees'
 import Landing from './components/public/Landing';
 import SiteNavbar from './components/common/SiteNavbar';
 
@@ -56,7 +56,7 @@ class App extends Component {
                 <Route path='/ManagerLogin' component={ManagerLogin} />
                 <Switch>
                   <PrivateRoute path='/ManagerDashboard' component={ManagerDashboard} />
-                  <PrivateRoute path='/EmployeeList' component={EmployeeList} />
+                  <PrivateRoute path='/Employees' component={Employees} />
                 </Switch>
               </div>
               <SiteFooter />
