@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getEmployees } from '../../actions/employeeActions'
@@ -21,11 +22,16 @@ export class Employees extends Component {
           <div>
             <h1>Employees</h1>
             <hr />
-            {employees.map(employee => {
+            {_.map(this.props.employees, employee => {
               return (
-                <div key={employee.id} className="employee-container"> 
-                  <div key={employee.id + employee.name} className="header">{employee.name}</div>
-                  <Button key={employee.id + employee.name + 'button'} href={`${employee._id}`}>Visit Employee Page</Button>
+                <div key={employee._id} className="employee-container"> 
+                  <div key={employee._id + employee.name} className="header">{employee.name}</div>
+                  <Button 
+                    key={employee._id + employee.name + 'button'} 
+                    href={`/employees/${employee._id}`}
+                  >
+                    Edit Employee
+                  </Button>
                 </div>
               )
             })}  

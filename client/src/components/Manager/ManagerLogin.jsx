@@ -39,7 +39,6 @@ export class ManagerLogin extends Component {
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.props.managerAuth)
   }
 
   onSubmit(e) {
@@ -49,7 +48,7 @@ export class ManagerLogin extends Component {
       password: this.state.password
     }
     this.props.clearErrors();
-    this.props.loginManager(managerData);
+    this.props.loginManager(managerData, () => this.props.history.push(`/managers/${this.props.managerAuth.manager.id}`));
   }
 
   renderErrors() {

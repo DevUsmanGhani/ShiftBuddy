@@ -21,6 +21,7 @@ import SiteNavbar from './components/common/SiteNavbar';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import SiteFooter from './components/common/SiteFooter';
+import EmployeeEdit from './components/employees/EmployeeEdit';
 library.add(fas)
 
 // Check for token
@@ -63,6 +64,9 @@ class App extends Component {
                 </Switch>
                 <Switch>
                   <PrivateRoute exact path='/managers/:id/employees' component={Employees} />
+                </Switch>
+                <Switch>
+                  <PrivateRoute exact path='/employees/:id' component={EmployeeEdit} />
                 </Switch>
               </div>
               <SiteFooter />

@@ -5,25 +5,26 @@ import jwt_decode from 'jwt-decode';
 import { GET_ERRORS, SET_CURRENT_MANAGER } from './types';
 
 // Login - Get Manager Token
-export const loginManager = managerData => dispatch => {
+export const loginManager = (managerData, callback) => dispatch => {
   axios
   .post('/api/managers/login', managerData)
-  .then(res => {
-    // Save to local storage
-    const { token } = res.data;
-    // Set token to local storage
-    localStorage.setItem('jwtToken', token);
-    // Set token to Auth Header
-    setAuthToken(token);
-    // Decode token to get Manager Data
-    const decodedToken = jwt_decode(token);
-    // Set Current Manager
-    dispatch(setCurrentManager(decodedToken));
-  })
+    .then(res => {
+      // Save to local storage
+      const { token } = res.data;
+      // Set token to local storage
+      localStorage.setItem('jwtToken', token);
+      // Set token to Auth Header
+      setAuthToken(token);
+      // Decode token to get Manager Data
+      const decodedToken = jwt_decode(token);
+      // Set Current Manager
+      dispatch(setCurrentManager(decodedToken));
+    })
+      .then(() => callback())
   .catch(err => {
     dispatch({
       type: GET_ERRORS,
-      payload: err.response.data
+      payload: err
     });
   })
 }

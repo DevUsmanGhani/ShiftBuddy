@@ -6,5 +6,5 @@ import employeesReducer from './employeesReducer';
 export default combineReducers({
   managerAuth: managerAuthReducer,
   errors: errorsReducer,
-  employees: employeesReducer
+  employees: employeesReducer,
 });
