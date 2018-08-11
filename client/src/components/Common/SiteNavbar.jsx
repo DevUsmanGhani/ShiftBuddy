@@ -6,22 +6,39 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export class SiteNavbar extends Component {
   
-  loginButton() {
+  publicLinks() {
     return (
-      <NavItem  eventKey={3} href="/managerlogin">
-        Login <FontAwesomeIcon icon="sign-in-alt" /> 
-      </NavItem>
+      <Nav pullRight>
+        <NavItem eventKey={1.1} href="#">
+          About Us
+        </NavItem>
+        <NavItem eventKey={2.1} href="#">
+          Contact 
+        </NavItem>
+        <NavItem  eventKey={3.1} href="/managerlogin">
+          Login <FontAwesomeIcon icon="sign-in-alt" /> 
+        </NavItem>
+      </Nav>
+      
     )
   }
 
-  logoutButton() {
+  managerLinks() {
     const { manager } = this.props.managerAuth;
     return (
-      <NavDropdown eventKey={4} title={manager.name} id="logged-in-manager-dropdown">
-        <MenuItem onClick={this.props.logoutManager} eventKey={4.1} href="/">
-          Logout <FontAwesomeIcon icon="sign-out-alt" /> 
-        </MenuItem>
-      </NavDropdown>
+      <Nav pullRight>
+        <NavItem eventKey={1.1} href="/shifts">
+          Shifts
+        </NavItem>
+        <NavItem eventKey={2.1} href="employees">
+          Employees 
+        </NavItem>
+        <NavDropdown eventKey={4} title={manager.name} id="logged-in-manager-dropdown">
+          < MenuItem onClick={this.props.logoutManager} eventKey={4.1} href="/">
+            Logout <FontAwesomeIcon icon="sign-out-alt" /> 
+          </MenuItem>
+        </NavDropdown>
+      </Nav>
       
     )
   }
@@ -37,15 +54,7 @@ export class SiteNavbar extends Component {
         <Navbar.Toggle />
       </Navbar.Header>
       <Navbar.Collapse>
-        <Nav pullRight>
-          <NavItem eventKey={1} href="#">
-            About Us
-          </NavItem>
-          <NavItem eventKey={2} href="#">
-            Contact 
-          </NavItem>
-          {isAuthenticated ? this.logoutButton() : this.loginButton()}      
-        </Nav>
+        {isAuthenticated ? this.managerLinks() : this.publicLinks()}      
       </Navbar.Collapse>
     </Navbar>
     )
