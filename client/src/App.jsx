@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import  { store, persistor}  from "./store";
 import { PersistGate } from 'redux-persist/integration/react'
@@ -10,6 +10,7 @@ import setAuthToken from './utils/setAuthToken';
 import { setCurrentManager, logoutManager } from './actions/manager/managerAuthActions'
 
 // Components
+import PrivateRoute from './components/common/PrivateRoute';
 import ManagerLogin from './components/manager/ManagerLogin';
 import ManagerDashboard from './components/manager/ManagerDashboard';
 import EmployeeList from './components/manager/EmployeeList'
@@ -53,8 +54,10 @@ class App extends Component {
               <div className="container">
                 <Route exact path='/'component={Landing} />
                 <Route path='/ManagerLogin' component={ManagerLogin} />
-                <Route path='/ManagerDashboard' component={ManagerDashboard} />
-                <Route path='/EmployeeList' component={EmployeeList} />
+                <Switch>
+                  <PrivateRoute path='/ManagerDashboard' component={ManagerDashboard} />
+                  <PrivateRoute path='/EmployeeList' component={EmployeeList} />
+                </Switch>
               </div>
               <SiteFooter />
             </div>
