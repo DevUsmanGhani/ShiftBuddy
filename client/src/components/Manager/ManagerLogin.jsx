@@ -22,14 +22,14 @@ export class ManagerLogin extends Component {
   componentDidMount() {
     console.log("coomponent mounted")
     if(this.props.managerAuth.isAuthenticated) {
-      this.props.history.push('/')
+      this.props.history.push('/ManagerDashboard')
     }
   }
 
   componentWillReceiveProps(nextProps) {
     console.log(this.props)
     if(nextProps.managerAuth.isAuthenticated) {
-      this.props.history.push('/');
+      this.props.history.push('/ManagerDashboard');
     }
     if(nextProps.errors) {
       this.setState({

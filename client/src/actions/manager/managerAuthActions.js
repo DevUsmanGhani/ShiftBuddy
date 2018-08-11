@@ -10,7 +10,6 @@ export const loginManager = managerData => dispatch => {
   .post('/api/managers/login', managerData)
   .then(res => {
     // Save to local storage
-    console.log(res);
     const { token } = res.data;
     // Set token to local storage
     localStorage.setItem('jwtToken', token);
@@ -22,7 +21,6 @@ export const loginManager = managerData => dispatch => {
     dispatch(setCurrentManager(decodedToken));
   })
   .catch(err => {
-    console.log(err);
     dispatch({
       type: GET_ERRORS,
       payload: err.response.data

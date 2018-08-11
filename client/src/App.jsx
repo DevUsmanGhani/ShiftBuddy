@@ -10,7 +10,9 @@ import setAuthToken from './utils/setAuthToken';
 import { setCurrentManager, logoutManager } from './actions/manager/managerAuthActions'
 
 // Components
-import ManagerLogin from './components/manager/ManagerLogin.jsx';
+import ManagerLogin from './components/manager/ManagerLogin';
+import ManagerDashboard from './components/manager/ManagerDashboard';
+import EmployeeList from './components/manager/EmployeeList'
 import Landing from './components/public/Landing';
 import SiteNavbar from './components/common/SiteNavbar';
 
@@ -51,6 +53,8 @@ class App extends Component {
               <div className="container">
                 <Route exact path='/'component={Landing} />
                 <Route path='/ManagerLogin' component={ManagerLogin} />
+                <Route path='/ManagerDashboard' component={ManagerDashboard} />
+                <Route path='/EmployeeList' component={EmployeeList} />
               </div>
               <SiteFooter />
             </div>

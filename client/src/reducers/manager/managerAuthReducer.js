@@ -9,7 +9,6 @@ const initialState = {
 export default (state = initialState, action) => {
   switch(action.type){
     case SET_CURRENT_MANAGER: {
-      console.log(action)
       return {
         ...state,
         isAuthenticated: !isEmpty(action.payload),
