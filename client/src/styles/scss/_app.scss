@@ -1,5 +1,5 @@
 body {
-  @extend .bg-beige;
+  @extend .bg-base;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -8,7 +8,7 @@ body {
 }
 
 footer {
-  @extend .bg-silver;
+  @extend .bg-tertiary;
   height: 2em;
   position: absolute;
   bottom: 0;
@@ -19,28 +19,32 @@ footer {
 }
 
 h1 {
-  @extend .blue;
+  @extend .secondary;
   text-align: center;
   font-weight: bold;
 }
 
 hr {
   height: 1px;
-  @extend .bg-blue;
+  @extend .bg-secondary;
+}
+
+.center {
+  text-align: center;
 }
 
 // Nav links
 .navbar{ 
-  background: $shift-buddy-silver ;
+  background: $shift-buddy-tertiary ;
   .navbar-header{
-    @extend .orange;
+    @extend .primary;
     font-size: 1.5em;
     font-weight: bolder;
   }
   .navbar-nav {
     li {
       a {
-        @extend .blue;
+        @extend .secondary;
       }
     }
   }
@@ -54,16 +58,32 @@ hr {
   margin-right: auto;
 }
 
+// Employees
 .employee-container {
-  @extend .bg-orange;
-  margin: 1em;
-  padding: 1em;
-  border-radius: .5em;
-    .header {
-      display: block;
-      font-weight: bold;
-      @extend .bg-orange;
-      border-radius: .5em;
-      padding: .5em;
+  text-align: center;
+  margin: .5em;
+  font-size: 1.25em;
+  font-weight: bold;
+    div{
+      padding: .75em .25em;
     }
+    .employee-header {
+      @extend .bg-primary;
+      border-radius: .5em 0 0 .5em;
+      background-image: linear-gradient($shift-buddy-primary,lighten($shift-buddy-primary, 10%))
+    }
+    .view-button {
+      color: white;
+      @include buttonize($shift-buddy-secondary);
+    }
+    .edit-button {
+      color: white;
+      @include buttonize($shift-buddy-neutral);
+    }
+    .delete-button {
+      color: white;
+      border-radius: 0 .5em .5em 0;
+      @include buttonize($shift-buddy-bad);
+    }
+    
 }

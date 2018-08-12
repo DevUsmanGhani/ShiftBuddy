@@ -1,19 +1,24 @@
 form {
-  background-color: $shift-buddy-silver;
+  background-color: $shift-buddy-tertiary;
   padding: 2em;
   border-radius: .5em;
   .form-header {
-    color: $shift-buddy-blue;
+    @extend .secondary;
     text-align: center;
     font-weight: bold;
     &::before,
     &::after {
       display: inline-block;
       content: "";
-      border-top: .1em solid $shift-buddy-blue;
+      border-top: .1em solid $shift-buddy-secondary;
       width: 10%;
       margin: 0 .25em;
       transform: translateY(-.25em);
     }
+  }
+  .label {
+    font-size: 1em;
+    @extend .bg-secondary;
+    margin-left: .3em;
   }
 }

@@ -1,5 +1,12 @@
-$shift-buddy-orange: rgb(231, 144, 13);
-$shift-buddy-black: #2E4057;
-$shift-buddy-silver: rgb(208, 209, 212);
-$shift-buddy-blue: rgb(69, 98, 129);
-$shift-buddy-beige: #F0EBD8;
+// Base Color
+$shift-buddy-base: #F0EBD8;
+
+// Main Colors
+$shift-buddy-primary: rgb(231, 144, 13);
+$shift-buddy-secondary: rgb(69, 98, 129);
+$shift-buddy-tertiary: rgba(224, 222, 215, 0.712);
+
+// Explanation Colors
+$shift-buddy-good: rgba(54, 107, 51, 0.959);
+$shift-buddy-neutral: rgb(155, 146, 27);
+$shift-buddy-bad: rgba(165, 62, 46, 0.911);
