@@ -1,41 +1,33 @@
 // Font color classes
-.orange {
-  color: $shift-buddy-orange;
+.primary {
+  color: $shift-buddy-primary;
 }
 
-.black {
-  color: $shift-buddy-black;
+.secondary {
+  color: $shift-buddy-secondary;
 }
 
-.silver {
-  color: $shift-buddy-silver;
+.tertiary {
+  color: $shift-buddy-tertiary;
 }
 
-.blue {
-  color: $shift-buddy-blue;
-}
-
-.beige {
-  color: $shift-buddy-beige;
+.base{
+  color: $shift-buddy-base;
 }
 
 // Background color classes
-.bg-orange {
-  background-color: $shift-buddy-orange;
+.bg-base{
+  background-color: $shift-buddy-base;
 }
 
-.bg-black {
-  background-color: $shift-buddy-black;
+.bg-primary {
+  background-color: $shift-buddy-primary;
 }
 
-.bg-silver {
-  background-color: $shift-buddy-silver;
+.bg-secondary {
+  background-color: $shift-buddy-secondary;
 }
 
-.bg-blue {
-  background-color: $shift-buddy-blue;
-}
-
-.bg-beige {
-  background-color: $shift-buddy-beige;
+.bg-tertiary {
+  background-color: $shift-buddy-tertiary;
 }

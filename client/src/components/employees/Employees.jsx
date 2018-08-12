@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getEmployees } from '../../actions/employeeActions'
-import { Button } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 export class Employees extends Component {
   constructor(props) {
@@ -24,15 +24,41 @@ export class Employees extends Component {
             <hr />
             {_.map(this.props.employees, employee => {
               return (
-                <div key={employee._id} className="employee-container"> 
-                  <div key={employee._id + employee.name} className="header">{employee.name}</div>
-                  <Button 
-                    key={employee._id + employee.name + 'button'} 
-                    href={`/employees/${employee._id}`}
-                  >
-                    Edit Employee
-                  </Button>
-                </div>
+                <Grid>
+                  <Row key={employee._id} className="employee-container"> 
+                    <Col
+                      className="employee-header"
+                      xs={4} 
+                      key={employee._id + employee.name}>
+                      {employee.name}
+                    </Col>
+                    <Col
+                      className="view-button"
+                      xs={3} 
+                      key={employee._id + employee.name + 'button'} 
+                      href={`/employees/${employee._id}`}
+                    >
+                      View Employee
+                    </Col>
+                    <Col
+                      className="edit-button"
+                      xs={3} 
+                      key={employee._id + employee.name + 'button'} 
+                      href={`/employees/${employee._id}`}
+                    >
+                      Edit Employee
+                    </Col>
+                    <Col
+                      className="delete-button"
+                      xs={2} 
+                      key={employee._id + employee.name + 'button'} 
+                      href={`/employees/${employee._id}`}
+                    >
+                      Delete Employee
+                    </Col>
+                  </Row>
+                </Grid>
+                
               )
             })}  
           </div>
