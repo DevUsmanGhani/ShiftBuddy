@@ -12,7 +12,7 @@ import { setCurrentManager, logoutManager } from './actions/manager/managerAuthA
 // Components
 import PrivateRoute from './components/common/PrivateRoute';
 import ManagerLogin from './components/manager/ManagerLogin';
-import ManagerDashboard from './components/manager/ManagerDashboard';
+import Manager from './components/manager/Manager';
 import Employees from './components/employees/Employees'
 import Landing from './components/public/Landing';
 import SiteNavbar from './components/common/SiteNavbar';
@@ -21,6 +21,7 @@ import SiteNavbar from './components/common/SiteNavbar';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import SiteFooter from './components/common/SiteFooter';
+import EmployeeEdit from './components/employees/EmployeeEdit';
 library.add(fas)
 
 // Check for token
@@ -38,7 +39,7 @@ if (localStorage.jwtToken) {
     // Logout user
     store.dispatch(logoutManager());
     // Redirect to login
-    window.location.href = '/managerLogin';
+    window.location.href = '/managers/login';
   }
 
 }
@@ -52,11 +53,20 @@ class App extends Component {
             <div>
               <SiteNavbar />
               <div className="container">
-                <Route exact path='/'component={Landing} />
-                <Route path='/ManagerLogin' component={ManagerLogin} />
                 <Switch>
-                  <PrivateRoute path='/ManagerDashboard' component={ManagerDashboard} />
-                  <PrivateRoute path='/Employees' component={Employees} />
+                  <Route exact path='/'component={Landing} />
+                </Switch>  
+                <Switch>
+                  <Route exact path='/managers/login' component={ManagerLogin} />
+                </Switch>
+                <Switch>
+                  <PrivateRoute exact path='/managers/:id' component={Manager} />
+                </Switch>
+                <Switch>
+                  <PrivateRoute exact path='/managers/:id/employees' component={Employees} />
+                </Switch>
+                <Switch>
+                  <PrivateRoute exact path='/employees/:id' component={EmployeeEdit} />
                 </Switch>
               </div>
               <SiteFooter />

@@ -15,7 +15,7 @@ export class SiteNavbar extends Component {
         <NavItem eventKey={2.1} href="#">
           Contact 
         </NavItem>
-        <NavItem  eventKey={3.1} href="/managerlogin">
+        <NavItem  eventKey={3.1} href="/managers/login">
           Login <FontAwesomeIcon icon="sign-in-alt" /> 
         </NavItem>
       </Nav>
@@ -30,11 +30,11 @@ export class SiteNavbar extends Component {
         <NavItem eventKey={1.1} href="/shifts">
           Shifts
         </NavItem>
-        <NavItem eventKey={2.1} href="employees">
+        <NavItem eventKey={2.1} href={`/managers/${manager.id}/employees`}>
           Employees 
         </NavItem>
         <NavDropdown eventKey={4} title={manager.name} id="logged-in-manager-dropdown">
-          < MenuItem onClick={this.props.logoutManager} eventKey={4.1} href="/">
+          < MenuItem onClick={this.props.logoutManager} eventKey={4.1}>
             Logout <FontAwesomeIcon icon="sign-out-alt" /> 
           </MenuItem>
         </NavDropdown>

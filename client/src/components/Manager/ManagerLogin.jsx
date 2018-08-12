@@ -6,8 +6,8 @@ import { clearErrors } from '../../actions/errorsActions';
 import  isEmpty  from '../../utils/isEmpty';
 
 export class ManagerLogin extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       email: '',
       password: '',
@@ -20,16 +20,14 @@ export class ManagerLogin extends Component {
   }
 
   componentDidMount() {
-    console.log("coomponent mounted")
     if(this.props.managerAuth.isAuthenticated) {
-      this.props.history.push('/ManagerDashboard')
+      this.props.history.push(`/managers/${this.props.managerAuth.manager.id}`)
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(this.props)
     if(nextProps.managerAuth.isAuthenticated) {
-      this.props.history.push('/ManagerDashboard');
+      this.props.history.push(`/managers/${this.props.managerAuth.manager.id}`);
     }
     if(nextProps.errors) {
       this.setState({
@@ -41,7 +39,6 @@ export class ManagerLogin extends Component {
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.props.managerAuth)
   }
 
   onSubmit(e) {
@@ -51,7 +48,7 @@ export class ManagerLogin extends Component {
       password: this.state.password
     }
     this.props.clearErrors();
-    this.props.loginManager(managerData);
+    this.props.loginManager(managerData, () => this.props.history.push(`/managers/${this.props.managerAuth.manager.id}`));
   }
 
   renderErrors() {

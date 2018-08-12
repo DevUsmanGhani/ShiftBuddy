@@ -1,4 +1,4 @@
-import { SET_CURRENT_MANAGER } from '../actions/manager/types';
+import { SET_CURRENT_MANAGER, LOGOUT } from '../actions/manager/types';
 import isEmpty from "../utils/isEmpty";
 
 const initialState = {
@@ -15,6 +15,8 @@ export default (state = initialState, action) => {
         manager: action.payload,
       }
     }
+    case LOGOUT:
+      return initialState;
     default: 
       return state;
   }
