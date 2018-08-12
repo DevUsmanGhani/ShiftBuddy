@@ -5,6 +5,7 @@ import { getEmployees, deleteEmployee } from '../../actions/employeeActions'
 import { Grid, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter} from 'react-router-dom';
+import Popup from 'reactjs-popup';
 
 export class Employees extends Component {
   constructor(props) {
@@ -62,14 +63,30 @@ export class Employees extends Component {
                       >
                         Edit <FontAwesomeIcon icon="edit" fixedWidth/>
                       </Col>
-                      <Col
-                        className="delete-button"
-                        xs={2} 
-                        key={employee._id + 'delete'} 
-                        onClick={() => this.handleClick('delete', employee._id)}
+                      <Popup 
+                        modal
+                        trigger={ 
+                          <Col
+                          className="delete-button"
+                          xs={2} 
+                          key={employee._id + 'delete'} 
+                          > 
+                            <FontAwesomeIcon icon="times" fixedWidth/>
+                          </Col> 
+                          }
                       >
-                        <FontAwesomeIcon icon="times" fixedWidth/>
-                      </Col>
+                        {close => (
+                          <div className="popup">
+                            <div>Are you sure you would like to delete this employee?</div>
+                            <div>
+                              <span onClick={close} className="popup-close">No</span>
+                              <span onClick={() => this.handleClick('delete', employee._id)} className="popup-delete">Delete</span>
+                            </div>
+                          </div>
+                        )} 
+                      </Popup>
+                      
+                        
                     </Row>
                   </Grid> 
                 )}

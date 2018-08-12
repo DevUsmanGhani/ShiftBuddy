@@ -1,0 +1,14 @@
+.popup {
+  @extend .bg-tertiary;
+  .popup-close {
+      @include buttonize($shift-buddy-secondary);
+      padding: 1em 4em;
+      margin-right: 1em;
+      border-radius: .5em;
+  }
+  .popup-delete {
+    @include buttonize($shift-buddy-bad);
+    padding: 1em 1em;
+    border-radius: .5em;
+  }
+}
