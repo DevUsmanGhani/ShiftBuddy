@@ -1,4 +1,8 @@
 // Font color classes
+.base{
+  color: $shift-buddy-base;
+}
+
 .primary {
   color: $shift-buddy-primary;
 }
@@ -11,8 +15,16 @@
   color: $shift-buddy-tertiary;
 }
 
-.base{
-  color: $shift-buddy-base;
+.good {
+  color: $shift-buddy-good;
+}
+
+.neutral {
+  color: $shift-buddy-neutral;
+}
+
+.bad {
+  color: $shift-buddy-bad;
 }
 
 // Background color classes
@@ -30,4 +42,16 @@
 
 .bg-tertiary {
   background-color: $shift-buddy-tertiary;
+}
+
+.bg-good {
+  background-color: $shift-buddy-good;
+}
+
+.bg-neutral {
+  background-color: $shift-buddy-neutral;
+}
+
+.bg-bad {
+  background-color: $shift-buddy-bad;
 }

@@ -54,26 +54,31 @@ hr {
   margin-right: auto;
 }
 
+// Employees
 .employee-container {
-  @extend .bg-primary;
   text-align: center;
-  margin: 1em;
-  border-radius: 1em;
-  width: 100%;
-    div {
-      padding: 1em;
+  margin: .5em;
+  font-size: 1.25em;
+  font-weight: bold;
+    div{
+      padding: .75em .25em;
     }
     .employee-header {
-      color: white;
+      @extend .bg-primary;
+      border-radius: .5em 0 0 .5em;
     }
     .view-button {
-      @extend .bg-secondary;
+      color: white;
+      @include buttonize($shift-buddy-good);
     }
     .edit-button {
-      @extend .bg-tertiary;
+      color: white;
+      @include buttonize($shift-buddy-neutral);
     }
     .delete-button {
-      @extend .bg-grey;
+      color: white;
+      border-radius: 0 .5em .5em 0;
+      @include buttonize($shift-buddy-bad);
     }
     
 }

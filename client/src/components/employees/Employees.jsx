@@ -38,7 +38,7 @@ export class Employees extends Component {
                       key={employee._id + employee.name + 'button'} 
                       href={`/employees/${employee._id}`}
                     >
-                      View Employee
+                      View
                     </Col>
                     <Col
                       className="edit-button"
@@ -46,7 +46,7 @@ export class Employees extends Component {
                       key={employee._id + employee.name + 'button'} 
                       href={`/employees/${employee._id}`}
                     >
-                      Edit Employee
+                      Edit
                     </Col>
                     <Col
                       className="delete-button"
@@ -54,7 +54,7 @@ export class Employees extends Component {
                       key={employee._id + employee.name + 'button'} 
                       href={`/employees/${employee._id}`}
                     >
-                      Delete Employee
+                      Delete
                     </Col>
                   </Row>
                 </Grid>
