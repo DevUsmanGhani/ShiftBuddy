@@ -16,4 +16,9 @@ form {
       transform: translateY(-.25em);
     }
   }
+  .label {
+    font-size: 1em;
+    @extend .bg-secondary;
+    margin-left: .3em;
+  }
 }

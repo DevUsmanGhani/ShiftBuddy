@@ -29,6 +29,10 @@ hr {
   @extend .bg-secondary;
 }
 
+.center {
+  text-align: center;
+}
+
 // Nav links
 .navbar{ 
   background: $shift-buddy-tertiary ;

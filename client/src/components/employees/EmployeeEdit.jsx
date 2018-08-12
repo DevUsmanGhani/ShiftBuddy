@@ -31,8 +31,8 @@ class EmployeeEdit extends Component {
     return (
       <Grid>
         <Row>
-          <Col md={8} mdOffset={2} >
-            <form onSubmit={this.onSubmit} className="text-center">
+          <Col md={6} mdOffset={3} >
+            <form onSubmit={this.onSubmit}>
               <h2 className="form-header">Edit Employee</h2>
               <hr/>  
               <Label>Name: </Label>
@@ -83,7 +83,9 @@ class EmployeeEdit extends Component {
                 />
                 <FormControl.Feedback />
               </FormGroup>
-              <Button type="submit" bsSize="large" bsStyle="warning">Save</Button>
+              <div className="center">
+                <Button type="submit" bsSize="large" bsStyle="warning">Save</Button>
+              </div>
             </form>
           </Col>
         </Row>
