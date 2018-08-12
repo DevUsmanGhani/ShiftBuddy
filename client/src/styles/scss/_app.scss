@@ -66,6 +66,7 @@ hr {
     .employee-header {
       @extend .bg-primary;
       border-radius: .5em 0 0 .5em;
+      background-image: linear-gradient($shift-buddy-primary,lighten($shift-buddy-primary, 10%))
     }
     .view-button {
       color: white;

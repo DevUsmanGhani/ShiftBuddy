@@ -2,6 +2,7 @@
   background-image: linear-gradient($color, lighten($color, 15%));
   &:hover {
     background-image: linear-gradient($color, lighten($color, 5%));
+    cursor: pointer;
   }
   &:after {
     content: '';
