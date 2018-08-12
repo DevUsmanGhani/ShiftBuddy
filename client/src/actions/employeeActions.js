@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_EMPLOYEES, PUT_EMPLOYEE } from './types';
+import { GET_EMPLOYEES, PUT_EMPLOYEE, DELETE_EMPLOYEE } from './types';
 
 export const getEmployees = (api) => dispatch => {
   axios.get(api)
@@ -23,5 +23,19 @@ export const putEmployee = (employee, callback) => dispatch => {
   })
     .then(() => callback())
   .catch(err => {
+    console.log(err);
   });
+}
+
+export const deleteEmployee = (id, callback) => dispatch => {
+  axios.delete(`http://localhost:5000/api/employees/${id}`)
+  .then(() => {
+    dispatch({
+      type: DELETE_EMPLOYEE,
+      payload: id
+    })
+  })
+  .catch(err => {
+    console.log(err);
+  })
 }
