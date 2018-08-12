@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getEmployees } from '../../actions/employeeActions'
 import { Grid, Row, Col } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export class Employees extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ export class Employees extends Component {
                       key={employee._id + employee.name + 'button'} 
                       href={`/employees/${employee._id}`}
                     >
-                      View
+                      View <FontAwesomeIcon icon="address-card" fixedWidth/>
                     </Col>
                     <Col
                       className="edit-button"
@@ -46,7 +47,7 @@ export class Employees extends Component {
                       key={employee._id + employee.name + 'button'} 
                       href={`/employees/${employee._id}`}
                     >
-                      Edit
+                      Edit <FontAwesomeIcon icon="edit" fixedWidth/>
                     </Col>
                     <Col
                       className="delete-button"
@@ -54,7 +55,7 @@ export class Employees extends Component {
                       key={employee._id + employee.name + 'button'} 
                       href={`/employees/${employee._id}`}
                     >
-                      Delete
+                      <FontAwesomeIcon icon="times" fixedWidth/>
                     </Col>
                   </Row>
                 </Grid>
