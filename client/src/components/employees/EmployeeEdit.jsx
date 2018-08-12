@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormGroup, FormControl, Button, Label } from "react-bootstrap"; 
 import { putEmployee } from '../../actions/employeeActions';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 class EmployeeEdit extends Component {
   constructor(props) {
@@ -28,61 +29,65 @@ class EmployeeEdit extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Edit Employee</h1>
-        <hr/>  
-        <form onSubmit={this.onSubmit} className="text-center">
-          <Label>Name: </Label>
-          <FormGroup controlId="name" >
-            <FormControl
-              type="text"
-              name="name"
-              required
-              value={this.state.name}
-              placeholder="Enter Name"
-              onChange={this.onChange}
-            />
-            <FormControl.Feedback />
-          </FormGroup>
-          
-          <Label>Salary: </Label>
-          <FormGroup controlId="salary" >
-            <FormControl
-              type="number"
-              name="salary"
-              value={this.state.salary}
-              placeholder="Enter Salary"
-              onChange={this.onChange}
-            />
-            <FormControl.Feedback />
-          </FormGroup>
+      <Grid>
+        <Row>
+          <Col md={8} mdOffset={2} >
+            <form onSubmit={this.onSubmit} className="text-center">
+              <h2 className="form-header">Edit Employee</h2>
+              <hr/>  
+              <Label>Name: </Label>
+              <FormGroup controlId="name" >
+                <FormControl
+                  type="text"
+                  name="name"
+                  required
+                  value={this.state.name}
+                  placeholder="Enter Name"
+                  onChange={this.onChange}
+                />
+                <FormControl.Feedback />
+              </FormGroup>
+              
+              <Label>Salary: </Label>
+              <FormGroup controlId="salary" >
+                <FormControl
+                  type="number"
+                  name="salary"
+                  value={this.state.salary}
+                  placeholder="Enter Salary"
+                  onChange={this.onChange}
+                />
+                <FormControl.Feedback />
+              </FormGroup>
 
-          <Label>Birthday: </Label>
-          <FormGroup controlId="birthday" >
-            <FormControl
-              type="date"
-              name="birthday"
-              value={this.state.birthday}
-              placeholder="Enter birthday"
-              onChange={this.onChange}
-            />
-            <FormControl.Feedback />
-          </FormGroup>
+              <Label>Birthday: </Label>
+              <FormGroup controlId="birthday" >
+                <FormControl
+                  type="date"
+                  name="birthday"
+                  value={this.state.birthday}
+                  placeholder="Enter birthday"
+                  onChange={this.onChange}
+                />
+                <FormControl.Feedback />
+              </FormGroup>
 
-          <Label>Phone Number: </Label>
-          <FormGroup controlId="phone" >
-            <FormControl
-              type="tel"
-              name="phone"
-              value={this.state.phone}
-              placeholder="Enter Phone Number"
-              onChange={this.onChange}
-            />
-            <FormControl.Feedback />
-          </FormGroup>
-          <Button type="submit" bsSize="large" bsStyle="warning">Save</Button>
-        </form>
-      </div>
+              <Label>Phone Number: </Label>
+              <FormGroup controlId="phone" >
+                <FormControl
+                  type="tel"
+                  name="phone"
+                  value={this.state.phone}
+                  placeholder="Enter Phone Number"
+                  onChange={this.onChange}
+                />
+                <FormControl.Feedback />
+              </FormGroup>
+              <Button type="submit" bsSize="large" bsStyle="warning">Save</Button>
+            </form>
+          </Col>
+        </Row>
+      </Grid>
     )
   }  
 }
