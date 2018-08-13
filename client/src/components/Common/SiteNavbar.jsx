@@ -38,7 +38,7 @@ export class SiteNavbar extends Component {
             Logout <FontAwesomeIcon icon="sign-out-alt" /> 
           </MenuItem>
           < MenuItem href={`/managers/${manager.id}/settings`} eventKey={4.2}>
-            Settings <FontAwesomeIcon icon="fas fa-cog" /> 
+            Settings <FontAwesomeIcon icon="cog" /> 
           </MenuItem>
         </NavDropdown>
       </Nav>
