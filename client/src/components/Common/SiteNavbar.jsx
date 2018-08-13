@@ -27,7 +27,7 @@ export class SiteNavbar extends Component {
     const { manager } = this.props.managerAuth;
     return (
       <Nav pullRight>
-        <NavItem eventKey={1.1} href="/shifts">
+        <NavItem eventKey={1.1} href="/managers/${manager.id}/shifts">
           Shifts
         </NavItem>
         <NavItem eventKey={2.1} href={`/managers/${manager.id}/employees`}>
@@ -37,7 +37,7 @@ export class SiteNavbar extends Component {
           < MenuItem onClick={this.props.logoutManager} eventKey={4.1}>
             Logout <FontAwesomeIcon icon="sign-out-alt" /> 
           </MenuItem>
-          < MenuItem href={`/managers/${manager.id}/settings`} eventKey={4.2}>
+          < MenuItem href={`/managers/${manager.id}/account/settings`} eventKey={4.2}>
             Settings <FontAwesomeIcon icon="cog" /> 
           </MenuItem>
         </NavDropdown>
