@@ -2,10 +2,11 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getEmployees, deleteEmployee } from '../../actions/employeeActions'
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter} from 'react-router-dom';
 import Popup from 'reactjs-popup';
+
 
 export class Employees extends Component {
   constructor(props) {
@@ -17,6 +18,7 @@ export class Employees extends Component {
   }
   handleClick(type, employeeId) {
     switch(type) {
+      case 'new':  return this.props.history.push('new');
       case 'edit': return this.props.history.push(`/employees/${employeeId}`); 
       case 'delete' : {
         this.props.deleteEmployee(employeeId);
@@ -35,7 +37,7 @@ export class Employees extends Component {
       if(employees){
         return (
           <div>
-            <h1>Employees</h1>
+            <h1 className="employee-page-header">Employees <Button className="add-employee-button" bsSize="large" ><FontAwesomeIcon className="good" icon="plus"/></Button></h1>
             <hr />
             {_.map(employees, employee => {
               if(employee) {
