@@ -37,6 +37,9 @@ export class SiteNavbar extends Component {
           < MenuItem onClick={this.props.logoutManager} eventKey={4.1}>
             Logout <FontAwesomeIcon icon="sign-out-alt" /> 
           </MenuItem>
+          < MenuItem href={`/managers/${manager.id}/settings`} eventKey={4.2}>
+            Settings <FontAwesomeIcon icon="fas fa-cog" /> 
+          </MenuItem>
         </NavDropdown>
       </Nav>
       
