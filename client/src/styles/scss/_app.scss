@@ -60,6 +60,9 @@ hr {
     @extend .primary;
     font-size: 1.5em;
     font-weight: bolder;
+    &:hover {
+      color: lighten($shift-buddy-primary, 10%)
+    }
   }
   .navbar-nav {
     li {

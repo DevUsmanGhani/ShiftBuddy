@@ -1,16 +1,21 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 export class Manager extends Component {
   render() {
     const { manager } = this.props.managerAuth;
     return (
-      <div>
+      <Grid>
         <h1>Welcome {manager.name} <img src="//logo.clearbit.com/texaco.com" alt="Company Logo" /></h1> 
         <hr />
-        
+        <Row>
+          <Col>
+          
+          </Col>
+        </Row>
+      </Grid>
 
-      </div>
     )
   }
 }
