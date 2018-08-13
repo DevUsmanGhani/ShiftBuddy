@@ -16,6 +16,8 @@ import Manager from './components/manager/Manager';
 import Employees from './components/employees/Employees';
 import EmployeeEdit from './components/employees/EmployeeEdit';
 import EmployeeCreate from './components/employees/EmployeeCreate';
+import Shifts from './components/shifts/Shifts';
+import ShiftSettings from './components/shifts/ShiftSettings';
 import Landing from './components/public/Landing';
 import SiteNavbar from './components/common/SiteNavbar';
 import SiteFooter from './components/common/SiteFooter';
@@ -23,7 +25,6 @@ import SiteFooter from './components/common/SiteFooter';
 // Font 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import { Shifts } from './components/shifts/Shifts';
 library.add(fas)
 
 // Check for token
@@ -72,6 +73,9 @@ class App extends Component {
                 </Switch>
                 <Switch>
                   <PrivateRoute exact path='/managers/:id/shifts' component={Shifts} />
+                </Switch>
+                <Switch>
+                  <PrivateRoute exact path='/managers/:id/shifts/settings' component={ShiftSettings} />
                 </Switch>
                 <Switch>
                   
