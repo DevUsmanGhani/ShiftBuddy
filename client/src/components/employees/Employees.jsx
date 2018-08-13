@@ -18,7 +18,7 @@ export class Employees extends Component {
   }
   handleClick(type, employeeId) {
     switch(type) {
-      case 'new':  return this.props.history.push('new');
+      case 'new':  return this.props.history.push('employees/new');
       case 'edit': return this.props.history.push(`/employees/${employeeId}`); 
       case 'delete' : {
         this.props.deleteEmployee(employeeId);
@@ -37,7 +37,7 @@ export class Employees extends Component {
       if(employees){
         return (
           <div>
-            <h1 className="employee-page-header">Employees <Button className="add-employee-button" bsSize="large" ><FontAwesomeIcon className="good" icon="plus"/></Button></h1>
+            <h1 className="employee-page-header">Employees <Button onClick={() => this.handleClick('new', null)} className="add-employee-button" bsSize="large" ><FontAwesomeIcon className="good" icon="plus"/></Button></h1>
             <hr />
             {_.map(employees, employee => {
               if(employee) {
