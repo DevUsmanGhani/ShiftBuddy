@@ -60,6 +60,9 @@ hr {
     @extend .primary;
     font-size: 1.5em;
     font-weight: bolder;
+    &:hover {
+      color: lighten($shift-buddy-primary, 10%)
+    }
   }
   .navbar-nav {
     li {
@@ -113,4 +116,22 @@ hr {
 }
 .add-employee-button {
   margin-left: 2em;
+}
+
+// Manager Dashboard
+.manager-dashboard{
+  h2 {
+    text-align: center;
+    font-weight: bold
+  }
+  .log-card {
+    font-size: 1.5em;
+    text-align: center;
+    padding: 1em;
+    border-radius: .5em;
+    margin-top: .5em;
+    margin-bottom: .5em;
+    background-color: darken($shift-buddy-tertiary, 10%);
+    @extend .primary;
+  }
 }
