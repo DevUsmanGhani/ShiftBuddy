@@ -77,6 +77,7 @@ export class Employees extends Component {
                       >
                         {close => (
                           <div className="popup">
+                            <h3 className="popup-header">Confirm Deletion</h3>
                             <div>Are you sure you would like to delete this employee?</div>
                             <div>
                               <span onClick={close} className="popup-close">No</span>

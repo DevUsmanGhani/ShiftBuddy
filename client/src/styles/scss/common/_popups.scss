@@ -1,14 +1,33 @@
 .popup {
   @extend .bg-tertiary;
+  .popup-header {
+    @extend .bad;
+    font-size: 1.5em;
+    font-weight: bold;
+    width: 100%;
+    border-bottom: 1px solid gray;
+    margin-top: 0em;
+  }
   .popup-close {
-      @include buttonize($shift-buddy-secondary);
-      padding: 1em 4em;
-      margin-right: 1em;
-      border-radius: .5em;
+    color: white;
+    cursor: pointer;
+    @extend .bg-secondary;
+    padding: 1em 4em;
+    margin-right: 1em;
+    border-radius: .5em;
+    &:hover {
+      background-color: darken($shift-buddy-secondary, 10%);
+    }
   }
   .popup-delete {
-    @include buttonize($shift-buddy-bad);
+    color: white;
+    cursor: pointer;
+    @extend .bg-bad;
     padding: 1em 1em;
     border-radius: .5em;
+    &:hover {
+      background-color: darken($shift-buddy-bad, 10%);
+    }
   }
+
 }
