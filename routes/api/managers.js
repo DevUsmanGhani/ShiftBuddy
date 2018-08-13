@@ -152,7 +152,7 @@ router.post('/:mid/employees', (req, res) => {
         .then(manager => {
           manager.employees.push(employee);
           manager.save();
-          res.status(200).send(req.body);
+          res.status(200).send(employee);
         })
         .catch(error => res.status(404).send("The specified resource does not exist."))
     })
@@ -161,4 +161,3 @@ router.post('/:mid/employees', (req, res) => {
 
 
 module.exports = router;
-

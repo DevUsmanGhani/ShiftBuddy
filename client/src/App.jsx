@@ -13,15 +13,16 @@ import { setCurrentManager, logoutManager } from './actions/manager/managerAuthA
 import PrivateRoute from './components/common/PrivateRoute';
 import ManagerLogin from './components/manager/ManagerLogin';
 import Manager from './components/manager/Manager';
-import Employees from './components/employees/Employees'
+import Employees from './components/employees/Employees';
+import EmployeeEdit from './components/employees/EmployeeEdit';
+import EmployeeCreate from './components/employees/EmployeeCreate';
 import Landing from './components/public/Landing';
 import SiteNavbar from './components/common/SiteNavbar';
+import SiteFooter from './components/common/SiteFooter';
 
 // Font 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import SiteFooter from './components/common/SiteFooter';
-import EmployeeEdit from './components/employees/EmployeeEdit';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 library.add(fas)
 
 // Check for token
@@ -50,9 +51,9 @@ class App extends Component {
       <Provider store={ store } >
         <PersistGate loading={ null } persistor={ persistor} >
           <Router>
-            <div>
+            <div className="site-container">
               <SiteNavbar />
-              <div className="container">
+              <div className="content-container">
                 <Switch>
                   <Route exact path='/'component={Landing} />
                 </Switch>  
@@ -61,6 +62,9 @@ class App extends Component {
                 </Switch>
                 <Switch>
                   <PrivateRoute exact path='/managers/:id' component={Manager} />
+                </Switch>
+                <Switch>
+                  <PrivateRoute exact path='/managers/:id/employees/new' component={EmployeeCreate} />
                 </Switch>
                 <Switch>
                   <PrivateRoute exact path='/managers/:id/employees' component={Employees} />

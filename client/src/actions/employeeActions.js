@@ -13,18 +13,23 @@ export const getEmployees = (api) => dispatch => {
   });
 }
 
+export const createEmployee = (managerId, employeeData, callback) => dispatch => {
+  axios.post(`http://localhost:5000/api/managers/${managerId}/employees`, employeeData)
+  .then(() => callback())
+  .catch((err) => console.log(err));
+}
+
+
 export const putEmployee = (employee, callback) => dispatch => {
   axios.put(`http://localhost:5000/api/employees/${employee._id}`, employee)
-  .then(res => {
+  .then(() => {
     dispatch({
       type: PUT_EMPLOYEE,
       payload: employee
     })
   })
     .then(() => callback())
-  .catch(err => {
-    console.log(err);
-  });
+  .catch(err => console.log(err));
 }
 
 export const deleteEmployee = (id, callback) => dispatch => {
