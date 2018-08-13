@@ -23,6 +23,7 @@ import SiteFooter from './components/common/SiteFooter';
 // Font 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { Shifts } from './components/shifts/Shifts';
 library.add(fas)
 
 // Check for token
@@ -68,6 +69,9 @@ class App extends Component {
                 </Switch>
                 <Switch>
                   <PrivateRoute exact path='/managers/:id/employees' component={Employees} />
+                </Switch>
+                <Switch>
+                  <PrivateRoute exact path='/managers/:id/shifts' component={Shifts} />
                 </Switch>
                 <Switch>
                   

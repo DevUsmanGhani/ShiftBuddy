@@ -27,7 +27,7 @@ export class SiteNavbar extends Component {
     const { manager } = this.props.managerAuth;
     return (
       <Nav pullRight>
-        <NavItem eventKey={1.1} href={`managers/${manager.id}/shifts`}>
+        <NavItem eventKey={1.1} href={`/managers/${manager.id}/shifts`}>
           Shifts
         </NavItem>
         <NavItem eventKey={2.1} href={`/managers/${manager.id}/employees`}>
