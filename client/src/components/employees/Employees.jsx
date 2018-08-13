@@ -85,9 +85,7 @@ export class Employees extends Component {
                             </div>
                           </div>
                         )} 
-                      </Popup>
-                      
-                        
+                      </Popup> 
                     </Row>
                   </Grid> 
                 )}
