@@ -78,9 +78,9 @@ export class Employees extends Component {
                         {close => (
                           <div className="popup">
                             <h3 className="popup-header">Confirm Deletion</h3>
-                            <div>Are you sure you would like to delete this employee?</div>
+                            <div>Deletion will remove all information about this employee. This cannot be undone.</div>
                             <div>
-                              <span onClick={close} className="popup-close">No</span>
+                              <span onClick={close} className="popup-close">Cancel</span>
                               <span onClick={() => this.handleClick('delete', employee._id)} className="popup-delete">Delete</span>
                             </div>
                           </div>
