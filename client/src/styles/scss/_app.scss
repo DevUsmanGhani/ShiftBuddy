@@ -1,3 +1,11 @@
+* {
+  box-sizing: border-box;
+ }
+ *:before,
+ *:after {
+  box-sizing: border-box;
+ }
+
 html,
 body {
   @extend .bg-base;
@@ -5,6 +13,7 @@ body {
   padding: 0;
   font-family: sans-serif;
   height: 100%;
+  position: relative;
   line-height: 1.5;
 }
 
@@ -32,7 +41,7 @@ hr {
 }
 
 .site-container{
-  min-height: 100%;
+  min-height: 100vh;
   position: relative;
 }
 
