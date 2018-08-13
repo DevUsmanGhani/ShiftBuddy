@@ -14,14 +14,14 @@ export const getEmployees = (api) => dispatch => {
 }
 
 export const createEmployee = (managerId, employeeData, callback) => dispatch => {
-  axios.post(`http://localhost:5000/api/managers/${managerId}/employees`, employeeData)
+  axios.post(`/api/managers/${managerId}/employees`, employeeData)
   .then(() => callback())
   .catch((err) => console.log(err));
 }
 
 
 export const putEmployee = (employee, callback) => dispatch => {
-  axios.put(`http://localhost:5000/api/employees/${employee._id}`, employee)
+  axios.put(`/api/employees/${employee._id}`, employee)
   .then(() => {
     dispatch({
       type: PUT_EMPLOYEE,
@@ -33,7 +33,7 @@ export const putEmployee = (employee, callback) => dispatch => {
 }
 
 export const deleteEmployee = (id, callback) => dispatch => {
-  axios.delete(`http://localhost:5000/api/employees/${id}`)
+  axios.delete(`/api/employees/${id}`)
   .then(() => {
     dispatch({
       type: DELETE_EMPLOYEE,
