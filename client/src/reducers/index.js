@@ -8,5 +8,5 @@ export default combineReducers({
   managerAuth: managerAuthReducer,
   errors: errorsReducer,
   employees: employeesReducer,
-  shifts: shiftsDataReducer
+  shiftsData: shiftsDataReducer
 });
