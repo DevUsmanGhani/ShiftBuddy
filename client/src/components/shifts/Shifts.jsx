@@ -1,11 +1,10 @@
-import _ from 'lodash';
+//import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getEmployees, deleteEmployee } from '../../actions/employeeActions'
-import { Grid, Row, Col, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter} from 'react-router-dom';
-import Popup from 'reactjs-popup';
 
 
 export class Shifts extends Component {

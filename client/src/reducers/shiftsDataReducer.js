@@ -8,7 +8,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_INVENTORY_SETTINGS:
-      return { ...state }
+      return { ...state, settings: action.payload }
     default:
       return state
   }
