@@ -71,6 +71,7 @@ export class ManagerLogin extends Component {
               {isEmpty(errors)  ?  "" : this.renderErrors()}
               <FormGroup controlId="email" >
                 <FormControl
+                  autoFocus
                   type="email"
                   name="email"
                   value={this.state.email}
