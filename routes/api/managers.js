@@ -159,5 +159,27 @@ router.post('/:mid/employees', (req, res) => {
     .catch(error => res.status(400).json(error))
 });
 
+// @route   GET api/managers/:mid/settings/inventory
+// @desc    Returns all data about a specific manager inventory settings
+// @access  Private
+router.get('/:mid/settings/inventory', (req, res) => {
+  Manager.findOne({'_id': req.params.mid})
+    .then(manager => res.status(200).send(manager.settings.inventory))
+    .catch(error => res.status(404).send("The specified resource does not exist."))
+});
+
+// @route   POST api/managers/:mid/settings/inventory
+// @desc    Updates a specific manager inventory settings
+// @access  Private 
+router.post('/:mid/settings/inventory', (req, res) => {
+  Manager.findOne({'_id': req.params.mid})
+    .then(manager => {
+      manager.settings.inventory.push(req.body);
+      manager.save();
+      res.status(200).send(manager.settings.inventory);
+    })
+    .catch(error => res.status(404).send("The specified resource does not exist."))
+});
+
 
 module.exports = router;

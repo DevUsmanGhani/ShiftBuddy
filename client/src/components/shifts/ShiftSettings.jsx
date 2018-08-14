@@ -28,13 +28,13 @@ class ShiftSettings extends Component {
   }
 
   renderItems() {
-    console.log(this.props.shiftSettings.inventory)
-    if (!this.props.shiftSettings.inventory.length) {
+    //console.log(this.props.shiftSettings.inventory)
+    //if (!this.props.shiftSettings.inventory.length) {
       return (
         <div className="center">There are no items added</div>
       );
-    }
-    console.log(this.props.shiftSettings.inventory)
+    //}
+    //console.log(this.props.shiftSettings.inventory)
   }
 
   render() {
