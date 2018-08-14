@@ -152,7 +152,7 @@ router.post('/:mid/employees', (req, res) => {
         .then(manager => {
           manager.employees.push(employee);
           manager.save();
-          res.status(200).send(employee);
+          res.status(200).send({_id: employee._id, ...req.body});
         })
         .catch(error => res.status(404).send("The specified resource does not exist."))
     })
