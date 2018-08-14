@@ -160,25 +160,34 @@ router.post('/:mid/employees', (req, res) => {
 });
 
 // @route   GET api/managers/:mid/settings/inventory
-// @desc    Returns all data about a specific manager inventory settings
-// @access  Private
+// @desc    Returns all inventory items of a manager
+// @access  Private 
 router.get('/:mid/settings/inventory', (req, res) => {
-  Manager.findOne({'_id': req.params.mid})
-    .then(manager => res.status(200).send(manager.settings.inventory))
+  Manager.findById(req.params.mid)
+    .then(manager => {
+      InventoryItem.find({ "_id": { $in: manager.settings.inventory } }, { __v: 0 })
+        .then(inventoryItems => res.status(200).send(inventoryItems))
+        .catch(error => res.status(404).send("The specified resource does not exist."))
+      
+    })
     .catch(error => res.status(404).send("The specified resource does not exist."))
 });
 
 // @route   POST api/managers/:mid/settings/inventory
-// @desc    Updates a specific manager inventory settings
-// @access  Private 
+// @desc    Creats a new inventory item for a specific manager's inventory settings
+// @access  Public
 router.post('/:mid/settings/inventory', (req, res) => {
-  Manager.findOne({'_id': req.params.mid})
-    .then(manager => {
-      manager.settings.inventory.push(req.body);
-      manager.save();
-      res.status(200).send(manager.settings.inventory);
+  InventoryItem.create(req.body)
+    .then(inventoryItem => {
+      Manager.findOne({_id: req.params.mid})
+        .then(manager => {
+          manager.settings.inventory.push(inventoryItem);
+          manager.save();
+          res.status(200).send({ _id: inventoryItem._id, name: inventoryItem.name, amount: inventoryItem.amount});
+        })
+        .catch(error => res.status(404).send("The specified resource does not exist."))
     })
-    .catch(error => res.status(404).send("The specified resource does not exist."))
+    .catch(error => res.status(400).json(error))
 });
 
 
