@@ -16,7 +16,8 @@ const managers = require('./routes/api/managers'),
  			shifts = require('./routes/api/shift'),
  			notes = require('./routes/api/note'),
  			cashOuts = require('./routes/api/cashOuts'),
- 			checks = require('./routes/api/checks');
+      checks = require('./routes/api/checks'),
+      inventoryItems = require('./routes/api/inventoryItems');
 
 const app = express();
 
@@ -52,7 +53,8 @@ app.use('/api/employees', employees);
 app.use('/api/shifts', shifts);
 app.use('/api/notes', notes);
 app.use('/api/cashOuts', cashOuts);
-app.use('/api/checks', checks);
+app.use('/api/checks', checks),
+app.use('/api/inventoryItems', inventoryItems);
 
 
 
