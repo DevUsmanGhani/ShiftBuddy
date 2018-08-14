@@ -24,17 +24,15 @@ class ShiftSettings extends Component {
   }
   componentDidMount() {
     const managerId = this.props.match.params.id;
-    this.props.getInventorySettings(`/api/managers/${managerId}`)
+    this.props.getInventorySettings(`/api/managers/${managerId}/settings/inventory`)
   }
 
   renderItems() {
-    //console.log(this.props.shiftSettings.inventory)
-    //if (!this.props.shiftSettings.inventory.length) {
+    if (this.props.inventoryItems.length === 0) {
       return (
         <div className="center">There are no items added</div>
       );
-    //}
-    //console.log(this.props.shiftSettings.inventory)
+    }
   }
 
   render() {
@@ -77,7 +75,7 @@ class ShiftSettings extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  shiftSettings: state.shiftsData.settings
+  inventoryItems: state.shiftsData.inventoryItems
 })
 
 export default connect(mapStateToProps, { getInventorySettings })(ShiftSettings);

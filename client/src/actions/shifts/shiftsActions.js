@@ -6,7 +6,7 @@ export const getInventorySettings = (api) => dispatch => {
   .then(res => {
     dispatch({
       type: GET_INVENTORY_SETTINGS,
-      payload: res.data.settings
+      payload: res.data
     })
   })
   .catch(err => {
