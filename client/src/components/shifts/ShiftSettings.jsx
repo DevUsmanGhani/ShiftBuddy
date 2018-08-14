@@ -19,8 +19,8 @@ class ShiftSettings extends Component {
 
   onSubmit(e) {
     e.preventDefault();
+    //this.props.addInventoryitem(this.props.match.params.id, this.state.itemName);
     this.setState({ itemName: '' });
-    //this.props.createEmployee(this.props.managerId, this.state, () => this.props.history.push(`/managers/${this.props.managerId}/employees`));
   }
   componentDidMount() {
     const managerId = this.props.match.params.id;
@@ -28,15 +28,16 @@ class ShiftSettings extends Component {
   }
 
   renderItems() {
+    console.log(this.props.shiftSettings.inventory)
     if (!this.props.shiftSettings.inventory.length) {
       return (
         <div className="center">There are no items added</div>
       );
     }
+    console.log(this.props.shiftSettings.inventory)
   }
 
   render() {
-    console.log(this.props.shiftSettings.inventory);
     return (
       <Grid>
         <Row>
