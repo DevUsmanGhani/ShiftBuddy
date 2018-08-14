@@ -37,6 +37,7 @@ class EmployeeCreate extends Component {
               <Label>Name: </Label>
               <FormGroup controlId="name" >
                 <FormControl
+                  autoFocus
                   type="text"
                   name="name"
                   required

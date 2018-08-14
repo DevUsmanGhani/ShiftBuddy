@@ -29,7 +29,7 @@ export class Employees extends Component {
     }
   }
   componentWillMount() {
-    const api = `http://localhost:5000/api/managers/${this.state.managerId}/employees`;
+    const api = `/api/managers/${this.state.managerId}/employees`;
     this.props.getEmployees(api);
   }
   render() {
