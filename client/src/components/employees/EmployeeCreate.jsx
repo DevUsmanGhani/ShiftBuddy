@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FormGroup, FormControl, Button, Label } from "react-bootstrap"; 
+import { FormGroup, FormControl, Button, Label, Grid, Row, Col } from "react-bootstrap"; 
 import { createEmployee } from '../../actions/employeeActions';
-import { Grid, Row, Col } from 'react-bootstrap';
 
 class EmployeeCreate extends Component {
   constructor(props) {
