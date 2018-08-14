@@ -1,14 +1,17 @@
-import { GET_INVENTORY_SETTINGS } from "../actions/shifts/types";
+import _ from 'lodash';
+import { GET_INVENTORY_SETTINGS, ADD_INVENTORY_ITEM } from "../actions/shifts/types";
 
 const initialState = {
   shifts: {},
-  inventoryItems: []
+  inventoryItems: {}
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_INVENTORY_SETTINGS:
-      return { ...state, inventoryItems: action.payload }
+      return { ...state, inventoryItems: _.mapKeys(action.payload, '_id') }
+    case ADD_INVENTORY_ITEM:
+      return { ...state, inventoryItems: {...state.inventoryItems, [action.payload._id]: action.payload} };
     default:
       return state
   }
