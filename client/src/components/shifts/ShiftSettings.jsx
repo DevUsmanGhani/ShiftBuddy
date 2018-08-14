@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { FormGroup, FormControl, Button, Label, Grid, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { getInventorySettings, addInventoryItem } from '../../actions/shifts/shiftsActions';
+import { getInventorySettings, addInventoryItem, deleteInventoryItem } from '../../actions/shifts/shiftsActions';
 class ShiftSettings extends Component {
 
   constructor(props) {
@@ -24,15 +24,18 @@ class ShiftSettings extends Component {
     this.props.addInventoryItem(this.props.match.params.id, this.state);
     this.setState({ name: '' });
   }
+  
   componentDidMount() {
     const managerId = this.props.match.params.id;
     this.props.getInventorySettings(`/api/managers/${managerId}/settings/inventory`)
   }
 
   renderItems() {
-    if (!this.props.inventoryItems) {
+    if (_.isEmpty(this.props.inventoryItems)) {
       return (
-        <Button className="center" bsStyle="danger">There are no items added</Button>
+        <div className="center">
+          <Button className="center" bsStyle="danger" disabled>There are no items added</Button>
+        </div>
       );
     }
     else {
@@ -53,6 +56,7 @@ class ShiftSettings extends Component {
                 className="delete-button"
                 xs={1} 
                 key={inventoryItem._id + 'delete'} 
+                onClick={() => this.props.deleteInventoryItem(inventoryItem._id)}
                 > 
                   <FontAwesomeIcon icon="times" fixedWidth/>
                 </Col> 
@@ -109,4 +113,4 @@ const mapStateToProps = (state) => ({
   inventoryItems: state.shiftsData.inventoryItems
 })
 
-export default connect(mapStateToProps, { getInventorySettings, addInventoryItem })(ShiftSettings);
+export default connect(mapStateToProps, { getInventorySettings, addInventoryItem, deleteInventoryItem })(ShiftSettings);
