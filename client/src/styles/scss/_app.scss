@@ -146,8 +146,8 @@ hr {
         margin-bottom: 1em;
       };
       .employees-name {
-        background-color: lighten($shift-buddy-secondary, 20%);
-        color: lighten($shift-buddy-tertiary, 20%);
+        @extend .secondary;
+        background-color: lighten($shift-buddy-secondary, 30%);
         border-radius: .5em;
         display: block;
         text-decoration: none;
@@ -157,7 +157,7 @@ hr {
         margin-right: auto;
         margin-bottom: 1em;
         &:hover {
-          background-color: lighten($shift-buddy-secondary, 10%)
+          background-color: lighten($shift-buddy-secondary, 15%)
         }
       }
     }
@@ -165,7 +165,7 @@ hr {
       @include shadowize();
       border-radius: 0 0 .5em .5em;
       padding: .25em .5em 1.5em;
-      background-color: lighten($shift-buddy-secondary, 30%);
+      background-color: lighten($shift-buddy-secondary, 40%);
       .shifts-header {
         font-weight: bold;
         color: rgba(255, 255, 255, 0.767);
@@ -174,12 +174,12 @@ hr {
         margin-bottom: 1em;
       } 
       .shifts-name {
+        @extend .primary;
         cursor: pointer;
         margin-left: auto;
         margin-right: auto;
         text-align: center;
-        background-color: lighten($shift-buddy-primary, 10%);
-        color: lighten($shift-buddy-base, 15%);
+        background-color: lighten($shift-buddy-primary, 35%);
         display: block;
         text-align: center;
         text-decoration: none;
@@ -187,7 +187,7 @@ hr {
         margin-bottom: 1em;
         width: 75%;
         &:hover {
-          @extend .bg-primary;
+          background-color: lighten($shift-buddy-primary, 15%);
       }
     }
   }
