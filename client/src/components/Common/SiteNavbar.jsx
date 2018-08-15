@@ -34,6 +34,9 @@ export class SiteNavbar extends Component {
           Employees 
         </NavItem>
         <NavDropdown eventKey={4} title={manager.name} id="logged-in-manager-dropdown">
+          <MenuItem href={`/managers/${manager.id}`} eventKey={4.1}>
+            <FontAwesomeIcon icon="user-circle" fixedWidth/>  Dashboard
+          </MenuItem>
           <MenuItem href={`/managers/${manager.id}/settings`} eventKey={4.2}>
             <FontAwesomeIcon icon="cog" fixedWidth/>  Settings 
           </MenuItem>
