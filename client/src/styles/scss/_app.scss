@@ -83,6 +83,8 @@ hr {
 
 // Employees
 .employee-container {
+  @include shadowize;
+  background-color: rgba(0, 0, 0, .20);
   text-align: center;
   margin: .5em;
   font-size: 1.25em;
@@ -112,10 +114,10 @@ hr {
 }
 
 .employee-page-header, .shift-page-header {
-  margin-left: 2em;
+  margin-left: .5em;
 }
 .add-employee-button, .shift-settings-button {
-  margin-left: 2em;
+  margin-left: .5em;
 }
 
 // Manager Dashboard
@@ -126,8 +128,9 @@ hr {
     font-weight: bold;
   }
   .side-box {
-    margin-top: 4.7em;
+    margin-top: 5.5em;
     .employees-box {
+      @include shadowize();
       padding: .25em .5em 1.5em;;
       border-radius: .5em .5em 0 0;
       background-color: darken($shift-buddy-tertiary, 20%);
@@ -155,6 +158,7 @@ hr {
       }
     }
     .shifts-box {
+      @include shadowize();
       border-radius: 0 0 .5em .5em;
       padding: .25em .5em 1.5em;
       background-color: lighten($shift-buddy-secondary, 30%);
@@ -202,12 +206,13 @@ hr {
 
   
   .log-card {
+    @include shadowize();
     font-size: 1.5em;
     text-align: center;
     padding: 1em;
     border-radius: .5em;
-    margin-top: .5em;
-    margin-bottom: .5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
     background-color: darken($shift-buddy-tertiary, 10%);
     @extend .primary;
   }
