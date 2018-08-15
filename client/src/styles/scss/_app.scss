@@ -40,6 +40,10 @@ hr {
   @extend .bg-secondary;
 }
 
+.loading {
+  @include loading-spinner;
+}
+
 .site-container{
   min-height: 100vh;
   position: relative;

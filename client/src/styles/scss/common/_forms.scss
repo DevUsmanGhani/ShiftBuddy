@@ -1,4 +1,5 @@
 form {
+  @include shadowize;
   background-color: $shift-buddy-tertiary;
   padding: 2em;
   border-radius: .5em;

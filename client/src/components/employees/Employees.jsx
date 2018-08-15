@@ -48,7 +48,7 @@ export class Employees extends Component {
                         className="employee-header"
                         xs={4} 
                         key={employee._id + 'name'}>
-                        {employee.name}
+                        {employee.name || <div className="loading"></div>}
                       </Col>
                       <Col
                         className="view-button"

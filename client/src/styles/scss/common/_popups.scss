@@ -1,5 +1,9 @@
 .popup {
+  @include shadowize;
   @extend .bg-tertiary;
+  border: none !important;
+  outline: 0;
+  margin: -.25em;
   .popup-header {
     @extend .bad;
     font-size: 1.5em;

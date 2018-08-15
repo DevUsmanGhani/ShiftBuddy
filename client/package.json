@@ -39,5 +39,5 @@
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js"
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:5000/"
 }
