@@ -40,6 +40,10 @@ hr {
   @extend .bg-secondary;
 }
 
+.loading {
+  @include loading-spinner;
+}
+
 .site-container{
   min-height: 100vh;
   position: relative;
@@ -57,11 +61,12 @@ hr {
 .navbar{ 
   background: $shift-buddy-tertiary ;
   .navbar-header{
-    @extend .primary;
+    color: lighten($shift-buddy-primary, 10%);
+    text-shadow: 1px 1px grey;
     font-size: 1.5em;
     font-weight: bolder;
     &:hover {
-      color: lighten($shift-buddy-primary, 10%)
+      @extend .primary;
     }
   }
   .navbar-nav {
@@ -83,6 +88,8 @@ hr {
 
 // Employees
 .employee-container {
+  @include shadowize;
+  background-color: rgba(0, 0, 0, .20);
   text-align: center;
   margin: .5em;
   font-size: 1.25em;
@@ -112,10 +119,10 @@ hr {
 }
 
 .employee-page-header, .shift-page-header {
-  margin-left: 2em;
+  margin-left: .5em;
 }
 .add-employee-button, .shift-settings-button {
-  margin-left: 2em;
+  margin-left: .5em;
 }
 
 // Manager Dashboard
@@ -126,8 +133,9 @@ hr {
     font-weight: bold;
   }
   .side-box {
-    margin-top: 4.7em;
+    margin-top: 5.5em;
     .employees-box {
+      @include shadowize();
       padding: .25em .5em 1.5em;;
       border-radius: .5em .5em 0 0;
       background-color: darken($shift-buddy-tertiary, 20%);
@@ -139,8 +147,8 @@ hr {
         margin-bottom: 1em;
       };
       .employees-name {
-        background-color: lighten($shift-buddy-secondary, 20%);
-        color: lighten($shift-buddy-tertiary, 20%);
+        @extend .bg-secondary;
+        color: lighten($shift-buddy-secondary, 45%);
         border-radius: .5em;
         display: block;
         text-decoration: none;
@@ -150,14 +158,15 @@ hr {
         margin-right: auto;
         margin-bottom: 1em;
         &:hover {
-          background-color: lighten($shift-buddy-secondary, 10%)
+          background-color: lighten($shift-buddy-secondary, 15%)
         }
       }
     }
     .shifts-box {
+      @include shadowize();
       border-radius: 0 0 .5em .5em;
       padding: .25em .5em 1.5em;
-      background-color: lighten($shift-buddy-secondary, 30%);
+      background-color: darken($shift-buddy-tertiary, 20%);
       .shifts-header {
         font-weight: bold;
         color: rgba(255, 255, 255, 0.767);
@@ -166,12 +175,12 @@ hr {
         margin-bottom: 1em;
       } 
       .shifts-name {
+        @extend .bg-primary;
         cursor: pointer;
         margin-left: auto;
         margin-right: auto;
         text-align: center;
-        background-color: lighten($shift-buddy-primary, 10%);
-        color: lighten($shift-buddy-base, 15%);
+        color: lighten($shift-buddy-primary, 45%);
         display: block;
         text-align: center;
         text-decoration: none;
@@ -179,7 +188,7 @@ hr {
         margin-bottom: 1em;
         width: 75%;
         &:hover {
-          @extend .bg-primary;
+          background-color: lighten($shift-buddy-primary, 15%);
       }
     }
   }
@@ -202,12 +211,13 @@ hr {
 
   
   .log-card {
+    @include shadowize();
     font-size: 1.5em;
     text-align: center;
     padding: 1em;
     border-radius: .5em;
-    margin-top: .5em;
-    margin-bottom: .5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
     background-color: darken($shift-buddy-tertiary, 10%);
     @extend .primary;
   }

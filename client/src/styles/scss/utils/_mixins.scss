@@ -1,3 +1,5 @@
+
+// Make a button with glass effect and darken on hover
 @mixin buttonize($color) {
   background-image: linear-gradient($color, lighten($color, 15%));
   &:hover {
@@ -12,5 +14,40 @@
     width: calc(100% - 4px);
     height: 50%;
     background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+  }
+}
+
+// Give hovering shadow effect 
+@mixin shadowize() {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+// Loading Icon
+@mixin loading-spinner($activeColor: "#EF6565", $selector: "&::before", $time: 1.5s) {
+  @keyframes spinner {
+      0% {
+          transform: translate3d(-50%, -50%, 0) rotate(0deg);
+      }
+      100% {
+           transform: translate3d(-50%, -50%, 0) rotate(360deg);
+      }
+  }
+  position: relative;
+
+  &::before {
+      animation: 1.5s linear infinite spinner;
+      border: solid 3px #eee;
+      border-bottom-color: #{$shift-buddy-primary};
+      border-radius: 50%;
+      content: "";
+      height: 40px;
+      left: 50%;
+      opacity: inherit;
+      position: absolute;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      transform-origin: center;
+      width: 40px;
+      will-change: transform;
   }
 }
