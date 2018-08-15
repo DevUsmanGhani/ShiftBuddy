@@ -1,13 +1,15 @@
+import _ from 'lodash';
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { FormGroup, FormControl, Button, Label, Grid, Row, Col } from "react-bootstrap"; 
-import { getInventorySettings } from '../../actions/shifts/shiftsActions';
+import { FormGroup, FormControl, Button, Label, Grid, Row, Col } from "react-bootstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { getInventorySettings, addInventoryItem, deleteInventoryItem } from '../../actions/shifts/shiftsActions';
 class ShiftSettings extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      itemName: ''
+      name: ''
     }
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -19,22 +21,54 @@ class ShiftSettings extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    //this.props.addInventoryitem(this.props.match.params.id, this.state.itemName);
-    this.setState({ itemName: '' });
+    this.props.addInventoryItem(this.props.match.params.id, this.state);
+    this.setState({ name: '' });
   }
+  
   componentDidMount() {
     const managerId = this.props.match.params.id;
-    this.props.getInventorySettings(`/api/managers/${managerId}`)
+    this.props.getInventorySettings(`/api/managers/${managerId}/settings/inventory`)
   }
 
   renderItems() {
-    //console.log(this.props.shiftSettings.inventory)
-    //if (!this.props.shiftSettings.inventory.length) {
+    if (_.isEmpty(this.props.inventoryItems)) {
       return (
-        <div className="center">There are no items added</div>
+        <div className="center">
+          <Button className="center" bsStyle="danger" disabled>There are no items added</Button>
+        </div>
       );
-    //}
-    //console.log(this.props.shiftSettings.inventory)
+    }
+    else {
+      console.log(_.map(this.props.inventoryItems, inventoryItem => inventoryItem));
+      return _.map(this.props.inventoryItems, inventoryItem => {
+        if(inventoryItem) {
+          return (
+            <Grid key={inventoryItem._id + 'grid'}>
+              <Row key={inventoryItem._id + 'row'} className="inventory-container"> 
+                <Col
+                  className="inventory-header"
+                  xs={2} 
+                  xsOffset={4}
+                  key={inventoryItem._id + 'name'}
+                >
+                  {inventoryItem.name}
+                </Col>
+                <Col
+                className="delete-button"
+                xs={1} 
+                key={inventoryItem._id + 'delete'} 
+                onClick={() => this.props.deleteInventoryItem(inventoryItem._id)}
+                > 
+                  <FontAwesomeIcon icon="times" fixedWidth/>
+                </Col> 
+              </Row>
+            </Grid> 
+          )}
+          else{
+            return null;
+          }   
+        })
+      }
   }
 
   render() {
@@ -42,18 +76,19 @@ class ShiftSettings extends Component {
       <Grid>
         <Row>
           <Col md={6} mdOffset={3} >
-            <form >
+            <form onSubmit={this.onSubmit}>
               <h2 className="form-header">Inventory Settings</h2>
               <hr/>  
               <Label>Item Name: </Label>
               <Row>   
                 <Col md={10}>
-                  <FormGroup controlId="itemName" >
+                  <FormGroup controlId="name" >
                     <FormControl
+                      autoFocus
                       type="text"
-                      name="itemName"
+                      name="name"
                       required
-                      value={this.state.itemName}
+                      value={this.state.name}
                       placeholder="Enter Item Name"
                       onChange={this.onChange}
                     />
@@ -77,7 +112,7 @@ class ShiftSettings extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  shiftSettings: state.shiftsData.settings
+  inventoryItems: state.shiftsData.inventoryItems
 })
 
-export default connect(mapStateToProps, { getInventorySettings })(ShiftSettings);
+export default connect(mapStateToProps, { getInventorySettings, addInventoryItem, deleteInventoryItem })(ShiftSettings);
