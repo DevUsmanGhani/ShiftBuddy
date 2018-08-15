@@ -120,10 +120,87 @@ hr {
 
 // Manager Dashboard
 .manager-dashboard{
+  text-align: center;
   h2 {
     text-align: center;
-    font-weight: bold
+    font-weight: bold;
   }
+  .side-box {
+    margin-top: 4.7em;
+    .employees-box {
+      padding: .25em .5em 1.5em;;
+      border-radius: .5em .5em 0 0;
+      background-color: darken($shift-buddy-tertiary, 20%);
+      border-bottom: 4px solid white;
+      .employees-header {
+        color: rgba(255, 255, 255, 0.74);
+        font-weight: bold;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.74);
+        margin-bottom: 1em;
+      };
+      .employees-name {
+        background-color: lighten($shift-buddy-secondary, 20%);
+        color: lighten($shift-buddy-tertiary, 20%);
+        border-radius: .5em;
+        display: block;
+        text-decoration: none;
+        width: 75%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1em;
+        &:hover {
+          background-color: lighten($shift-buddy-secondary, 10%)
+        }
+      }
+    }
+    .shifts-box {
+      border-radius: 0 0 .5em .5em;
+      padding: .25em .5em 1.5em;
+      background-color: lighten($shift-buddy-secondary, 30%);
+      .shifts-header {
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.767);
+        text-align: center;
+        border-bottom: 1px solid white;
+        margin-bottom: 1em;
+      } 
+      .shifts-name {
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        background-color: lighten($shift-buddy-primary, 10%);
+        color: lighten($shift-buddy-base, 15%);
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        border-radius: .5em;
+        margin-bottom: 1em;
+        width: 75%;
+        &:hover {
+          @extend .bg-primary;
+      }
+    }
+  }
+  .view-all {
+    color: black;
+    text-decoration: none;
+    padding: .25em 1em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    cursor: pointer;
+    @extend .bg-base;
+    border-radius: .5em;
+    margin-top: 1em;
+    &:hover {
+      background-color: darken($shift-buddy-base, 10%);
+    }
+  }
+}
+
+  
   .log-card {
     font-size: 1.5em;
     text-align: center;
