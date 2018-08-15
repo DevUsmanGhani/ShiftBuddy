@@ -34,11 +34,11 @@ export class SiteNavbar extends Component {
           Employees 
         </NavItem>
         <NavDropdown eventKey={4} title={manager.name} id="logged-in-manager-dropdown">
-          < MenuItem onClick={this.props.logoutManager} eventKey={4.1}>
-            Logout <FontAwesomeIcon icon="sign-out-alt" /> 
+          <MenuItem href={`/managers/${manager.id}/settings`} eventKey={4.2}>
+            <FontAwesomeIcon icon="cog" fixedWidth/>  Settings 
           </MenuItem>
-          < MenuItem href={`/managers/${manager.id}/settings`} eventKey={4.2}>
-            Settings <FontAwesomeIcon icon="cog" /> 
+          < MenuItem onClick={this.props.logoutManager} eventKey={4.1}>
+            <FontAwesomeIcon icon="sign-out-alt" fixedWidth/> Logout  
           </MenuItem>
         </NavDropdown>
       </Nav>
