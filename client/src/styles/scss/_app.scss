@@ -165,7 +165,6 @@ hr {
       @include shadowize();
       border-radius: 0 0 .5em .5em;
       padding: .25em .5em 1.5em;
-      //background-color: lighten($shift-buddy-secondary, 40%);
       background-color: darken($shift-buddy-tertiary, 20%);
       .shifts-header {
         font-weight: bold;
