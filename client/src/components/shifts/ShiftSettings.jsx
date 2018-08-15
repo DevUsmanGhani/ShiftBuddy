@@ -39,6 +39,7 @@ class ShiftSettings extends Component {
       );
     }
     else {
+      console.log(_.map(this.props.inventoryItems, inventoryItem => inventoryItem));
       return _.map(this.props.inventoryItems, inventoryItem => {
         if(inventoryItem) {
           return (
@@ -83,6 +84,7 @@ class ShiftSettings extends Component {
                 <Col md={10}>
                   <FormGroup controlId="name" >
                     <FormControl
+                      autoFocus
                       type="text"
                       name="name"
                       required
