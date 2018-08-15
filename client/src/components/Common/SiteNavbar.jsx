@@ -55,7 +55,7 @@ export class SiteNavbar extends Component {
       <Navbar collapseOnSelect>
       <Navbar.Header>
         <Navbar.Brand>
-          <a className="navbar-header" href="/">Shift Buddy Pro</a>
+          <a className="navbar-header" href="/">Shift Buddy Pro </a>
         </Navbar.Brand>  
         <Navbar.Toggle />
       </Navbar.Header>
