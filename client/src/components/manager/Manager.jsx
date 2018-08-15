@@ -15,7 +15,7 @@ export class Manager extends Component {
         <Row>
           <Col xsHidden sm={3} lg={2} className="side-box">
             <div className="employees-box">
-              <h4 className="employees-header">Your Employees</h4>
+              <h4 className="employees-header">Your Employees </h4>
               
               {_.map(employees, employee => {
                 if(i < 3){
