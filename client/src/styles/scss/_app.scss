@@ -76,6 +76,15 @@ hr {
       }
     }
   }
+  .dropdown-container{
+    @extend .bg-tertiary;
+    .dropdown {
+      margin: -.333em 0em;
+      padding: .3em 0em;
+      @extend .bg-tertiary;
+    }
+  }
+  
 }
 
 // Error Alerts
