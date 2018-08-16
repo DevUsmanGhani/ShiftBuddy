@@ -38,7 +38,7 @@ const ManagerSchema = new Schema({
   ]
 },
 {
-  script: true
+  strict: true
 }
 );
 
