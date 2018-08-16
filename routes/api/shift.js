@@ -9,7 +9,7 @@ const Shift = require('../../models/Shift');
 // @desc 		Returns data of a specific shift
 // @access 	Private
 router.get('/:sid', (req,res) => {
-	Shift.findOne({'_id': req.params.sid}, { notes: 0, paidOuts: 0, checks: 0, __v: 0 } )
+	Shift.findOne({'_id': req.params.sid}, { cashDrops: 0, notes: 0, paidOuts: 0, checks: 0, __v: 0 } )
 		.then(shift => res.status(200).send(shift))
 		.catch(err => res.status(404).send("The specified resource does not exist."))
 });

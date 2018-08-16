@@ -2,7 +2,7 @@ const mongoose = require('mongoose'),
       Schema = mongoose.Schema;
 
 // Create PaidOut Model
-let cashOutSchema = new mongoose.Schema({
+let paidOutSchema = new Schema({
   name: {
     type: String, 
     required: true 
@@ -10,14 +10,10 @@ let cashOutSchema = new mongoose.Schema({
   amount: {
     type: Number,
     required: true
-  },
-  isDrop: {
-    type: Boolean,
-    required: true
   }
 },
 {
 	strict: true
 });
 
-module.exports = CashOut = mongoose.model("CashOut", cashOutSchema); 
+module.exports = PaidOut = mongoose.model("PaidOut", paidOutSchema); 

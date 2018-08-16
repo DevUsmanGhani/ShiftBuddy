@@ -15,7 +15,7 @@ const Manager = require('../../models/Manager');
 // @desc    Returns all managers
 // @access  Private
 router.get('/', (req, res) => {
-  Manager.find({}, { employees: 0, __v: 0, settings: 0 })
+  Manager.find({}, { employees: 0, __v: 0, settings: 0, shifts: 0 })
     .then(managers => res.status(200).send(managers))
     .catch(error => res.status(500).send("The server encountered an internal error. Please retry the request."))
 });
@@ -105,7 +105,7 @@ router.post('/login', (req, res) => {
 // @desc    Returns all data about a specific employee
 // @access  Private
 router.get('/:mid', passport.authenticate('jwt', { session: false }), (req, res) => {
-  Manager.findOne({'_id': req.params.mid}, { employees: 0, __v: 0 })
+  Manager.findOne({'_id': req.params.mid}, { employees: 0, __v: 0, shifts: 0 })
     .then(manager => res.status(200).send(manager))
     .catch(error => res.status(404).send("The specified resource does not exist."))
 });
@@ -190,5 +190,41 @@ router.post('/:mid/settings/inventory', (req, res) => {
     .catch(error => res.status(400).json(error))
 });
 
+// @route   GET api/managers/:mid/shifts
+// @desc    Returns all shifts of a specific manager
+// @access  Private
+router.get('/:mid/shifts', (req, res) => {
+  Manager.findById(req.params.mid)
+    .then(manager => { 
+      Shift.find({ "_id": { $in: manager.shifts } }, { cashDrops: 0, notes: 0, paidOuts: 0, checks: 0, __v: 0 })
+        .then(shifts => res.status(200).send(shifts))
+        .catch(error => res.status(404).send("The specified resource does not exist."))
+    .catch(error => res.status(404).send("The specified resource does not exist."))
+})
+});
+
+// @route   POST api/managers/:mid/employees/:eid/shifts
+// @desc    Creates a shift for a specific manager
+// @access  Private
+router.post('/:mid/employees/:eid/shifts', (req, res) => {
+Shift.create(req.body)
+  .then(shift => {
+    Manager.findOne({_id: req.params.mid})
+      .then(manager => {
+        manager.shifts.push(shift);
+        manager.save();
+      })
+      .catch(error => res.status(404).send("The specified resource does not exist."))
+    Employee.findOne({_id: req.params.eid})
+      .then(employee => {
+        employee.shifts.push(shift);
+        employee.save();
+        res.status(200).send(req.body);
+      })
+      .catch(error => res.status(404).send("The specified resource does not exist."))
+  })
+  .catch(error => res.status(400).json(error))
+
+});
 
 module.exports = router;

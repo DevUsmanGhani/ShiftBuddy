@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Employee = require('./Employee');
-const InventoryItem = require('./InventoryItem');
 
 // Creating Manager Schema
 const ManagerSchema = new Schema({
@@ -24,16 +22,21 @@ const ManagerSchema = new Schema({
   settings: {
     inventory: [
       {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "InventoryItem"
       }
     ]
   },
   employees: [
     {
-      type: mongoose.Schema.Types.ObjectId, 
+      type: Schema.Types.ObjectId, 
       ref: "Employee"
-
+    }
+  ],
+  shifts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Shift"
     }
   ]
 },

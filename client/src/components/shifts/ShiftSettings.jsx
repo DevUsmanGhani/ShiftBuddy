@@ -33,9 +33,7 @@ class ShiftSettings extends Component {
   renderItems() {
     if (_.isEmpty(this.props.inventoryItems)) {
       return (
-        <div className="center">
-          <Button className="center" bsStyle="danger" disabled>There are no items added</Button>
-        </div>
+        <div className="no-items-added center" bsStyle="danger">There are no items added</div>
       );
     }
     else {
@@ -43,26 +41,21 @@ class ShiftSettings extends Component {
       return _.map(this.props.inventoryItems, inventoryItem => {
         if(inventoryItem) {
           return (
-            <Grid key={inventoryItem._id + 'grid'}>
-              <Row key={inventoryItem._id + 'row'} className="inventory-container"> 
-                <Col
-                  className="inventory-header"
-                  xs={2} 
-                  xsOffset={4}
+            <span className="inventory-item">
+                <span
+                  className="inventory-item-name"
                   key={inventoryItem._id + 'name'}
                 >
-                  {inventoryItem.name}
-                </Col>
-                <Col
-                className="delete-button"
-                xs={1} 
+                  <span>{inventoryItem.name}</span>
+                </span>
+                <span
+                className="inventory-item-delete"
                 key={inventoryItem._id + 'delete'} 
                 onClick={() => this.props.deleteInventoryItem(inventoryItem._id)}
-                > 
+                >  
                   <FontAwesomeIcon icon="times" fixedWidth/>
-                </Col> 
-              </Row>
-            </Grid> 
+                </span> 
+          </span>
           )}
           else{
             return null;
@@ -81,7 +74,7 @@ class ShiftSettings extends Component {
               <hr/>  
               <Label>Item Name: </Label>
               <Row>   
-                <Col md={10}>
+                <Col xs={10}>
                   <FormGroup controlId="name" >
                     <FormControl
                       autoFocus
@@ -95,8 +88,7 @@ class ShiftSettings extends Component {
                     <FormControl.Feedback />
                   </FormGroup>
                 </Col>
-          
-                <Col md={2}>
+                <Col xs={2}>
                   <span className="center">
                     <Button type="submit" bsSize="small" bsStyle="warning">Add</Button>
                   </span>
@@ -105,7 +97,12 @@ class ShiftSettings extends Component {
             </form>
           </Col>
         </Row>
-        {this.renderItems()}
+        <Row>
+          <Col className="inventory-items-container"   md={10} mdOffset={1}>
+          {this.props.inventoryItems ? <h2 className="inventory-items-header">Items</h2> : ""}
+          { this.renderItems()}
+          </Col>
+        </Row>
       </Grid>
     )
   }
