@@ -1,33 +1,36 @@
 const mongoose = require('mongoose'),
-			Schema = mongoose.Schema,
-			Note = require("./Note"),
-			CashOut = require("./CashOut"),
-			Check = require("./Check");
+			Schema = mongoose.Schema;
 
 // Create Shift Model
-let shiftSchema = new mongoose.Schema({
+let shiftSchema = new Schema({
   date: { 
   	type: Date, 
   	default: Date.now 
   },
   notes: [
 	  {
-	    type: mongoose.Schema.Types.ObjectId, 
-	    ref: Note
+	    type: Schema.Types.ObjectId, 
+	    ref: 'Note'
 	  }
   ],
-  inventoryStart: {},
-  inventoryStop: {},
-  cashOuts: [
+  inventoryStart: [],
+  inventoryStop: [],
+  paidOuts: [
   	{
-  		type: mongoose.Schema.Types.ObjectId, 
-  		ref: CashOut
+  		type: Schema.Types.ObjectId, 
+  		ref: 'PaidOut'
+  	}
+  ],
+  cashDrops: [
+  	{
+  		type: Schema.Types.ObjectId, 
+  		ref: 'CashDrop'
   	}
 	],
   checks: [
   	{
-  		type: mongoose.Schema.Types.ObjectId, 
-  		ref: Check
+  		type: Schema.Types.ObjectId, 
+  		ref: 'Check'
   	}
 	]
 }, 

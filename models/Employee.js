@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Shift = require('./Shift');
 
 // Create Employee Schema
-const employeeSchema = new mongoose.Schema({
+const employeeSchema = new Schema({
   name: { 
   	type: String, 
   	required: true 
@@ -16,10 +15,10 @@ const employeeSchema = new mongoose.Schema({
   },
   shifts: [
   	{
-  		type: mongoose.Schema.Types.ObjectId, 
-  		ref: Shift
+  		type: Schema.Types.ObjectId, 
+  		ref: "Shift"
   	}
-	]
+  ]
 },
 {
   strict: true

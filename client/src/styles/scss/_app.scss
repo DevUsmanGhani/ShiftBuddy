@@ -54,7 +54,9 @@ hr {
 }
 
 .center {
-  text-align: center;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 // Nav links
@@ -233,24 +235,51 @@ hr {
 }
 
 // Inventory Items
-.inventory-container {
-  text-align: center;
-  margin: 0.75em 1.5rem;
-  font-size: 1em;
-  font-weight: bold;
-    div{
-      padding: .5em .25em;
+.inventory-items-container {
+  background-color: darken($shift-buddy-tertiary, 10%);
+  border-radius: .5em;
+  margin-top: 2em;
+  padding: 1.5em 2em;
+  @include shadowize;
+    .inventory-items-header {
+      text-align: center;
+      border-bottom: 1px solid $shift-buddy-secondary;
     }
-    .inventory-header {
-      @extend .bg-primary;
-      border-radius: .5em 0 0 .5em;
-      background-image: linear-gradient($shift-buddy-primary,lighten($shift-buddy-primary, 10%))
-    }
-    .delete-button {
+    .no-items-added {
+      @extend .bg-bad;
       color: white;
-      border-radius: 0 .5em .5em 0;
-      width: 4rem;
-      @include buttonize($shift-buddy-bad);
+      width: 50%;
+      border-radius: .5em;
+      padding: .5em .25em;
+      margin: 1.5em 0;
     }
-    
+    .inventory-item {
+      @extend .bg-primary;
+      color: white;
+      display: inline-block;
+      width: 29%;
+      margin: 1% 2%;
+      border-radius: .5em;
+      text-align: center;
+      .inventory-item-name{
+        //@extend .bg-primary;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 100%;
+        span {
+          vertical-align: middle;
+          margin-top: .75em;
+          display: inline-block;
+        }
+      }
+      .inventory-item-delete{
+        float: right;
+        cursor: pointer;
+        width: 25%;
+        text-align: center;
+        @extend .bg-bad;
+        padding: .5em;
+        border-radius: 0 .5em .5em 0;
+      }
+    } 
 }

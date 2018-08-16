@@ -2,7 +2,7 @@ const mongoose = require('mongoose'),
       Schema = mongoose.Schema;
 
 // Create Check Model
-let checkSchema = new mongoose.Schema({
+let checkSchema = new Schema({
   name: {
     type: String,
     required: true

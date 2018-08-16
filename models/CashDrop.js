@@ -1,15 +1,14 @@
 const mongoose = require('mongoose'), 
       Schema = mongoose.Schema;
 
-// Create inventory item Model
-let inventoryItemSchema = new Schema({
+// Create CashDrop Model
+let cashDropSchema = new Schema({
   name: {
     type: String, 
     required: true 
   },
   amount: {
     type: Number,
-    default: 0,
     required: true
   }
 },
@@ -17,4 +16,4 @@ let inventoryItemSchema = new Schema({
 	strict: true
 });
 
-module.exports = InventoryItem = mongoose.model("InventoryItem", inventoryItemSchema); 
+module.exports = CashDrop = mongoose.model("CashDrop", cashDropSchema); 

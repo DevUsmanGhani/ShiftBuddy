@@ -40,30 +40,11 @@ router.delete('/:eid', (req, res) => {
 router.get('/:eid/shifts', (req, res) => {
     Employee.findById(req.params.eid)
       .then(employee => { 
-        Shift.find({ "_id": { $in: employee.shifts } }, { notes: 0, paidOuts: 0, checks: 0, __v: 0})
+        Shift.find({ "_id": { $in: employee.shifts } }, { cashDrops: 0, notes: 0, paidOuts: 0, checks: 0, __v: 0})
           .then(shifts => res.status(200).send(shifts))
           .catch(error => res.status(404).send("The specified resource does not exist."))
       .catch(error => res.status(404).send("The specified resource does not exist."))
   })
 });
 
-// @route   POST api/employees/:eid/shifts
-// @desc    Creates a shift for a specific employee
-// @access  Private
-router.post('/:eid/shifts', (req, res) => {
-  Shift.create(req.body)
-    .then(shift => {
-      Employee.findOne({_id: req.params.eid})
-        .then(employee => {
-          employee.shifts.push(shift);
-          employee.save();
-          res.status(200).send(req.body);
-        })
-        .catch(error => res.status(404).send("The specified resource does not exist."))
-    })
-    .catch(error => res.status(400).json(error))
-
-});
-
 module.exports = router;
-
