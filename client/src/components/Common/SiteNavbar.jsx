@@ -33,14 +33,14 @@ export class SiteNavbar extends Component {
         <NavItem eventKey={2.1} href={`/managers/${manager.id}/employees`}>
           Employees 
         </NavItem>
-        <NavDropdown eventKey={4} title={manager.name} id="logged-in-manager-dropdown">
-          <MenuItem href={`/managers/${manager.id}`} eventKey={4.1}>
+        <NavDropdown className="dropdown-container" eventKey={4} title={manager.name} id="logged-in-manager-dropdown">
+          <MenuItem className="dropdown" href={`/managers/${manager.id}`} eventKey={4.1}>
             <FontAwesomeIcon icon="user-circle" fixedWidth/>  Dashboard
           </MenuItem>
-          <MenuItem href={`/managers/${manager.id}/settings`} eventKey={4.2}>
+          <MenuItem className="dropdown" href={`/managers/${manager.id}/settings`} eventKey={4.2}>
             <FontAwesomeIcon icon="cog" fixedWidth/>  Settings 
           </MenuItem>
-          < MenuItem onClick={this.props.logoutManager} eventKey={4.1}>
+          < MenuItem className="dropdown" onClick={this.props.logoutManager} eventKey={4.3}>
             <FontAwesomeIcon icon="sign-out-alt" fixedWidth/> Logout  
           </MenuItem>
         </NavDropdown>
