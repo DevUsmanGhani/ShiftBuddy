@@ -1,10 +1,11 @@
-//import _ from 'lodash';
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getEmployees, deleteEmployee } from '../../actions/employeeActions'
+import { getManagerShifts } from '../../actions/shifts/shiftActions';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter} from 'react-router-dom';
+import ShiftsContainer from './ShiftsContainer';
 
 
 export class Shifts extends Component {
@@ -22,27 +23,24 @@ export class Shifts extends Component {
       default: return;
     }
   }
-  // componentWillMount() {
-  //   const api = `http://localhost:5000/api/managers/${this.state.managerId}/employees`;
-  //   this.props.getEmployees(api);
-  // }
+  componentWillMount() {
+    this.props.getManagerShifts(this.state.managerId);
+  }
   render() {
     return (
       <div>
         <h1 className="shift-page-header">Shifts <Button onClick={() => this.handleClick('settings', null)} className="shift-settings-button" bsSize="large" ><FontAwesomeIcon className="good" icon="cog"/></Button></h1>
         <hr />
+        {_.map(this.props.shifts, shift => {
+          return(<ShiftsContainer shift={shift} />)
+          }
+        )}
+
       </div>
     )   
   }
 }
 
-const mapStateToProps = (state) => ({
-  employees: state.employees
-})
+const mapStateToProps = ({ shifts }) => ({ shifts })
 
-const mapDispatchToProps = {
-  getEmployees: getEmployees,
-  deleteEmployee: deleteEmployee,
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Shifts))
+export default withRouter(connect(mapStateToProps, { getManagerShifts })(Shifts))
