@@ -196,7 +196,7 @@ router.post('/:mid/settings/inventory', (req, res) => {
 router.get('/:mid/shifts', (req, res) => {
   Manager.findById(req.params.mid)
     .then(manager => { 
-      Shift.find({ "_id": { $in: manager.shifts } }, { cashDrops: 0, notes: 0, paidOuts: 0, checks: 0, __v: 0 })
+      Shift.find({ "_id": { $in: manager.shifts } }, {  __v: 0 })
         .then(shifts => res.status(200).send(shifts))
         .catch(error => res.status(404).send("The specified resource does not exist."))
     .catch(error => res.status(404).send("The specified resource does not exist."))

@@ -21,9 +21,11 @@ let shiftSchema = new Schema({
   },
   startingCash: {
     type: Number,
+    default: 150.00,
   },
   endingCash: {
     type: Number,
+    default: 150.00
   },
   notes: [
 	  {

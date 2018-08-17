@@ -9,20 +9,21 @@ export class ShiftView extends Component {
     const { shift } = this.props;
     const { code, year: startYear, month: startMonth, day: startDay, time: startTime } = destructureDate(shift.startTime);
     const { year: endYear, month: endMonth, day: endDay, time: endTime } = destructureDate(shift.endTime);
+    const employeeName = this.props.employees[shift.employee].name
     return (
       <div className="shift-view-container">
-        <h1>Shift: <span className="shift-name">Steven-{code}</span></h1>
+        <h1>Shift: <span className="shift-name">{employeeName}-{code}</span></h1>
         <hr />
         <Grid className="shift-report">
           <Row>
-            <Col md={10} mdOffset={1}>
-              <span>Name: <span className="underline bold">Steven</span></span> <span className="start-time">Start Time: <span className="underline bold">{startMonth} {startDay} {startYear} {startTime}</span> </span>
+            <Col md={12}>
+              <span>Name: <span className="underline bold">{employeeName}</span></span> <span className="start-time">Start Time: <span className="underline bold">{startMonth} {startDay} {startYear} {startTime}</span> </span>
             </Col>
-            <Col md={10} mdOffset={1}>
-            <span className="end-time">End Time: <span className="underline bold">{endMonth} {endDay} {endYear} {endTime}</span> </span>
+            <Col md={12}>
+              <span className="end-time">End Time: <span className="underline bold">{endMonth} {endDay} {endYear} {endTime}</span> </span>
             </Col>
-            <Col md={10} mdOffset={1}>
-              
+            <Col md={12}>
+              Hello
             </Col>
           </Row>
         </Grid>
@@ -32,7 +33,8 @@ export class ShiftView extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  shift: state.shifts[ownProps.match.params.id]
+  shift: state.shifts[ownProps.match.params.id],
+  employees: state.employees
 })
 
 const mapDispatchToProps = {

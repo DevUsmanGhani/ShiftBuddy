@@ -2,11 +2,14 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
+import destructureDate from '../../utils/destructureDate';
 
 export class Manager extends Component {
   render() {
     const { manager } = this.props.managerAuth;
     const { employees } = this.props;
+    const { shifts } = this.props;
+    let j = 0;
     let i = 0;
     return (
       <Grid className="manager-dashboard">
@@ -29,9 +32,15 @@ export class Manager extends Component {
             </div>
             <div className="shifts-box">
               <h4 className="shifts-header">Recent Shifts:</h4> 
-              <a className="shifts-name">08/15-B</a>
-              <a className="shifts-name">08/15-A</a>
-              <a className="shifts-name">08/14-C</a>
+              {_.map(shifts, shift => {
+                if(j < 3){
+                  const { code } = destructureDate(shift.startTime);
+                  j++;
+                  return(
+                    <a key={shift._id + 'dashboard'} className="shifts-name" href={`/shifts/${shift._id}`}>{code} - {employees[shift.employee].name}</a>
+                  )
+                }
+              })}
               <a className="view-all">View all</a>
             </div>
           </Col>
@@ -57,6 +66,7 @@ export class Manager extends Component {
 const mapStateToProps = state => ({
   managerAuth: state.managerAuth,
   employees: state.employees,
+  shifts: state.shifts,
 })
 
 

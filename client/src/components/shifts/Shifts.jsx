@@ -37,7 +37,7 @@ export class Shifts extends Component {
           <Row>
             <Col md={10} mdOffset={1}>
               {_.map(this.props.shifts, shift => {
-                return(<a key={shift._id + 'link'} href={`/shifts/${shift._id}`} ><ShiftsContainer key={shift._id + 'container'}  shift={shift} /></a>)
+                return(<a key={shift._id + 'link'} href={`/shifts/${shift._id}`} ><ShiftsContainer key={shift._id + 'container'}  employee={this.props.employees[shift.employee]} shift={shift} /></a>)
                 }
               )}
             </Col>
@@ -50,6 +50,6 @@ export class Shifts extends Component {
   }
 }
 
-const mapStateToProps = ({ shifts }) => ({ shifts })
+const mapStateToProps = ({ shifts, employees }) => ({ shifts, employees })
 
 export default withRouter(connect(mapStateToProps, { getManagerShifts })(Shifts))
