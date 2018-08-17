@@ -59,6 +59,14 @@ hr {
   margin-right: auto !important;
 }
 
+.underline{
+  border-bottom: 1px solid grey;
+}
+
+.bold {
+  font-weight: bolder;
+}
+
 // Nav links
 .navbar{ 
   background: $shift-buddy-tertiary ;
@@ -304,4 +312,24 @@ hr {
   &:hover {
     @extend .bg-secondary;
   }
+}
+
+// Shift-View
+.shift-view-container {
+  .shift-name {
+    color: darken($shift-buddy-tertiary, 70%);
+    font-weight: bolder;
+  }
+  .shift-report {
+    background-color: lighten($shift-buddy-tertiary, 20%);
+    margin: 1em;
+    border-radius: .25em;
+    padding: .5em;
+    .start-time, 
+    .end-time {
+      float: right;
+    }
+  }
+  
+  
 }

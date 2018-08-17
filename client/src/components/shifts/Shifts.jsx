@@ -15,27 +15,29 @@ export class Shifts extends Component {
         managerId: this.props.match.params.id,
       }
     this.handleClick = this.handleClick.bind(this);
+    this.handleSettingsClick = this.handleSettingsClick.bind(this);
   }
-  handleClick(type, employeeId) {
-    switch(type) {
-      case 'settings':  return this.props.history.push(`/managers/${this.state.managerId}/shifts/settings`);
-      case 'view': return this.props.history.push(`/employees/${employeeId}`); 
-      default: return;
-    }
+  handleClick(shiftId) {
+    console.log(shiftId)
+    this.props.history.push(`/shifts/${shiftId}`);
+  }
+  handleSettingsClick() {
+    this.props.history.push('shifts/settings');
   }
   componentWillMount() {
     this.props.getManagerShifts(this.state.managerId);
   }
+
   render() {
     return (
       <div>
-        <h1 className="shift-page-header">Shifts <Button onClick={() => this.handleClick('settings', null)} className="shift-settings-button" bsSize="large" ><FontAwesomeIcon className="good" icon="cog"/></Button></h1>
+        <h1 className="shift-page-header">Shifts <Button onClick={this.handleSettingsClick} className="shift-settings-button" bsSize="large" ><FontAwesomeIcon className="good" icon="cog"/></Button></h1>
         <hr />
         <Grid>
           <Row>
             <Col md={10} mdOffset={1}>
               {_.map(this.props.shifts, shift => {
-                return(<ShiftsContainer key={shift._id} shift={shift} />)
+                return(<a key={shift._id + 'link'} href={`/shifts/${shift._id}`} ><ShiftsContainer key={shift._id + 'container'}  shift={shift} /></a>)
                 }
               )}
             </Col>
