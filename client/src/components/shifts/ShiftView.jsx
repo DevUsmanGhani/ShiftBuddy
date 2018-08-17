@@ -15,15 +15,16 @@ export class ShiftView extends Component {
         <h1>Shift: <span className="shift-name">{employeeName}-{code}</span></h1>
         <hr />
         <Grid className="shift-report">
+          <h2 className="header">Shift Report</h2>
           <Row>
-            <Col md={12}>
+            <Col xs={12} >
               <span>Name: <span className="underline bold">{employeeName}</span></span> <span className="start-time">Start Time: <span className="underline bold">{startMonth} {startDay} {startYear} {startTime}</span> </span>
             </Col>
-            <Col md={12}>
+            <Col xs={12} >
               <span className="end-time">End Time: <span className="underline bold">{endMonth} {endDay} {endYear} {endTime}</span> </span>
             </Col>
-            <Col md={12}>
-              Hello
+            <Col xs={12} >
+              <span className="start-drawer">Starting Drawer: <span className="underline bold"></span></span><span className="end-drawer">Ending Drawer: $<span className="underline bold">150.00</span></span>
             </Col>
           </Row>
         </Grid>

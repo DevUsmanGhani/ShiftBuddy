@@ -318,13 +318,20 @@ hr {
 .shift-view-container {
   .shift-name {
     color: darken($shift-buddy-tertiary, 70%);
-    font-weight: bolder;
+    font-weight: 2000;
   }
   .shift-report {
+    font-size: 1.2em;
+    line-height: 1.5;
     background-color: lighten($shift-buddy-tertiary, 20%);
-    margin: 1em;
     border-radius: .25em;
-    padding: .5em;
+    .header{
+      color: grey;
+      font-weight: bolder;
+      text-align: center;
+      margin-bottom: 1em;
+      text-decoration: underline solid grey;
+    }
     .start-time, 
     .end-time {
       float: right;
