@@ -3,6 +3,14 @@ const mongoose = require('mongoose'),
 
 // Create Shift Model
 let shiftSchema = new Schema({
+  employee: {
+    type: Schema.Types.ObjectId,
+    ref: "Employee",
+  },
+  manager: {
+    type: Schema.Types.ObjectId,
+    ref: "Manager",
+  },
   startTime: { 
   	type: Date, 
   	default: Date.now 
@@ -10,6 +18,12 @@ let shiftSchema = new Schema({
   endTime: {
     type: Date,
     default: Date.now
+  },
+  startingCash: {
+    type: Number,
+  },
+  endingCash: {
+    type: Number,
   },
   notes: [
 	  {
