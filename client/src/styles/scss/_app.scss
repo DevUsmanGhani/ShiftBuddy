@@ -283,3 +283,25 @@ hr {
       }
     } 
 }
+
+// Shifts
+.shifts-container {
+  cursor: pointer;
+  color: grey;
+  margin: 1em 1em;
+  background-color: lighten($shift-buddy-secondary, 10%);
+  color: white;
+  padding: 1em 1.5em;
+  border-radius: .5em;
+  @include shadowize;
+  .name {
+    font-size: 1.25em;
+    margin-left: -1.5em;
+  };
+  .time {
+    margin-top: .25em;
+  }
+  &:hover {
+    @extend .bg-secondary;
+  }
+}

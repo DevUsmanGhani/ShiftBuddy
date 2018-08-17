@@ -3,9 +3,13 @@ const mongoose = require('mongoose'),
 
 // Create Shift Model
 let shiftSchema = new Schema({
-  date: { 
+  startTime: { 
   	type: Date, 
   	default: Date.now 
+  },
+  endTime: {
+    type: Date,
+    default: Date.now
   },
   notes: [
 	  {

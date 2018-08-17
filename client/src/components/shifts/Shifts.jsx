@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getManagerShifts } from '../../actions/shifts/shiftActions';
-import { Button } from 'react-bootstrap';
+import { Button, Grid, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter} from 'react-router-dom';
 import ShiftsContainer from './ShiftsContainer';
@@ -31,10 +31,17 @@ export class Shifts extends Component {
       <div>
         <h1 className="shift-page-header">Shifts <Button onClick={() => this.handleClick('settings', null)} className="shift-settings-button" bsSize="large" ><FontAwesomeIcon className="good" icon="cog"/></Button></h1>
         <hr />
-        {_.map(this.props.shifts, shift => {
-          return(<ShiftsContainer shift={shift} />)
-          }
-        )}
+        <Grid>
+          <Row>
+            <Col md={10} mdOffset={1}>
+              {_.map(this.props.shifts, shift => {
+                return(<ShiftsContainer key={shift._id} shift={shift} />)
+                }
+              )}
+            </Col>
+          </Row>
+        </Grid>
+       
 
       </div>
     )   
