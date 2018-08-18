@@ -3,8 +3,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 import destructureDate from '../../utils/destructureDate';
+import { getEmployees } from '../../actions/employeeActions';
+import { getManagerShifts } from '../../actions/shifts/shiftActions'
 
 export class Manager extends Component {
+  componentWillMount(){
+    const api = `/api/managers/${this.props.managerAuth.manager.id}/employees`;
+    this.props.getEmployees(api);
+    this.props.getManagerShifts(this.props.managerAuth.manager.id);
+  }
   render() {
     const { manager } = this.props.managerAuth;
     const { employees } = this.props;
@@ -33,7 +40,7 @@ export class Manager extends Component {
             <div className="shifts-box">
               <h4 className="shifts-header">Recent Shifts:</h4> 
               {_.map(shifts, shift => {
-                if(j < 3){
+                if(j < 3 && shift){
                   const { code } = destructureDate(shift.startTime);
                   j++;
                   return(
@@ -70,4 +77,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps)(Manager)
+export default connect(mapStateToProps, { getEmployees, getManagerShifts })(Manager)
