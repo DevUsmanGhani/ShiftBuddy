@@ -7,8 +7,8 @@ export default ({ cashDrops }) => {
     <Table className="paid-out-table">
       <thead>
         <tr>
-          <th className="center">#</th>
-          <th className="right">Amount</th>
+          <th className="center">Number</th>
+          <th className="center">Amount ($)</th>
         </tr>
       </thead>
       <tbody>
@@ -17,7 +17,7 @@ export default ({ cashDrops }) => {
             return(
               <tr key={cashDrop._id + 'tr'}>
                 <td className="center" key={cashDrop._id + 'name'}>{cashDrop.name}</td>
-                <td className="right" key={cashDrop._id + 'amt'}>${cashDrop.amount}</td>
+                <td className="center" key={cashDrop._id + 'amt'}>{cashDrop.amount}</td>
               </tr>
             )
           }

@@ -52,7 +52,7 @@ let shiftSchema = new Schema({
   		type: Schema.Types.ObjectId, 
   		ref: 'Check'
   	}
-	]
+  ],
 }, 
 {
 	strict: true
