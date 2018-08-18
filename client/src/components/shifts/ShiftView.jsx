@@ -5,6 +5,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import PaidOuts from './PaidOuts';
 import CashDrops from './CashDrops';
+import Checks from './Checks';
 
 export class ShiftView extends Component {
   constructor(props) {
@@ -18,8 +19,9 @@ export class ShiftView extends Component {
 
   componentWillMount() {
     const { shift } = this.props;
+    const api = `/api/shifts/${shift._id}`;
     // Get Paid Outs of this Shift Report
-    axios.get(`/api/shifts/${shift._id}/paidOuts`)
+    axios.get(`${api}/paidOuts`)
     .then(res => {
       this.setState({
         paidOuts: res.data,
@@ -27,14 +29,23 @@ export class ShiftView extends Component {
     })
     .catch(err => console.log(err));
     // Get Safe Drops of this Shift Report
-    axios.get(`/api/shifts/${shift._id}/cashDrops`)
+    axios.get(`${api}/cashDrops`)
     .then(res => {
       this.setState({
         cashDrops: res.data,
       })
     })
     .catch(err => console.log(err));
+    // Get Checks of this Shift Report
+    axios.get(`${api}/checks`)
+    .then(res =>{
+      this.setState({
+        checks: res.data,
+      })
+    })
+    .catch(err => console.log(err));
   }
+
   render() {
     const { shift } = this.props;
     const { code, year: startYear, month: startMonth, day: startDay, time: startTime } = destructureDate(shift.startTime);
@@ -62,13 +73,19 @@ export class ShiftView extends Component {
             </Col>
           </Row>
           <Row>
-            <Col xs={12} md={6}>
+            <Col xs={12} md={4}>
                 <h3 className="bold underline center">Safe Drops</h3>
                 <CashDrops cashDrops={this.state.cashDrops} />
             </Col>
-            <Col xs={12} md={6}>
+            <Col xs={12} md={8}>
               <h3 className="bold underline center">Paid Outs</h3>
               <PaidOuts paidOuts={this.state.paidOuts} />    
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12}>
+              <h3 className="bold underline center">Checks</h3>
+              <Checks checks={this.state.checks} />
             </Col>
           </Row>
         </Grid>

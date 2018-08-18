@@ -7,8 +7,8 @@ export default ({ cashDrops }) => {
     <Table className="paid-out-table" bordered condensed hover>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Amount $</th>
+          <th>#</th>
+          <th>Amount</th>
         </tr>
       </thead>
       <tbody>
@@ -17,7 +17,7 @@ export default ({ cashDrops }) => {
             return(
               <tr key={cashDrop._id + 'tr'}>
                 <td key={cashDrop._id + 'name'}>{cashDrop.name}</td>
-                <td key={cashDrop._id + 'amt'}>{cashDrop.amount}</td>
+                <td key={cashDrop._id + 'amt'}>${cashDrop.amount}</td>
               </tr>
             )
           }

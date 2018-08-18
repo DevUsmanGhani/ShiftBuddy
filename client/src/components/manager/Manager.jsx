@@ -40,7 +40,7 @@ export class Manager extends Component {
             <div className="shifts-box">
               <h4 className="shifts-header">Recent Shifts:</h4> 
               {_.map(shifts, shift => {
-                if(j < 3 && shift){
+                if(j < 3 && employees[shift.employee]){
                   const { code } = destructureDate(shift.startTime);
                   j++;
                   return(

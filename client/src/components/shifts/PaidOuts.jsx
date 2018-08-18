@@ -8,7 +8,7 @@ export default ({ paidOuts }) => {
       <thead>
         <tr>
           <th>Company</th>
-          <th>Amount $</th>
+          <th>Amount</th>
           <th>Notes</th>
         </tr>
       </thead>
@@ -18,7 +18,7 @@ export default ({ paidOuts }) => {
             return(
               <tr key={paidOut._id + 'tr'}>
                 <td key={paidOut._id + 'name'}>{paidOut.name}</td>
-                <td key={paidOut._id + 'amt'}>{paidOut.amount}</td>
+                <td key={paidOut._id + 'amt'}>${paidOut.amount}</td>
                 <td key={paidOut._id + 'notes'}>{paidOut.notes}</td>
               </tr>
             )
