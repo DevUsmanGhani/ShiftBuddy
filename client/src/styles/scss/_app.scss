@@ -325,6 +325,9 @@ hr {
     line-height: 1.5;
     background-color: lighten($shift-buddy-tertiary, 20%);
     border-radius: .25em;
+    div {
+      margin-top: .25em
+    }
     .header{
       color: grey;
       font-weight: bolder;
@@ -335,6 +338,12 @@ hr {
     .start-time, 
     .end-time {
       float: right;
+    }
+    .drawers {
+      text-align: center;
+      .start-drawer {
+        margin-right: 2em;
+      }
     }
   }
   

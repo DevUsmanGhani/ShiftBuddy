@@ -10,6 +10,13 @@ let paidOutSchema = new Schema({
   amount: {
     type: Number,
     required: true
+  },
+  notes: {
+    type: String,
+  },
+  shift: {
+    type: Schema.Types.ObjectId,
+    ref: "Shift",
   }
 },
 {
