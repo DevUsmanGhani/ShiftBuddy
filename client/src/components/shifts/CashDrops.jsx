@@ -4,11 +4,11 @@ import _ from 'lodash';
 
 export default ({ cashDrops }) => {
   return (
-    <Table className="paid-out-table" bordered condensed hover>
+    <Table className="paid-out-table">
       <thead>
         <tr>
-          <th>#</th>
-          <th>Amount</th>
+          <th className="center">#</th>
+          <th className="right">Amount</th>
         </tr>
       </thead>
       <tbody>
@@ -16,8 +16,8 @@ export default ({ cashDrops }) => {
           if(cashDrop){
             return(
               <tr key={cashDrop._id + 'tr'}>
-                <td key={cashDrop._id + 'name'}>{cashDrop.name}</td>
-                <td key={cashDrop._id + 'amt'}>${cashDrop.amount}</td>
+                <td className="center" key={cashDrop._id + 'name'}>{cashDrop.name}</td>
+                <td className="right" key={cashDrop._id + 'amt'}>${cashDrop.amount}</td>
               </tr>
             )
           }
