@@ -31,7 +31,7 @@ export class Manager extends Component {
                 if(i < 3){
                   i++;
                   return(
-                    <a key={employee._id + 'dashboard'} className="employees-name" href={`/managers/${manager.id}/employees/${employee._id}`}>{employee.name}</a>
+                    <a key={employee._id + 'dashboard'} className="employees-name" href={`/employees/${employee._id}/shifts`}>{employee.name}</a>
                   )}
                 })
               }

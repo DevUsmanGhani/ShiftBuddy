@@ -3,10 +3,14 @@ import { Table } from 'react-bootstrap';
 import _ from 'lodash';
 
 export default ({ starting, ending }) => {
-  starting = starting.replace(/'/g, '"');
-  ending = ending.replace(/'/g, '"');
-  starting = JSON.parse(starting);
-  ending = JSON.parse(ending);  
+  if (!_.isEmpty(starting)) {
+    starting = starting.replace(/'/g, '"');
+    ending = ending.replace(/'/g, '"');
+  }
+  if (!_.isEmpty(ending)) {
+    starting = JSON.parse(starting);
+    ending = JSON.parse(ending);
+  }
   const changeTypes = ['pennies', 'nickels', 'dimes', 'quarters', 'ones', 'fives', 'tens', 'twenties']
   let total = 0;
   return (

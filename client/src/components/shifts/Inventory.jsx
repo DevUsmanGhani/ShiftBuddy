@@ -3,10 +3,14 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 
 export default ({ starting, ending }) => {
-  starting = starting.replace(/'/g, '"');
-  ending = ending.replace(/'/g, '"');
-  starting = JSON.parse(starting);
-  ending = JSON.parse(ending);
+  if (!_.isEmpty(starting)) {
+    starting = starting.replace(/'/g, '"');
+    ending = ending.replace(/'/g, '"');
+  }
+  if (!_.isEmpty(ending)) {
+    starting = JSON.parse(starting);
+    ending = JSON.parse(ending);
+  }
   return (
     <Table>
       <thead>
