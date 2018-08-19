@@ -33,10 +33,10 @@ let shiftSchema = new Schema({
 	    ref: 'Note'
 	  }
   ],
-  inventoryStart: [],
-  inventoryStop: [],
-  changeStart: [],
-  changeStop: [],
+  inventoryStart: {},
+  inventoryStop: {},
+  changeStart: {},
+  changeStop: {},
   paidOuts: [
   	{
   		type: Schema.Types.ObjectId, 

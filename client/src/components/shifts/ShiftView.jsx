@@ -16,8 +16,10 @@ export class ShiftView extends Component {
       cashDrops: [],
       checks: [],
       notes: [],
-      startingChange: {},
-      endingChange: {}
+      changeStart: {},
+      channgeStop: {},
+      inventoryStart: {},
+      inventoryStop: {},
     }
   }
 
@@ -51,6 +53,8 @@ export class ShiftView extends Component {
     // Get Notes of this Shift Report
     axios.get(`${api}/notes`)
     .then(res => this.setState({notes: res.data}))
+    .catch(err => console.log(err));
+    console.log(shift.inventoryStart);
   }
 
   render() {

@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 // Create Employee Schema
 const employeeSchema = new Schema({
+  manager: {
+    type: Schema.Types.ObjectId,
+    ref: "Manager",
+  },
   name: { 
   	type: String, 
   	required: true 

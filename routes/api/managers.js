@@ -152,6 +152,8 @@ router.post('/:mid/employees', (req, res) => {
         .then(manager => {
           manager.employees.push(employee);
           manager.save();
+          employee.manager = manager._id;
+          employee.save();
           res.status(200).send({_id: employee._id, ...req.body});
         })
         .catch(error => res.status(404).send("The specified resource does not exist."))
@@ -201,30 +203,6 @@ router.get('/:mid/shifts', (req, res) => {
         .catch(error => res.status(404).send("The specified resource does not exist."))
     .catch(error => res.status(404).send("The specified resource does not exist."))
 })
-});
-
-// @route   POST api/managers/:mid/employees/:eid/shifts
-// @desc    Creates a shift for a specific manager
-// @access  Private
-router.post('/:mid/employees/:eid/shifts', (req, res) => {
-Shift.create(req.body)
-  .then(shift => {
-    Manager.findOne({_id: req.params.mid})
-      .then(manager => {
-        manager.shifts.push(shift);
-        manager.save();
-      })
-      .catch(error => res.status(404).send("The specified resource does not exist."))
-    Employee.findOne({_id: req.params.eid})
-      .then(employee => {
-        employee.shifts.push(shift);
-        employee.save();
-        res.status(200).send(req.body);
-      })
-      .catch(error => res.status(404).send("The specified resource does not exist."))
-  })
-  .catch(error => res.status(400).json(error))
-
 });
 
 module.exports = router;
