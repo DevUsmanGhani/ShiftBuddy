@@ -18,7 +18,7 @@ export default dateString => {
     code ,
     time,
     day: date.getDate(),
-    month: months[date.getMonth() + 1],
+    month: months[date.getMonth()],
     year: date.getFullYear(),
   }
 }
