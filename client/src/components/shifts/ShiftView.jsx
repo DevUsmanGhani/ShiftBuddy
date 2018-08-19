@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import destructureDate from '../../utils/destructureDate';
 import { Grid, Row, Col } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import PaidOuts from './PaidOuts';
 import CashDrops from './CashDrops';
@@ -69,7 +70,14 @@ export class ShiftView extends Component {
     const employeeName = this.props.employees[shift.employee].name
     return (
       <div className="shift-view-container">
-        <h1 className="shift-name">{code}-{employeeName}</h1>
+        <Row>
+          <Col xsOffset={1} xs={1}>
+            <span onClick={this.props.history.goBack} className="back"><FontAwesomeIcon icon="chevron-left"/> Shifts</span>
+          </Col>
+          <Col xs={8}>
+            <h1 className="shift-name">{code} - {employeeName}</h1>
+          </Col>
+        </Row>
         <hr />
         <Grid className="shift-report">
           <h2 className="header">Shift Report</h2>

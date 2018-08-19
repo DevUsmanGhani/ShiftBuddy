@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getManagerShifts } from '../../actions/shifts/shiftActions';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { withRouter} from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ShiftsContainer from '../shifts/ShiftsContainer';
 
 
@@ -25,7 +26,14 @@ export class EmployeeView extends Component {
   render() {
     return (
       <div>
-        <h1 className="shift-page-header">Shifts - {this.props.employees[this.state.employeeId].name}</h1>
+        <Row>
+          <Col xsOffset={2} xs={2}>
+            <span onClick={this.props.history.goBack} className="back"><FontAwesomeIcon icon="chevron-left"/> Employees</span>
+          </Col>
+          <Col xs={4}>
+            <h1 className="shift-page-header">Shifts - {this.props.employees[this.state.employeeId].name}</h1>
+          </Col>
+        </Row>
         <hr />
         <Grid>
           <Row>

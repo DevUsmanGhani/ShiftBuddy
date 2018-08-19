@@ -35,6 +35,15 @@ h1 {
   font-weight: bold;
 }
 
+.back {
+  @extend .secondary;
+  font-size: 1.25em;
+  font-weight: 400;
+  text-align: left;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
 hr {
   height: 1px;
   @extend .bg-secondary;
@@ -103,6 +112,10 @@ hr {
   padding: .5em;
   margin-left: auto;
   margin-right: auto;
+}
+
+.save, .cancel {
+  width: 5em;
 }
 
 // Employees

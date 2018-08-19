@@ -82,9 +82,18 @@ class EmployeeCreate extends Component {
                 />
                 <FormControl.Feedback />
               </FormGroup>
-              <div className="center">
-                <Button type="submit" bsSize="large" bsStyle="warning">Save</Button>
-              </div>
+              <Row>
+                <Col md={3} mdOffset={3} >
+                  <div className="center">
+                    <Button className="save" type="submit" bsSize="large" bsStyle="warning">Save</Button>
+                  </div>
+                </Col>
+                <Col md={3} >
+                  <div className="center">
+                    <Button className="cancel" onClick={this.props.history.goBack} bsSize="large" bsStyle="danger">Cancel</Button>
+                  </div>
+                </Col>
+              </Row>
             </form>
           </Col>
         </Row>
