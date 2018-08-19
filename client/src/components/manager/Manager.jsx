@@ -48,7 +48,7 @@ export class Manager extends Component {
                   )
                 }
               })}
-              <a className="view-all">View all</a>
+              <a href={`/managers/${manager.id}/shifts`} className="view-all">View all</a>
             </div>
           </Col>
           <Col xs={12} sm={9} lg={10}>
