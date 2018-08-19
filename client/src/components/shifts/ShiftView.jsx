@@ -7,6 +7,8 @@ import PaidOuts from './PaidOuts';
 import CashDrops from './CashDrops';
 import Checks from './Checks';
 import Notes from './Notes';
+import Change from './Change';
+import Inventory from './Inventory';
 
 export class ShiftView extends Component {
   constructor(props) {
@@ -17,7 +19,7 @@ export class ShiftView extends Component {
       checks: [],
       notes: [],
       changeStart: {},
-      channgeStop: {},
+      changeStop: {},
       inventoryStart: {},
       inventoryStop: {},
     }
@@ -54,7 +56,10 @@ export class ShiftView extends Component {
     axios.get(`${api}/notes`)
     .then(res => this.setState({notes: res.data}))
     .catch(err => console.log(err));
-    console.log(shift.inventoryStart);
+    if (shift.inventoryStart) this.setState({inventoryStart: shift.inventoryStart});
+    if (shift.inventoryStop) this.setState({inventoryStop: shift.inventoryStop});
+    if (shift.changeStart) this.setState({changeStart: shift.changeStart});
+    if (shift.changeStop) this.setState({changeStop: shift.changeStop});
   }
 
   render() {
@@ -102,9 +107,11 @@ export class ShiftView extends Component {
           <Row>
             <Col xs={12} md={6}>
               <h3>Inventory</h3>
+              <Inventory starting={this.state.inventoryStart} ending={this.state.inventoryStop} />
             </Col>
             <Col xs={12} md={6}>
               <h3>Change</h3>
+              <Change starting={this.state.changeStart} ending={this.state.changeStop} />
             </Col>
           </Row>
           <Row>

@@ -3,7 +3,6 @@ import { GET_INVENTORY_SETTINGS, ADD_INVENTORY_ITEM, DELETE_INVENTORY_ITEM } fro
 import { LOGOUT } from "../actions/types";
 
 const initialState = {
-  shifts: {},
   inventoryItems: {}
 }
 
