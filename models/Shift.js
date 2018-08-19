@@ -35,6 +35,8 @@ let shiftSchema = new Schema({
   ],
   inventoryStart: [],
   inventoryStop: [],
+  changeStart: [],
+  changeStop: [],
   paidOuts: [
   	{
   		type: Schema.Types.ObjectId, 
