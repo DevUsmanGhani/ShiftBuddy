@@ -49,11 +49,11 @@ h1 {
     font-weight: 400;
     font-size: 2em;
     cursor: pointer;
-    background-color: darken($shift-buddy-tertiary, 10%);
+    background-color: $shift-buddy-tertiary;
     border-radius: .25em;
     padding: .25em;
     &:hover {
-      background-color: darken($shift-buddy-tertiary, 15%);
+      background-color: darken($shift-buddy-tertiary, 7.5%);
     }
   }
 }
