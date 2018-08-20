@@ -20,6 +20,7 @@ export class Employees extends Component {
     switch(type) {
       case 'new':  return this.props.history.push('employees/new');
       case 'edit': return this.props.history.push(`/employees/${employeeId}`); 
+      case 'view': return this.props.history.push(`/employees/${employeeId}/shifts`)
       case 'delete' : {
         this.props.deleteEmployee(employeeId);
         window.location.reload();
@@ -54,6 +55,7 @@ export class Employees extends Component {
                         className="view-button"
                         xs={3} 
                         key={employee._id + 'view'} 
+                        onClick={() => this.handleClick('view', employee._id)}
                       >
                         View <FontAwesomeIcon icon="address-card" fixedWidth/>
                       </Col>

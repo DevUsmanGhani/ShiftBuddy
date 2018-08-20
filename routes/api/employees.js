@@ -47,4 +47,31 @@ router.get('/:eid/shifts', (req, res) => {
   })
 });
 
+// @route   POST api/employees/:eid/shifts
+// @desc    Creates a shift for a specific manager
+// @access  Private
+router.post('/:eid/shifts', (req, res) => {
+  Shift.create(req.body)
+    .then(shift => {
+      Employee.findOne({_id: req.params.eid})
+        .then(employee => {
+          employee.shifts.push(shift);
+          employee.save();
+          Manager.findOne({_id: employee.manager})
+            .then(manager => {
+              manager.shifts.push(shift);
+              manager.save();
+              shift.employee = employee._id;
+              shift.manager = manager._id;
+              shift.save();
+            })
+            .catch(error => res.status(404).send("The specified resource does not exist."))
+          res.status(200).send(shift);
+        })
+        .catch(error => res.status(404).send("The specified resource does not exist."))
+    })
+    .catch(error => res.status(400).json(error))
+  
+  });
+
 module.exports = router;

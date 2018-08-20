@@ -62,14 +62,14 @@ router.post('/:sid/notes', (req, res) => {
     .catch(error => res.status(400).json(error))
 });
 
-// @route   GET api/shifts/:sid/cashOuts
-// @desc    Returns all cash outs of a specific shift
+// @route   GET api/shifts/:sid/paidOuts
+// @desc    Returns all paid outs of a specific shift
 // @access  Private
-router.get('/:sid/cashOuts', (req, res) => {
+router.get('/:sid/paidOuts', (req, res) => {
   Shift.findById(req.params.sid)
     .then(shift => { 
-      CashOut.find({ "_id": { $in: shift.cashOuts } })
-        .then(cashOuts => res.status(200).send(cashOuts))
+      PaidOut.find({ "_id": { $in: shift.paidOuts } })
+        .then(paidOuts => res.status(200).send(paidOuts))
         .catch(error => res.status(404).send("The specified resource does not exist."))
     })
     .catch(error => res.status(404).send("The specified resource does not exist."))
@@ -78,12 +78,12 @@ router.get('/:sid/cashOuts', (req, res) => {
 // @route   POST api/shifts/:sid/cashOuts
 // @desc    Creates a cash out for a specific shift
 // @access  Private
-router.post('/:sid/cashOuts', (req, res) => {
-  CashOut.create(req.body)
-    .then(cashOut => {
+router.post('/:sid/paidOuts', (req, res) => {
+  PaidOut.create(req.body)
+    .then(paidOut => {
       Shift.findOne({_id: req.params.sid})
         .then(shift => {
-          shift.cashOuts.push(cashOut);
+          shift.paidOuts.push(paidOut);
           shift.save();
           res.status(200).send(req.body);
         })
@@ -122,4 +122,33 @@ router.post('/:sid/checks', (req, res) => {
     .catch(error => res.status(400).json(error))
 });
 
+// @route   GET api/shifts/:sid/cashDrops
+// @desc    Returns all paid outs of a specific shift
+// @access  Private
+router.get('/:cid/cashDrops', (req, res) => {
+  Shift.findById(req.params.cid)
+    .then(shift => { 
+      CashDrop.find({ "_id": { $in: shift.cashDrops } })
+        .then(cashDrops => res.status(200).send(cashDrops))
+        .catch(error => res.status(404).send("The specified resource does not exist."))
+    })
+    .catch(error => res.status(404).send("The specified resource does not exist."))
+});
+
+// @route   POST api/shifts/:sid/cashOuts
+// @desc    Creates a cash out for a specific shift
+// @access  Private
+router.post('/:cid/cashDrops', (req, res) => {
+  CashDrop.create(req.body)
+    .then(cashDrop => {
+      Shift.findOne({_id: req.params.cid})
+        .then(shift => {
+          shift.cashDrops.push(cashDrop);
+          shift.save();
+          res.status(200).send(req.body);
+        })
+        .catch(error => res.status(404).send("The specified resource does not exist."))
+    })
+    .catch(error => res.status(400).json(error))
+});
 module.exports = router;

@@ -1,0 +1,35 @@
+.table{
+  @include shadowize;
+  cursor: default;
+  .center{text-align: center};
+  .right{text-align: right};
+  .longer{
+    width: 60%;
+  }
+  thead{
+    background-color: lighten($shift-buddy-primary, 10%);
+  }
+  tbody{
+    tr:nth-child(even) {
+      background-color: lighten($shift-buddy-tertiary, 8%);
+      &:hover {
+        background-color: lighten($shift-buddy-tertiary, 12%);
+        font-weight: bolder;
+      }
+    }
+    tr:nth-child(odd) {
+      background-color: lighten($shift-buddy-tertiary, 4%);
+      &:hover {
+        background-color: lighten($shift-buddy-tertiary, 12%);
+        font-weight: bolder;
+      }
+    }
+    .notes{
+      color: gray;
+      font-size: .85em;
+      font-style: italic;
+      vertical-align: middle;
+    }
+  }
+  
+}

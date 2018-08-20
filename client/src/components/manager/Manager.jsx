@@ -2,11 +2,21 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
+import destructureDate from '../../utils/destructureDate';
+import { getEmployees } from '../../actions/employeeActions';
+import { getManagerShifts } from '../../actions/shifts/shiftActions'
 
 export class Manager extends Component {
+  componentWillMount(){
+    const api = `/api/managers/${this.props.managerAuth.manager.id}/employees`;
+    this.props.getEmployees(api);
+    this.props.getManagerShifts(this.props.managerAuth.manager.id);
+  }
   render() {
     const { manager } = this.props.managerAuth;
     const { employees } = this.props;
+    const { shifts } = this.props;
+    let j = 0;
     let i = 0;
     return (
       <Grid className="manager-dashboard">
@@ -21,7 +31,7 @@ export class Manager extends Component {
                 if(i < 3){
                   i++;
                   return(
-                    <a key={employee._id + 'dashboard'} className="employees-name" href={`/managers/${manager.id}/employees/${employee._id}`}>{employee.name}</a>
+                    <a key={employee._id + 'dashboard'} className="employees-name" href={`/employees/${employee._id}/shifts`}>{employee.name}</a>
                   )}
                 })
               }
@@ -29,10 +39,16 @@ export class Manager extends Component {
             </div>
             <div className="shifts-box">
               <h4 className="shifts-header">Recent Shifts:</h4> 
-              <a className="shifts-name">08/15-B</a>
-              <a className="shifts-name">08/15-A</a>
-              <a className="shifts-name">08/14-C</a>
-              <a className="view-all">View all</a>
+              {_.map(shifts, shift => {
+                if(j < 3 && employees[shift.employee]){
+                  const { code } = destructureDate(shift.startTime);
+                  j++;
+                  return(
+                    <a key={shift._id + 'dashboard'} className="shifts-name" href={`/shifts/${shift._id}`}>{code} - {employees[shift.employee].name}</a>
+                  )
+                }
+              })}
+              <a href={`/managers/${manager.id}/shifts`} className="view-all">View all</a>
             </div>
           </Col>
           <Col xs={12} sm={9} lg={10}>
@@ -57,7 +73,8 @@ export class Manager extends Component {
 const mapStateToProps = state => ({
   managerAuth: state.managerAuth,
   employees: state.employees,
+  shifts: state.shifts,
 })
 
 
-export default connect(mapStateToProps)(Manager)
+export default connect(mapStateToProps, { getEmployees, getManagerShifts })(Manager)
