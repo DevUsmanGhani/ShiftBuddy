@@ -26,7 +26,6 @@ export class Shifts extends Component {
   componentWillMount() {
     this.props.getManagerShifts(this.state.managerId);
   }
-
   render() {
     return (
       <div>
@@ -42,8 +41,6 @@ export class Shifts extends Component {
             </Col>
           </Row>
         </Grid>
-       
-
       </div>
     )   
   }
