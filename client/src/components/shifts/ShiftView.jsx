@@ -71,11 +71,10 @@ export class ShiftView extends Component {
     return (
       <div className="shift-view-container">
         <Row>
-          <Col xsOffset={1} xs={1}>
-            <span onClick={this.props.history.goBack} className="back"><FontAwesomeIcon icon="chevron-left"/> Back</span>
-          </Col>
-          <Col xs={8}>
-            <h1 className="shift-name">{code} - {employeeName}</h1>
+          <Col xs={12}>
+            <div className="back-header-container">            
+              <div onClick={this.props.history.goBack} className="back"><FontAwesomeIcon icon="chevron-left"/> Back</div>
+              <h1 className="shift-name">{code} - {employeeName}</h1></div>
           </Col>
         </Row>
         <hr />

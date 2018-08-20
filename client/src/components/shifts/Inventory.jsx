@@ -1,6 +1,8 @@
 import _ from 'lodash'
 import React from 'react';
 import { Table } from 'react-bootstrap';
+import showOrDash from '../../utils/showOrDash';
+
 
 export default ({ starting, ending }) => {
   if (!_.isEmpty(starting)) {
@@ -29,7 +31,7 @@ export default ({ starting, ending }) => {
                 <td key={item + 'name'}>{item}</td>
                 <td className="right" key={item + 'starting'}>{starting[item]}</td>
                 <td className="right" key={item + 'ending'}>{ending[item]}</td>
-                <td className="right" key={item + 'numDiff'}>{starting[item] - ending[item]}</td>  
+                <td className="right" key={item + 'numDiff'}>{showOrDash(starting[item] - ending[item])}</td>  
               </tr>
             )
         })}

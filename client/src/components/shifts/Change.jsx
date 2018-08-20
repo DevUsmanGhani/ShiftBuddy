@@ -1,6 +1,8 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import _ from 'lodash';
+import showOrDash from '../../utils/showOrDash';
+
 
 export default ({ starting, ending }) => {
   if (!_.isEmpty(starting)) {
@@ -33,8 +35,8 @@ export default ({ starting, ending }) => {
                 <td key={changeType + 'name'}>{changeType.charAt(0).toUpperCase() + changeType.slice(1)}</td>
                 <td key={changeType + 'starting'} className="right">{starting[changeType]}</td>
                 <td key={changeType + 'ending'} className="right">{ending[changeType]}</td>
-                <td key={changeType + 'numDiff'} className="right">{starting[changeType] - ending[changeType]}</td>  
-                <td key={changeType + 'moneyDiff'} className="right">{moneyDiff.toFixed(2)}</td> 
+                <td key={changeType + 'numDiff'} className="right">{showOrDash(starting[changeType] - ending[changeType])}</td>  
+                <td key={changeType + 'moneyDiff'} className="right">{showOrDash(moneyDiff.toFixed(2))}</td> 
               </tr>
             )
         })}
