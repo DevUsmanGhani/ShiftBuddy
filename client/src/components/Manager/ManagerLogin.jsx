@@ -53,9 +53,9 @@ export class ManagerLogin extends Component {
 
   renderErrors() {
     return (
-      <Alert bsSize="danger">
+      <div className="errors">
         Invalid Email/Password
-      </Alert>
+      </div>
     )
   }
 
