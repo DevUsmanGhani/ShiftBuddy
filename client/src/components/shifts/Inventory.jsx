@@ -16,9 +16,9 @@ export default ({ starting, ending }) => {
       <thead>
         <tr>
           <th>Item Name</th>
-          <th>Starting Quantity</th>
-          <th>Ending Quantity</th>
-          <th>Quantity Sold</th> 
+          <th className="right">Starting Quantity</th>
+          <th className="right">Ending Quantity</th>
+          <th className="right">Quantity Sold</th> 
         </tr>
       </thead>
       <tbody>
@@ -27,9 +27,9 @@ export default ({ starting, ending }) => {
             return(
               <tr key={item}>
                 <td key={item + 'name'}>{item}</td>
-                <td key={item + 'starting'}>{starting[item]}</td>
-                <td key={item + 'ending'}>{ending[item]}</td>
-                <td key={item + 'numDiff'}>{starting[item] - ending[item]}</td>  
+                <td className="right" key={item + 'starting'}>{starting[item]}</td>
+                <td className="right" key={item + 'ending'}>{ending[item]}</td>
+                <td className="right" key={item + 'numDiff'}>{starting[item] - ending[item]}</td>  
               </tr>
             )
         })}

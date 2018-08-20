@@ -18,10 +18,10 @@ export default ({ starting, ending }) => {
       <thead>
         <tr>
           <th>Change Type</th>
-          <th>Starting Quantity</th>
-          <th>Ending Quantity</th>
-          <th>Quantity Used</th> 
-          <th>Amount Used ($)</th>
+          <th className="right">Starting Quantity</th>
+          <th className="right">Ending Quantity</th>
+          <th className="right">Quantity Used</th> 
+          <th className="right">Amount Used ($)</th>
         </tr>
       </thead>
       <tbody>
@@ -31,10 +31,10 @@ export default ({ starting, ending }) => {
             return(
               <tr key={changeType}>
                 <td key={changeType + 'name'}>{changeType.charAt(0).toUpperCase() + changeType.slice(1)}</td>
-                <td key={changeType + 'starting'}>{starting[changeType]}</td>
-                <td key={changeType + 'ending'}>{ending[changeType]}</td>
-                <td key={changeType + 'numDiff'}>{starting[changeType] - ending[changeType]}</td>  
-                <td key={changeType + 'moneyDiff'}>{moneyDiff.toFixed(2)}</td> 
+                <td key={changeType + 'starting'} className="right">{starting[changeType]}</td>
+                <td key={changeType + 'ending'} className="right">{ending[changeType]}</td>
+                <td key={changeType + 'numDiff'} className="right">{starting[changeType] - ending[changeType]}</td>  
+                <td key={changeType + 'moneyDiff'} className="right">{moneyDiff.toFixed(2)}</td> 
               </tr>
             )
         })}
@@ -42,8 +42,8 @@ export default ({ starting, ending }) => {
           <td></td>
           <td></td>
           <td></td>
-          <td>Total:</td>
-          <td>{total.toFixed(2)}</td>
+          <td className="right bold">Total:</td>
+          <td className="right bold">{total.toFixed(2)}</td>
         </tr>
       </tbody>
     </Table>
