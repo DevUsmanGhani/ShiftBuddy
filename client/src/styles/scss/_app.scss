@@ -31,18 +31,36 @@ footer {
 
 h1 {
   @extend .secondary;
-  text-align: center;
   font-weight: bold;
+  text-align: center;
 }
 
-.back {
-  @extend .secondary;
-  font-size: 1.25em;
-  font-weight: 400;
-  text-align: left;
-  vertical-align: middle;
-  cursor: pointer;
+.back-header-container{
+  text-align: center;
+  h1 {
+    display: inline-block;
+  }
+  .back {
+    position: absolute;
+    left: 1.5em;
+    top: .25em;
+    display: inline-block;
+    @extend .secondary;
+    font-weight: 400;
+    font-size: 2em;
+    cursor: pointer;
+    background-color: darken($shift-buddy-tertiary, 10%);
+    border-radius: .25em;
+    padding: .25em;
+    &:hover {
+      background-color: darken($shift-buddy-tertiary, 15%);
+    }
+  }
 }
+
+
+
+
 
 hr {
   height: 1px;
@@ -361,6 +379,4 @@ hr {
       margin-right: .314em;
     }
   }
-  
-  
 }

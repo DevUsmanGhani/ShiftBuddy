@@ -27,11 +27,11 @@ export class EmployeeView extends Component {
     return (
       <div>
         <Row>
-          <Col xsOffset={2} xs={2}>
-            <span onClick={this.props.history.goBack} className="back"><FontAwesomeIcon icon="chevron-left"/> Back</span>
-          </Col>
-          <Col xs={4}>
-            <h1 className="shift-page-header">Shifts - {this.props.employees[this.state.employeeId].name}</h1>
+          <Col xs={12}>
+            <div className="back-header-container">            
+              <div onClick={this.props.history.goBack} className="back"><FontAwesomeIcon icon="chevron-left"/> Back</div>
+              <h1 className="shift-page-header">Shifts - {this.props.employees[this.state.employeeId].name}</h1>
+            </div>
           </Col>
         </Row>
         <hr />
