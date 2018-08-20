@@ -85,16 +85,10 @@ class EmployeeEdit extends Component {
                 <FormControl.Feedback />
               </FormGroup>
               <Row>
-                <Col md={3} mdOffset={3} >
-                  <div className="center">
-                    <Button className="save" type="submit" bsSize="large" bsStyle="warning">Save</Button>
-                  </div>
-                </Col>
-                <Col md={3} >
-                  <div className="center">
-                    <Button className="cancel" onClick={this.props.history.goBack} bsSize="large" bsStyle="danger">Cancel</Button>
-                  </div>
-                </Col>
+                <div className="center">
+                  <Button className="cancel" onClick={this.props.history.goBack} bsSize="large" bsStyle="link">Cancel</Button>
+                  <Button className="save" type="submit" bsSize="large" bsStyle="warning">Save</Button>
+                </div>
               </Row>
             </form>
           </Col>
