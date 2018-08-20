@@ -1,4 +1,4 @@
-import { GET_ERRORS, CLEAR_ERRORS } from '../actions/types'
+import { GET_ERRORS, CLEAR_ERRORS, LOGOUT } from '../actions/types'
 
 const initialState = {};
 
@@ -7,7 +7,9 @@ export default (state=initialState, action) => {
     case GET_ERRORS: 
       return action.payload;
     case CLEAR_ERRORS: 
-      return {};
+      return initialState;
+    case LOGOUT:
+      return initialState;
     default: 
       return state
   }

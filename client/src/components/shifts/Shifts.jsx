@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getManagerShifts } from '../../actions/shifts/shiftActions';
-import { Button } from 'react-bootstrap';
+import { Button, Grid, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter} from 'react-router-dom';
 import ShiftsContainer from './ShiftsContainer';
@@ -15,13 +15,13 @@ export class Shifts extends Component {
         managerId: this.props.match.params.id,
       }
     this.handleClick = this.handleClick.bind(this);
+    this.handleSettingsClick = this.handleSettingsClick.bind(this);
   }
-  handleClick(type, employeeId) {
-    switch(type) {
-      case 'settings':  return this.props.history.push(`/managers/${this.state.managerId}/shifts/settings`);
-      case 'view': return this.props.history.push(`/employees/${employeeId}`); 
-      default: return;
-    }
+  handleClick(shiftId) {
+    this.props.history.push(`/shifts/${shiftId}`);
+  }
+  handleSettingsClick() {
+    this.props.history.push('shifts/settings');
   }
   componentWillMount() {
     this.props.getManagerShifts(this.state.managerId);
@@ -29,18 +29,23 @@ export class Shifts extends Component {
   render() {
     return (
       <div>
-        <h1 className="shift-page-header">Shifts <Button onClick={() => this.handleClick('settings', null)} className="shift-settings-button" bsSize="large" ><FontAwesomeIcon className="good" icon="cog"/></Button></h1>
+        <h1 className="shift-page-header">Shifts <Button onClick={this.handleSettingsClick} className="shift-settings-button" bsSize="large" ><FontAwesomeIcon className="good" icon="cog"/></Button></h1>
         <hr />
-        {_.map(this.props.shifts, shift => {
-          return(<ShiftsContainer shift={shift} />)
-          }
-        )}
-
+        <Grid>
+          <Row>
+            <Col md={10} mdOffset={1}>
+              {_.map(this.props.shifts, shift => {
+                return(<a key={shift._id + 'link'} href={`/shifts/${shift._id}`} ><ShiftsContainer key={shift._id + 'container'}  employee={this.props.employees[shift.employee]} shift={shift} /></a>)
+                }
+              )}
+            </Col>
+          </Row>
+        </Grid>
       </div>
     )   
   }
 }
 
-const mapStateToProps = ({ shifts }) => ({ shifts })
+const mapStateToProps = ({ shifts, employees }) => ({ shifts, employees })
 
 export default withRouter(connect(mapStateToProps, { getManagerShifts })(Shifts))

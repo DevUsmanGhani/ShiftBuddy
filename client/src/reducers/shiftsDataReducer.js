@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import { GET_INVENTORY_SETTINGS, ADD_INVENTORY_ITEM, DELETE_INVENTORY_ITEM } from "../actions/shifts/types";
+import { LOGOUT } from "../actions/types";
 
 const initialState = {
-  shifts: {},
   inventoryItems: {}
 }
 
@@ -14,6 +14,8 @@ export default (state = initialState, action) => {
       return { ...state, inventoryItems: {...state.inventoryItems, [action.payload._id]: action.payload} };
     case DELETE_INVENTORY_ITEM:
       return { ...state, inventoryItems: _.omit(state.inventoryItems, action.payload)}
+    case LOGOUT: 
+      return initialState;
     default:
       return state
   }

@@ -35,6 +35,15 @@ h1 {
   font-weight: bold;
 }
 
+.back {
+  @extend .secondary;
+  font-size: 1.25em;
+  font-weight: 400;
+  text-align: left;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
 hr {
   height: 1px;
   @extend .bg-secondary;
@@ -57,6 +66,14 @@ hr {
   text-align: center !important;
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+.underline{
+  border-bottom: 1px solid grey;
+}
+
+.bold {
+  font-weight: bolder;
 }
 
 // Nav links
@@ -95,6 +112,10 @@ hr {
   padding: .5em;
   margin-left: auto;
   margin-right: auto;
+}
+
+.save, .cancel {
+  width: 5em;
 }
 
 // Employees
@@ -282,4 +303,64 @@ hr {
         border-radius: 0 .5em .5em 0;
       }
     } 
+}
+
+// Shifts
+.shifts-container {
+  cursor: pointer;
+  color: grey;
+  margin: 1em 1em;
+  background-color: lighten($shift-buddy-secondary, 10%);
+  color: white;
+  padding: 1em 1.5em;
+  border-radius: .5em;
+  @include shadowize;
+  .name {
+    font-size: 1.25em;
+    margin-left: -1.5em;
+  };
+  .time {
+    margin-top: .25em;
+  }
+  &:hover {
+    @extend .bg-secondary;
+  }
+}
+
+// Shift-View
+.shift-view-container {
+  h3{
+    @extend .underline, .bold,;
+  }
+  .shift-name {
+    font-weight: 2000;
+  }
+  .shift-report {
+    font-size: 1.2em;
+    line-height: 1.5;
+    background-color: lighten($shift-buddy-tertiary, 20%);
+    border-radius: .25em;
+    div {
+      margin-top: .25em
+    }
+    .header{
+      border-radius: .25em;
+      padding: .25em;
+      color: black;
+      background-color: lighten($shift-buddy-primary, 10%);
+      font-weight: bolder;
+      text-align: center;
+      margin-bottom: 1em;
+    }
+    .start-time, 
+    .end-time {
+      float: right;
+    }
+    .end-drawer{
+      display: inline-block;
+      margin-right: .314em;
+    }
+  }
+  
+  
 }

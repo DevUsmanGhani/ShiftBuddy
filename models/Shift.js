@@ -3,9 +3,29 @@ const mongoose = require('mongoose'),
 
 // Create Shift Model
 let shiftSchema = new Schema({
-  date: { 
+  employee: {
+    type: Schema.Types.ObjectId,
+    ref: "Employee",
+  },
+  manager: {
+    type: Schema.Types.ObjectId,
+    ref: "Manager",
+  },
+  startTime: { 
   	type: Date, 
   	default: Date.now 
+  },
+  endTime: {
+    type: Date,
+    default: Date.now
+  },
+  startingCash: {
+    type: Number,
+    default: 150.00,
+  },
+  endingCash: {
+    type: Number,
+    default: 150.00
   },
   notes: [
 	  {
@@ -13,8 +33,10 @@ let shiftSchema = new Schema({
 	    ref: 'Note'
 	  }
   ],
-  inventoryStart: [],
-  inventoryStop: [],
+  inventoryStart: {},
+  inventoryStop: {},
+  changeStart: {},
+  changeStop: {},
   paidOuts: [
   	{
   		type: Schema.Types.ObjectId, 
@@ -32,7 +54,7 @@ let shiftSchema = new Schema({
   		type: Schema.Types.ObjectId, 
   		ref: 'Check'
   	}
-	]
+  ],
 }, 
 {
 	strict: true
