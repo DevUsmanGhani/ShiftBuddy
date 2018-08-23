@@ -6,6 +6,8 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import { withRouter} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ShiftsContainer from '../shifts/ShiftsContainer';
+import destructureDate from '../../utils/destructureDate';
+import formatMoney from '../../utils/formatMoney';
 
 
 export class EmployeeView extends Component {
@@ -22,10 +24,20 @@ export class EmployeeView extends Component {
   componentWillMount() {
     this.props.getManagerShifts(this.props.managerId);
   }
+  employeeBirthday() {
+    const employee = this.props.employees[this.state.employeeId]
+    if(employee.birthday) {
+      const { day, month, year } = destructureDate(employee.birthday)
+      return (
+        <div>{month} {day}, {year}</div>
+      )
+    }
+  }
 
   render() {
+    const employee = this.props.employees[this.state.employeeId]
     return (
-      <Grid>
+      <Grid className="employee-view">
         <Row>
           <Col xs={12}>
             <div className="back-header-container">            
@@ -36,14 +48,13 @@ export class EmployeeView extends Component {
         </Row>
         <hr />
         <Row>
-          <Col xs={12} sm={2}>
-            Arham Ghani <br />
-             :) <br />
-             dob.. <br />
-             last shift: 
+          <Col className="employee-info" xs={12} md={2}>
+            <div className="profile-picture-container"><img className="profile-picture" src="/blank-profile-picture.png" alt="profile"/> <br /></div>
+            <div>{employee.name}</div>
+             <div>${formatMoney(employee.salary)}/hr</div>
+             {this.employeeBirthday()}
           </Col>
-          <Col xs={12} sm={9}>
-          <h2 className="center">{this.props.employees[this.state.employeeId].name}'s Shifts</h2>
+          <Col xs={12} md={10}>
           {_.map(this.props.shifts, shift => {
                 if (shift.employee === this.state.employeeId)
                 return(<a key={shift._id + 'link'} href={`/shifts/${shift._id}`} ><ShiftsContainer key={shift._id + 'container'}  employee={this.props.employees[shift.employee]} shift={shift} /></a>)
