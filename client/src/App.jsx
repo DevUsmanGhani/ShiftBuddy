@@ -24,6 +24,7 @@ import SiteNavbar from './components/common/SiteNavbar';
 import SiteFooter from './components/common/SiteFooter';
 import EmployeeView from './components/employees/EmployeeView';
 import About from './components/public/About';
+import Contact from './components/public/Contact';
 
 // Font 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -64,6 +65,9 @@ class App extends Component {
                 </Switch>  
                 <Switch>
                   <Route exact path='/about'component={About} />
+                </Switch>  
+                <Switch>
+                  <Route exact path='/contact'component={Contact} />
                 </Switch>  
                 <Switch>
                   <Route exact path='/managers/login' component={ManagerLogin} />
