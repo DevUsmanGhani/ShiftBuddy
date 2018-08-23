@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col, Image } from 'react-bootstrap';
+import { Row, Col, Image } from 'react-bootstrap';
 
 export default () => {
   return (
