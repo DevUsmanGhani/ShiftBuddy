@@ -3,7 +3,7 @@ import { Grid, Row, Col, Image } from 'react-bootstrap';
 
 export default () => {
   return (
-    <Grid className="info">
+    <div className="info">
       <Row className="header">
         The Future is Now
       </Row>
@@ -63,6 +63,6 @@ export default () => {
       <Row className="bottom-margin">
         
       </Row>  
-    </Grid>
+    </div>
   )
 }

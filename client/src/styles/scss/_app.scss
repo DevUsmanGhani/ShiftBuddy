@@ -435,6 +435,9 @@ hr {
     margin-bottom: .5em;
     border-radius: 1em;
     border: 1px solid white;
+    @media screen and (max-width: 768px){
+      height: 15em;
+    }
     img {
       position: absolute;
       top:-100%; left: 0; right: 0; bottom:-100%;
