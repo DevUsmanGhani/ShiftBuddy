@@ -37,9 +37,9 @@ export class SiteNavbar extends Component {
           <MenuItem className="dropdown" href={`/managers/${manager.id}`} eventKey={4.1}>
             <FontAwesomeIcon icon="user-circle" fixedWidth/>  Dashboard
           </MenuItem>
-          <MenuItem className="dropdown" href={`/managers/${manager.id}/settings`} eventKey={4.2}>
+          {/*<MenuItem className="dropdown" href={`/managers/${manager.id}/settings`} eventKey={4.2}>
             <FontAwesomeIcon icon="cog" fixedWidth/>  Settings 
-          </MenuItem>
+          </MenuItem> */}
           < MenuItem className="dropdown" onClick={this.props.logoutManager} eventKey={4.3}>
             <FontAwesomeIcon icon="sign-out-alt" fixedWidth/> Logout  
           </MenuItem>
