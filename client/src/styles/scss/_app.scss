@@ -381,3 +381,31 @@ hr {
     }
   }
 }
+
+// Employee View
+.employee-view{
+  .employee-info {
+    color: darken($shift-buddy-tertiary, 50%);
+    font-weight: bold;
+    margin-bottom: 2em;
+    border-radius: 1em;
+    line-height: 2;
+    text-align: center;
+    background-color: darken($shift-buddy-tertiary, 10%);
+    @include shadowize;
+    .profile-picture-container {
+      margin-top: 2em;
+      margin-left: auto;
+      margin-right: auto;
+      width: 25%;
+      @media screen and (min-width: 992px) {      
+        width: 80%;
+      }
+    }
+    .profile-picture {
+      width: 100%;
+      border-radius: 20em;
+    }
+  }
+ 
+}
