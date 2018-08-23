@@ -23,6 +23,7 @@ import Landing from './components/public/Landing';
 import SiteNavbar from './components/common/SiteNavbar';
 import SiteFooter from './components/common/SiteFooter';
 import EmployeeView from './components/employees/EmployeeView';
+import About from './components/public/About';
 
 // Font 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -60,6 +61,9 @@ class App extends Component {
               <div className="content-container">
                 <Switch>
                   <Route exact path='/'component={Landing} />
+                </Switch>  
+                <Switch>
+                  <Route exact path='/about'component={About} />
                 </Switch>  
                 <Switch>
                   <Route exact path='/managers/login' component={ManagerLogin} />
