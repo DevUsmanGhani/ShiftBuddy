@@ -86,7 +86,7 @@ class EmployeeEdit extends Component {
               </FormGroup>
               <Row>
                 <div className="center">
-                  <Button className="cancel" onClick={this.props.history.goBack} bsSize="large" bsStyle="link">Cancel</Button>
+                  <Button className="cancel" onClick={this.props.history.goBack} bsSize="large" bsStyle="info">Cancel</Button>
                   <Button className="save" type="submit" bsSize="large" bsStyle="warning">Save</Button>
                 </div>
               </Row>

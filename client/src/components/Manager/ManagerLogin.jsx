@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FormGroup, FormControl, Button, Alert, Grid, Row, Col } from "react-bootstrap"; 
+import { FormGroup, FormControl, Button, Grid, Row, Col } from "react-bootstrap"; 
 import { connect } from 'react-redux';
 import { loginManager } from '../../actions/manager/managerAuthActions';
 import { clearErrors } from '../../actions/errorsActions';
