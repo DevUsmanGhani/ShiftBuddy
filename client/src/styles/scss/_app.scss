@@ -407,5 +407,41 @@ hr {
       border-radius: 20em;
     }
   }
- 
+}
+
+.about-us {
+  @extend .center;
+  .header {
+    border-radius: .1em;
+    font-size: 1.25em;
+    @extend .bold;
+    background-color: lighten($shift-buddy-primary, 15%);
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .images-container{
+    background-color: darken($shift-buddy-tertiary, 10%);
+    margin: 1.25em auto;
+    padding: 1em;
+    border-radius: 1em;
+  }
+  .image-container{
+    height: 21em;
+    overflow: hidden;
+    margin-top: .5em;
+    margin-bottom: .5em;
+    img {
+      position: absolute;
+      top:-100%; left:0; right: 0; bottom:-100%;
+      margin: auto;
+    }
+  }
+  .text {
+    background-color: lighten($shift-buddy-primary, 10%);
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-style: italic;
+    border-radius: .5em;
+  }
 }
