@@ -412,7 +412,7 @@ hr {
 .info{
   @extend .center;
   .header {
-    margin-top: -1em;
+    margin-top: 1em;
     padding: .5em;
     border-radius: .5em;
     font-size: 1.25em;
@@ -453,6 +453,7 @@ hr {
     border-radius: .5em;
     margin-top: 1em;
   }
+
   .bottom-margin {
     margin-bottom: 3em;
   }

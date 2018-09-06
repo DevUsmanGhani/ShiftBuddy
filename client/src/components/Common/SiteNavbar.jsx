@@ -9,12 +9,12 @@ export class SiteNavbar extends Component {
   publicLinks() {
     return (
       <Nav pullRight>
-        {/*<NavItem eventKey={1.1} href="/about">
-          About Us
+        <NavItem eventKey={1.1} href="/about">
+          About
         </NavItem>
-        <NavItem eventKey={2.1} href="/contact">
+        {/* <NavItem eventKey={2.1} href="/contact">
           Contact 
-        </NavItem>*/}
+        </NavItem> */}
         <NavItem  eventKey={3.1} href="/managers/login">
           Login <FontAwesomeIcon icon="sign-in-alt" /> 
         </NavItem>

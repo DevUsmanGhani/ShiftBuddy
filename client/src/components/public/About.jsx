@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import Info from './Info';
+import { Grid  } from 'react-bootstrap';
 
 export default () => {
   return (
-    <div>
-      About
-    </div>
+    <Grid className="container-fluid">
+      <Info />
+    </Grid>
   )
 }
