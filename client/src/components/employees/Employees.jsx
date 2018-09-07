@@ -115,7 +115,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   getEmployees: getEmployees,
-  deleteEmployee: deleteEmployee,
+  deleteEmployee: deleteEmployee
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Employees))

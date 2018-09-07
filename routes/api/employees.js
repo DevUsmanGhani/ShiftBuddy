@@ -33,7 +33,7 @@ router.delete('/:eid', (req, res) => {
     Employee.findByIdAndRemove(req.params.eid)
       .then(employee => {
         for (let i = 0; i < employee.shifts.length; ++i) {
-          Shift.findByIdAndRemove(employee.shifts[i]).then(shift => console.log(shift));
+          Shift.findByIdAndRemove(employee.shifts[i]);
         }
         res.status(200).send("Employee '"+ employee.name +"' was deleted.")
       })
