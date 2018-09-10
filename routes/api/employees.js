@@ -4,12 +4,13 @@ const bcrypt = require('bcryptjs');
 
 // Load Employee Model
 const Employee = require('../../models/Employee');
+const Shift = require('../../models/Shift');
 
 // @route   GET api/emplpoyees/:eid
 // @desc    Returns data of a specific employee
 // @access  Public
 router.get('/:eid', (req,res) => {
-  Employee.findOne({'_id': req.params.eid}, { shifts: 0, __v: 0 })
+  Employee.findOne({'_id': req.params.eid})
       .then(employee => res.status(200).send(employee))
       .catch(error => res.status(404).send("The specified resource does not exist."))
 });
@@ -30,7 +31,12 @@ router.put('/:eid', (req, res) => {
 // @access  Public
 router.delete('/:eid', (req, res) => {
     Employee.findByIdAndRemove(req.params.eid)
-      .then(employee => res.status(200).send("Employee '"+ employee.name +"' was deleted."))
+      .then(employee => {
+        for (let i = 0; i < employee.shifts.length; ++i) {
+          Shift.findByIdAndRemove(employee.shifts[i]);
+        }
+        res.status(200).send("Employee '"+ employee.name +"' was deleted.")
+      })
       .catch(error => res.status(404).send("The specified resource does not exist."))
 });
 
