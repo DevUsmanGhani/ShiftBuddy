@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Jumbotron, Button, Grid  } from 'react-bootstrap';
-import Info from './Info';
 
 
 export class Landing extends Component { 
@@ -21,7 +20,6 @@ export class Landing extends Component {
           <hr/>
           <Button className="text-center" bsSize="large" bsStyle="info" href="/managers/login">Enter Portal</Button>
         </Jumbotron>
-        <Info />
       </Grid>
     );
   }
